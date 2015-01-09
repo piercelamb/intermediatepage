@@ -8,3 +8,26 @@ global.playFramework = Play! Framework
 generic.thisIsThe = This is the
 generic.sampleApp = Sample Application
 generic.youCanFindWorking = You can find a working version of this app
+
+signup.signupHere = Sign up here
+signup.hearaboutlaunch = Be the first to hear about our launch
+signup.register = Register
+signup.accountCreated = Your account has been created
+
+person.firstname = First Name
+person.lastname = Last Name
+person.enterfirstname = Enter first name
+person.enterlastname = Enter last name
+
+contact.contactus = Contact us
+contact.sendmessage = Send message
+contact.comments = Comments
+
+email.email = Email
+email.enteremail = Enter email
+
+address.zipcode = Zip Code
+address.enterzipcode = Enter zip code
+
+phone.phone = Phone number
+phone.enterphone = Enter phone number

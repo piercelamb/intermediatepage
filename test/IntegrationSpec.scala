@@ -21,5 +21,51 @@ class IntegrationSpec extends Specification {
 
       browser.pageSource must contain(Messages("global.appName"))
     }
+
+    "allow you to enter your name and email, register and take you to registrationSuccess page" in new WithBrowser {
+      browser.goTo("http://localhost:" + port)
+
+      val firstName: String = "Jane"
+      val lastName: String = "Smith"
+      val email: String = "jane@hawkinsunlimited.com"
+
+      browser.$("#firstname").text(firstName)
+      browser.$("#lastname").text(lastName)
+      browser.$("#email").text(email)
+      browser.$(".btn-primary").click()
+
+      browser.pageSource must contain("Thank you for signing up to hear more")
+      browser.pageSource must contain("Once we launch we will email you at " + email)
+    }
+
+    "allow you to register your first name, last name and email and take you to registrationSuccess page" in new WithBrowser {
+      browser.goTo("http://localhost:" + port)
+
+      val firstName: String = "Jane"
+      val lastName: String = "Smith"
+      val email: String = "jane@hawkinsunlimited.com"
+
+      browser.$("#firstName").text(firstName)
+      browser.$("#lastName").text(lastName)
+      browser.$("#email").text(email)
+      browser.$(".btn-primary").click()
+
+      browser.pageSource must contain("Hello " + firstName + ",")
+      browser.pageSource must contain("Thank you for signing up to hear more")
+      browser.pageSource must contain("Once we launch we will email you at " + email)
+    }
+
+    "fail to register you without your first name and prompt you with the missing information" in new WithBrowser {
+      browser.goTo("http://localhost:" + port)
+
+      val lastName: String = "Smith"
+      val email: String = "jane@hawkinsunlimited.com"
+
+      browser.$("#lastName").text(lastName)
+      browser.$("#email").text(email)
+      browser.$(".btn-primary").click()
+
+      browser.pageSource must contain("This field is required")
+    }
   }
 }

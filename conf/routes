@@ -3,7 +3,12 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index
+GET     /    controllers.Registration.newReg
+#GET     /                           controllers.Application.index
+
+# Registration
+GET    /register    controllers.Registration.newReg
+POST   /register    controllers.Registration.create
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

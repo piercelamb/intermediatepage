@@ -1,13 +1,15 @@
 @(title: String)
 
-@main("About us") {
+@main(title) {
 
 <div class="container">
     <div class="row">
-        <h1>About us</h1>
-        <p>This is the <a href="http://github.com/michaelhawkins/playful-prelaunch"   target="_blank">
-            Playful Prelaunch</a> Play Framework sample application.
-            You can find a working version of this app at
+        <h1>@Messages("global.about")</h1>
+        <p>@Messages("generic.thisIsThe") <a href="http://github.com/michaelhawkins/playful-prelaunch"
+                                             target="_blank">
+            @Messages("global.appName")</a> @Messages("global.playFramework")
+            @Messages("generic.sampleApp"). @Messages("generic.workingVersion")
+            on
             <a href="http://playful-prelaunch.herokuapp.com" target="_blank">Heroku</a>.
         </p>
     </div>

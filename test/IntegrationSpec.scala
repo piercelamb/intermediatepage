@@ -1,10 +1,10 @@
 import org.specs2.mutable._
 import org.specs2.runner._
 import org.junit.runner._
-import play.api.i18n.Messages
 
 import play.api.test._
 import play.api.test.Helpers._
+import play.api.i18n._
 
 /**
  * add your integration spec here.
@@ -18,24 +18,7 @@ class IntegrationSpec extends Specification {
     "work from within a browser" in new WithBrowser {
 
       browser.goTo("http://localhost:" + port)
-
       browser.pageSource must contain(Messages("global.appName"))
-    }
-
-    "allow you to enter your name and email, register and take you to registrationSuccess page" in new WithBrowser {
-      browser.goTo("http://localhost:" + port)
-
-      val firstName: String = "Jane"
-      val lastName: String = "Smith"
-      val email: String = "jane@hawkinsunlimited.com"
-
-      browser.$("#firstname").text(firstName)
-      browser.$("#lastname").text(lastName)
-      browser.$("#email").text(email)
-      browser.$(".btn-primary").click()
-
-      browser.pageSource must contain("Thank you for signing up to hear more")
-      browser.pageSource must contain("Once we launch we will email you at " + email)
     }
 
     "allow you to register your first name, last name and email and take you to registrationSuccess page" in new WithBrowser {
@@ -67,5 +50,6 @@ class IntegrationSpec extends Specification {
 
       browser.pageSource must contain("This field is required")
     }
+
   }
 }

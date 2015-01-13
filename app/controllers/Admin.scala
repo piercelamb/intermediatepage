@@ -21,7 +21,7 @@ import models.JsonFormats._
 
   //not sure how to fix, template goes to homepage
 
-  def about = Action {
-    dt.getAll.map(times => Ok(views.html.admin.home(Json.toJson(times)))
+  def index = Action.async {
+    dt.getAll.map(times => Ok(Json.toJson(times)))
   }
 }

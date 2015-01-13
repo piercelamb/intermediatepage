@@ -22,7 +22,7 @@ class SimpleClient(node: String) {
   }
 
   def getRows: ResultSetFuture = {
-    val query = QueryBuilder.select().all().from("ipadresses", "data")
+    val query = QueryBuilder.select().all().from("ipaddresses", "timeonpage")
     session.executeAsync(query)
   }
 

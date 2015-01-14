@@ -8,6 +8,10 @@ import scala.collection.JavaConversions._
 import play.api.Logger
 import com.datastax.driver.core.Metadata
 
+//the SimpleClient is the first step in connecting to cassandra, it is defined in
+//http://www.datastax.com/documentation/developer/java-driver/2.0/java-driver/quick_start/qsSimpleClientCreate_t.html
+//this is a Scala equivalent of that
+
 class SimpleClient(node: String) {
 
   private val cluster = Cluster.builder().addContactPoint(node).build()
@@ -20,7 +24,7 @@ class SimpleClient(node: String) {
       Logger.info(s"Datatacenter: ${host.getDatacenter()}; Host: ${host.getAddress()}; Rack: ${host.getRack()}")
     }
   }
-
+//build a query to return all the rows
   def getRows: ResultSetFuture = {
     val query = QueryBuilder.select().all().from("ipaddresses", "timeonpage")
     session.executeAsync(query)
@@ -32,9 +36,9 @@ class SimpleClient(node: String) {
   }
 
 }
-
+//connect
   object Cassandra extends App {
     val client = new SimpleClient("127.0.0.1")
-    println(client.getRows)
+    //println(client.getRows)
     client.close
   }

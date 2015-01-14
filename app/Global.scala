@@ -4,6 +4,7 @@ import models.displayTimes
 import play.api.Application
 import play.api.GlobalSettings
 
+//These override settings are required because the controller is a scala class, not a scala object
 object Global extends GlobalSettings {
 
   private var cassandra: SimpleClient = _

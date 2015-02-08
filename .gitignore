@@ -13,6 +13,8 @@ server.pid
 
 #Ignore web assets
 public
+public/
+/public
 
 # Ignore activator stuff
 logs

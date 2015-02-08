@@ -17,7 +17,6 @@ libraryDependencies ++= Seq(
   "org.webjars" %% "webjars-play" % playVersion,
   "org.postgresql" % "postgresql" % "9.3-1102-jdbc41",
   "org.seleniumhq.selenium" % "selenium-java" % "2.44.0",
-  "org.webjars" % "bootstrap" % "3.3.1",
   "com.datastax.cassandra" % "cassandra-driver-core" % "2.1.4"
 )
 

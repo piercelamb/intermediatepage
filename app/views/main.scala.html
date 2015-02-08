@@ -3,16 +3,96 @@
 <!DOCTYPE html>
 
 <html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@title | @Messages("global.appName")</title>
-    <link rel="stylesheet" media="screen" href="@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.css"))">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/normalize.css")">
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/animate.css")">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/styles.css")">
+    <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-    <script src="@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))"></script>
-        <script src="@routes.WebJarAssets.at(WebJarAssets.locate("js/bootstrap.min.js"))"></script>
+    <script src="@routes.Assets.at("javascripts/modernizr-2.6.2.min.js")"></script>
+
 </head>
 <body>
-@partials.header()
+       <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
 @content
+
+<script type="text/javascript" src="//use.typekit.net/euf8fcf.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <script src="@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))"></script>
+<script src="@routes.Assets.at("javascripts/plugins.js")"></script>
+    <script src="@routes.Assets.at("javascripts/main.js")"></script>
+    <script src="@routes.Assets.at("javascripts/typed.js")"></script>
+    <script src="@routes.Assets.at("javascripts/wow.js")"></script>
+      <script>
+ new WOW().init();
+        </script>
+    <script>
+    $(function(){
+
+        $("#typed").typed({
+            strings: ["SELECT COUNT(*)\nFROM Sessions\nWHERE Genre = 'western'\nGROUP BY OS\n<span>WITHIN 5 SECONDS</span>"],
+            typeSpeed: 20,
+            backDelay: 500,
+            loop: false,
+            contentType: 'html', // or text
+            // defaults to false for infinite loop
+            loopCount: false,
+            callback: function(){ foo(); },
+            resetCallback: function() { newTyped(); }
+        });
+
+
+    });
+
+    function newTyped(){ /* A new typed object */ }
+
+    function foo(){ console.log("Callback"); }
+
+    </script>
+
+    <script>
+    $(document).ready(function(){
+
+    $( "input").focus(function(e) {
+
+        $( e.target ).next(".placeholder").addClass( "blur" ).fadeOut( 900 );
+    });
+    $( "input" ).blur(function(e) {
+        var val=$(e.target).val();
+        if(!val){
+            $(  e.target  ).next(".placeholder").removeClass( "blur" ).fadeIn( 300 );
+        }
+
+    });
+    $( ".placeholder " ).click(function(e) {
+
+        $( e.target ).addClass( "blur" ).fadeOut( 900 );
+        $(e.target).prev("input").focus();
+    });
+});
+    </script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-@(firstName: String, lastName: String, email: String)
+@(email: String)
 
 @import helper._
 
@@ -7,7 +7,7 @@ Messages("global.exampleapp")) {
 
 <div style="padding:50px">
 
-    <p>Hello @firstName,</p>
+    <p>Hello @email,</p>
     <p>Thank you for signing up to hear more about @Messages("global.appName").
         Once we launch we will email you at @email. </p>
     <p>Best regards,</p>

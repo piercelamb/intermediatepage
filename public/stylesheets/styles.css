@@ -1,6 +1,6 @@
 /*initialize*/
 
-html { /*background: url("../images/diagonal_strokes_darker.png") repeat scroll 0 0 #1B1B1B;*/
+html { /*background: url("../img/diagonal_strokes_darker.png") repeat scroll 0 0 #1B1B1B;*/ 
 overflow:hidden;
 overflow-y:scroll;
 }
@@ -268,15 +268,15 @@ font-size: 25px;
    
   
 @keyframes scale { 
-  50% { transform: scale(1.3)};
+  50% { transform: scale(1.3)}
   
   }
 @-webkit-keyframes scale { 
-  50% { -webkit-transform: scale(1.3)};
+  50% { -webkit-transform: scale(1.3)}
 	
   }
   @-moz-keyframes scale { 
-  50% { -moz-transform: scale(1.3)};
+  50% { -moz-transform: scale(1.3)}
 	
   }
 
@@ -369,7 +369,9 @@ font-size: 25px;
        padding: 30px; /* Arrow Size */
        box-shadow: -1px 1px 0 0 #FFF inset;
        -webkit-box-shadow: -1px 1px 0 0 #FFF inset;
+       -moz-box-shadow: -1px 1px 0 0 #FFF inset;
        -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
        margin-left: 390px; 
        margin-top: 18px;
 }
@@ -432,6 +434,8 @@ padding: 6px;
 box-shadow: -1px 1px 0 0 #FFF inset;
 -webkit-box-shadow: -2px 2px 0 0 #FFF inset;
 -webkit-transform: rotate(135deg);
+-moz-box-shadow: -2px 2px 0 0 #FFF inset;
+-moz-transform: rotate(135deg);
 margin-left: -41px;
 margin-top: 35px;
    }
@@ -444,6 +448,7 @@ margin-top: 35px;
 
    .experience > div:last-child > div:nth-child(2) > div:last-child > p:after {
 	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
    	margin-left: 159px;
 margin-top: -95px;
    }
@@ -493,9 +498,8 @@ width: 700px;
 
    @media (min-width: 1100px) and (max-width: 1500px) /* LAPTOP resolution -----------------------------*/ {
 
-h1 {
-	font-size:53px;
-}
+h1 {font-size:53px;}
+
 
 .background {
 height: 700px;
@@ -566,7 +570,7 @@ margin-left: 149px;
 
 }
 
-   @media (min-width: 850px) and (max-width: 1099px) /* small laptop & iPad landscape resolution -----------------------------*/ {
+ @media (min-width: 850px) and (max-width: 1099px) /* small laptop & iPad landscape resolution -----------------------------*/ {
 
 .background {
 height: 700px;
@@ -650,6 +654,7 @@ width:280px;
 
 .experience > div:last-child > div:not(:last-child):before {
 	-webkit-transform: rotate(135deg);
+	-moz-transform: rotate(135deg);
 	margin-left: 133px;
 	margin-top: 169px;
 }
@@ -662,7 +667,7 @@ width:280px;
 
 }
 
-   	@media (min-width: 567px) and (max-width: 849px) /* phone landscape & iPad portrait resolution ----------------------------*/ {
+ @media (min-width: 567px) and (max-width: 849px) /* phone landscape & iPad portrait resolution ----------------------------*/ {
 
 .background {
 height: 700px;
@@ -679,7 +684,7 @@ h1 {
 
 
 .background > div:first-child > h1 {
-	width: 65%;
+	width: 69%;
 	margin:0 !important;
 	}
 
@@ -734,9 +739,6 @@ padding:150px 0;
 	margin:0 auto !important;
 }
 
-.benefits > div:last-child {
-
-}
 
 .experience {
 	padding-bottom:150px;
@@ -778,166 +780,74 @@ width:280px;
 
 .experience > div:last-child > div:not(:last-child):before {
 	-webkit-transform: rotate(135deg);
+	-moz-transform: rotate(135deg);
 	margin-left: 133px;
 	margin-top: 169px;
 }
 
-.experience > div:last-child > div:nth-child(2):before {
-	margin-left: 79px;
-	margin-top: 153px;
+.experience > div:last-child > div:nth-child(2):before {margin-left: 79px;margin-top: 153px;
 }
 
-.team > div > h2 {
-width:470px;
-font-size:25px;
-}
+.team > div > h2 {width:470px;font-size:25px;}
 
 }
-   @media (max-width: 566px) /* phone portrait resolution */ {
+   
+ @media (max-width: 566px) /* phone portrait resolution */ {
 
-.background {
-height: 700px;
-text-align:center;
-}
+.background {height: 700px;text-align:center;}
 
-h1 {
-	font-size:38px;
-}
+h1 {font-size:38px;}
 
-.background > div:first-child {
-	text-align:center;
-}
+.background > div:first-child {text-align:center;}
 
 
-.background > div:first-child > h1 {
-	width:310px;
-	margin:0 !important;
-	}
+.background > div:first-child > h1 {width:310px;margin:0 !important;}
 
 
-.SQL {
-	padding: 16px;
-	width: 304px;
-	height: 166px;
-	margin-top:5%;
-	margin-left: 0;
-}
+.SQL {padding: 16px;width: 304px;height: 166px;margin-top:5%;margin-left: 0;}
 
-.SQL > * {
-	font-size:24px;
-}
+.SQL > * {font-size:24px;}
 
-.CTA {
-padding-top: 70px;
-}
+.CTA {padding-top: 70px;}
 
-.CTA > p {
-	width: 83%;
-	margin: 0 auto;
-	font-size:23px;
-}
+.CTA > p {width: 83%;margin: 0 auto;font-size:23px;}
 
-.CTA > form {
-	width: 90%;
-height: 130px;
-}
+.CTA > form {width: 90%;height: 130px;}
 
-.CTA > form > input:first-child {
-	display:block;
-	height: 50px;
-width: 99%;
-			padding: 5px 9px;
-            height: 50px;
--moz-border-radius: 10px;
-             border-radius:10px;
-            font-size:25px;
-}
+.CTA > form > input:first-child {display:block;height: 50px;width: 99%;padding: 5px 9px;height: 50px;-moz-border-radius: 10px;border-radius:10px;font-size:25px;}
 
-.CTA > form > span {
-font-size: 23px;
-bottom: 60%;
-left: 5.5%;
-}
+.CTA > form > span {font-size: 23px;bottom: 60%;left: 5.5%;}
 
-.CTA > form > input:last-child {
-	font-size:23px;
-	width:99%;
-display:block;
--moz-border-radius: 10px;
-             border-radius:10px;
-             margin:10px 0 0 0;
+.CTA > form > input:last-child {font-size:23px;width:99%;display:block;-moz-border-radius: 10px;border-radius:10px;margin:10px 0 0 0;}
+
+
+.benefits {padding:150px 0;}
+
+.benefits > div {display:block;width: 88%;margin:0 auto !important;}
+
+.experience {padding-bottom:150px;}
+
+.experience > div:first-child {width:85%;height:auto;}
+
+.experience > div:last-child > .SQL > * {display:inline-block;font-size:23px;}
+
+.experience > div:last-child > div:first-child {width: 297px;}
+
+.experience > div:last-child > div:last-child {width:280px;}
+
+.experience > div:last-child > div {display:block !important;margin:100px auto 0 auto !important;}
+
+.experience > div:last-child > div:nth-child(2) {width:276px;}
+
+.experience > div:last-child > .SQL > p:not(:first-child) {margin-top:5px;}
+
+.experience > div:last-child > .SQL > p:first-child {margin-top:-1px;}
+
+.experience > div:last-child > div:not(:last-child):before {-webkit-transform: rotate(135deg);-moz-transform: rotate(135deg);margin-left: 90px;margin-top: 139px;}
+
+.experience > div:last-child > div:nth-child(2):before {margin-left: 78px;margin-top: 153px;}
+
+.team > div > h2 {width: 85%;font-size: 21px;}
+
 
 }
-
-
-.benefits {
-padding:150px 0;
-}
-   	.benefits > div {
-	display:block;
-	width: 88%;
-	margin:0 auto !important;
-}
-
-.benefits > div:last-child {
-
-}
-
-.experience {
-	padding-bottom:150px;
-}
-
-.experience > div:first-child {
-	width:85%;
-	height:auto;
-}
-
-.experience > div:last-child > .SQL > * {
-display:inline-block;
-font-size:23px;
-
-	}
-
-	.experience > div:last-child > div:first-child {
-width: 297px;
-}
-
-.experience > div:last-child > div:last-child {
-width:280px;
-}
-
-	.experience > div:last-child > div {
-		display:block !important;
-		margin:100px auto 0 auto !important;
-	}
-
-	.experience > div:last-child > div:nth-child(2) {
-		width:276px;
-	}
-
-.experience > div:last-child > .SQL > p:not(:first-child) {
-	margin-top:5px;
-}
-
-.experience > div:last-child > .SQL > p:first-child {
-	margin-top:-1px;
-}
-
-.experience > div:last-child > div:not(:last-child):before {
-	-webkit-transform: rotate(135deg);
-	margin-left: 90px;
-margin-top: 139px;
-}
-
-.experience > div:last-child > div:nth-child(2):before {
-	margin-left: 78px;
-	margin-top: 153px;
-}
-
-.team > div > h2 {
-width: 85%;
-font-size: 21px;
-}
-
-
-   }

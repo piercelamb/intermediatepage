@@ -31,13 +31,14 @@
 
 <script type="text/javascript" src="//use.typekit.net/euf8fcf.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-    <script src="@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="@routes.Assets.at("javascripts/plugins.js")"></script>
     <script src="@routes.Assets.at("javascripts/main.js")"></script>
     <script src="@routes.Assets.at("javascripts/typed.js")"></script>
     <script src="@routes.Assets.at("javascripts/wow.js")"></script>
-      <script>
- new WOW().init();
+        <script>
+        if (window.screen.width > 1025) {
+ new WOW().init();}
         </script>
     <script>
     $(function(){

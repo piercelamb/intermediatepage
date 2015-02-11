@@ -11,11 +11,6 @@ server.pid
 /dist/
 .cache
 
-#Ignore web assets
-public
-public/
-/public
-
 # Ignore activator stuff
 logs
 project/project

@@ -1,9 +1,12 @@
 package models
 
+import Actors.TwitterParse
+import akka.actor.Props
 import anorm._
 import anorm.SqlParser._
 import play.api.db._
 import play.api.Play.current
+import play.api.libs.concurrent.Akka
 import play.api.libs.ws._
 import play.api.Play.current
 import play.api.libs.json.{JsValue, Json}
@@ -47,6 +50,7 @@ object Person {
     }
   }
 
+  val twitterParse = Akka.system.actorOf(Props[TwitterParse], name = "twitterParse")
 
   def updateParsed(id: Long, nameRaw: Array[String], companyRaw: String) = {
 
@@ -58,6 +62,7 @@ object Person {
           .on('id -> id, 'nameRaw -> nameRaw(0), 'companyRaw -> companyRaw)
           .executeUpdate()
       }
+      twitterParse ! (id, nameRaw(0))
     }
     else if (nameRaw.length == 2 && nameRaw.last != null) {
       DB.withConnection { implicit c =>
@@ -65,6 +70,7 @@ object Person {
           .on('id -> id, 'FirstName -> nameRaw(0), 'LastName -> nameRaw(1), 'companyRaw -> companyRaw)
           .executeUpdate()
       }
+      twitterParse ! (id, nameRaw)
     }
     else if (nameRaw.length == 3) {
         DB.withConnection { implicit c =>
@@ -72,6 +78,7 @@ object Person {
             .on('id -> id, 'FirstName -> nameRaw(0), 'MiddleName -> nameRaw(1), 'LastName -> nameRaw(2), 'companyRaw -> companyRaw)
             .executeUpdate()
         }
+      twitterParse ! (id, nameRaw)
     }
     else {
       DB.withConnection { implicit c =>

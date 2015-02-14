@@ -11,6 +11,11 @@ GET     /    controllers.Registration.newReg
 GET    /register    controllers.Registration.newReg
 POST   /register    controllers.Registration.create
 
+# TwitterTest
+
+GET /twitter controllers.Application.index
+GET /twitter/auth controllers.Twitter.authenticate()
+
 # Admin
 
 GET /admin  @controllers.Admin.index

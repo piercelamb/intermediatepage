@@ -3,19 +3,20 @@ import play.api._
 import play.api.mvc._
 import play.api.i18n
 
-import models._
+import models.{Person, NewPerson}
 import play.api.data._
 import play.api.data.Forms._
 import play.api.libs.concurrent.Akka
 import akka.actor.Props
 import play.api.Play.current
 import play.api.libs.concurrent.Execution.Implicits._
-import Actors.GeoLookup
+import Actors.{GeoLookup, NameParse}
 import config.Global._
 
 object Registration extends Controller {
 //Makes the geoLookup actor available using the default Play context
   val geoLookup = Akka.system.actorOf(Props[GeoLookup], name = "geoLookup")
+  val nameParse = Akka.system.actorOf(Props[NameParse], name = "nameParse")
 
 //Mapping for the email me form
   val newPersonForm: Form[NewPerson] = Form(
@@ -41,8 +42,12 @@ object Registration extends Controller {
         //Ok(views.html.registration.registrationSuccess(newPerson.email))
       }
     )
-    geoLookup ! (newPerson.id, newPerson.ip)
+  //send messages off to actors
+  geoLookup ! (newPerson.id, newPerson.ip)
+  nameParse ! (newPerson.id, newPerson.email)
     Ok(views.html.registration.newReg(newPersonForm))
+
   }
+
 }
 

@@ -11,6 +11,7 @@ import config.Global._
 
 case class NewPerson(email: String)
 case class Person(id: Long, ip: String, email: String)
+case class Location(city: String, regionName: String, country: String)
 
 object Person {
 
@@ -35,10 +36,14 @@ object Person {
     }
   }
 
-  def insertLocation(ip: String): String = {
-    val url = "http://ip-api.com/json/" + ip
-    val result = scala.io.Source.fromURL(url).mkString
-    println(result)
-    result
+  def insertLocation(id: Long, location: Location) = {
+    val city = location.city
+    val regionName = location.regionName
+    val country = location.country
+    DB.withConnection { implicit c =>
+     val result: Int = SQL("UPDATE person SET city = {city}, regionname = {regionName}, country = {country} WHERE id = {id}")
+       .on('id -> id, 'city -> city, 'regionName -> regionName, 'country -> country)
+      .executeUpdate()
+    }
   }
 }

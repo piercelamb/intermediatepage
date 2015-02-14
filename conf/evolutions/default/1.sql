@@ -9,10 +9,12 @@ CREATE TABLE person (
     regionName varchar(255),
     country varchar(255),
     firstname varchar(255),
+    middlename varchar(255),
     lastname varchar(255),
+    nameraw varchar(255),
     email varchar(255),
+    companyraw varchar(255),
     CONSTRAINT person_pkey PRIMARY KEY (id)
-
 );
 
 # --- !Downs

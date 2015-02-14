@@ -1,6 +1,8 @@
 package Actors
 
 import akka.actor.Actor
+import models.Person
+import models.Person.{updateParsed}
 
 
 //this actor takes the passed ID and IP of the Person just created and pings a geolocation API.
@@ -9,6 +11,7 @@ import akka.actor.Actor
 class NameParse extends Actor {
 
   private var names: Array[String] = _
+  private var companyRaw: String = _
 
 
   def receive = {
@@ -16,12 +19,15 @@ class NameParse extends Actor {
 
       println("Email received by nameParse: " + email._2 )
 
+      val numToRemove = "0123456789".toSet
+      val splitDomain = email._2.split('@')
+      val shedDomain = splitDomain(0).filterNot(numToRemove)
+          companyRaw = splitDomain(1)
+
       //make sure its an e-amil
       if (email._2 contains '@') {
 
         //remove numbers and domain
-        val numToRemove = "0123456789".toSet
-        val shedDomain = email._2.substring(0, email._2.indexOf('@')).filterNot(numToRemove)
 
         println("After shedding domain " + shedDomain)
 
@@ -40,7 +46,6 @@ class NameParse extends Actor {
           //john_jim.doe
         else if (shedDomain.contains('_') && shedDomain.contains('.') && !shedDomain.contains('-')) {
            names = shedDomain.split('_').flatMap(word => word.split('.'))
-
         }
           //john_jim-doe
           else if (shedDomain.contains('_') && shedDomain.contains('-') && !shedDomain.contains('.')) {
@@ -65,6 +70,9 @@ class NameParse extends Actor {
       }
 
       println(names.mkString(", "))
+
+      Person.updateParsed(email._1, names, companyRaw)
+
   }
 
 }

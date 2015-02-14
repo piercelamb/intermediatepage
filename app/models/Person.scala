@@ -46,4 +46,41 @@ object Person {
       .executeUpdate()
     }
   }
+
+
+  def updateParsed(id: Long, nameRaw: Array[String], companyRaw: String) = {
+
+    println("id is " +id+ " companyRaw is "+companyRaw+ " nameRaw is "+ nameRaw.mkString(" "))
+
+    if (nameRaw.last == null) {
+      DB.withConnection { implicit c =>
+        val result = SQL("UPDATE person SET nameraw = {nameRaw}, companyraw = {companyRaw} WHERE id = {id}")
+          .on('id -> id, 'nameRaw -> nameRaw(0), 'companyRaw -> companyRaw)
+          .executeUpdate()
+      }
+    }
+    else if (nameRaw.length == 2 && nameRaw.last != null) {
+      DB.withConnection { implicit c =>
+        val result = SQL("UPDATE person SET firstname = {FirstName}, lastname = {LastName}, companyraw = {companyRaw} WHERE id = {id}")
+          .on('id -> id, 'FirstName -> nameRaw(0), 'LastName -> nameRaw(1), 'companyRaw -> companyRaw)
+          .executeUpdate()
+      }
+    }
+    else if (nameRaw.length == 3) {
+        DB.withConnection { implicit c =>
+          val result = SQL("UPDATE person SET firstname = {FirstName}, middlename = {MiddleName}, lastname = {LastName}, companyraw = {companyRaw} WHERE id = {id}")
+            .on('id -> id, 'FirstName -> nameRaw(0), 'MiddleName -> nameRaw(1), 'LastName -> nameRaw(2), 'companyRaw -> companyRaw)
+            .executeUpdate()
+        }
+    }
+    else {
+      DB.withConnection { implicit c =>
+        val result = SQL("UPDATE person SET nameraw = {nameRaw}, companyraw = {companyRaw} WHERE id = {id}")
+          .on('id -> id, 'nameRaw -> nameRaw.mkString(""), 'companyRaw -> companyRaw)
+          .executeUpdate()
+      }
+
+    }
+  }
+
 }

@@ -13,8 +13,8 @@ POST   /register    controllers.Registration.create
 
 # TwitterTest
 
-GET /twitter controllers.Application.index
-GET /twitter/auth controllers.Twitter.authenticate()
+#GET /twitter controllers.Application.timeline
+#GET /auth controllers.Twitter.authenticate()
 
 # Admin
 

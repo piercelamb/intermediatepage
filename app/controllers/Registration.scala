@@ -3,7 +3,7 @@ import play.api._
 import play.api.mvc._
 import play.api.i18n
 
-import models.{Person, NewPerson}
+import models.{Person, NewPerson, FindLoc, FindName}
 import play.api.data._
 import play.api.data.Forms._
 import play.api.libs.concurrent.Akka
@@ -43,8 +43,8 @@ object Registration extends Controller {
       }
     )
   //send messages off to actors
-  geoLookup ! (newPerson.id, newPerson.ip)
-  nameParse ! (newPerson.id, newPerson.email)
+  geoLookup ! FindLoc(newPerson.id, newPerson.ip)
+  nameParse ! FindName(newPerson.id, newPerson.email)
     Ok(views.html.registration.newReg(newPersonForm))
 
   }

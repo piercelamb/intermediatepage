@@ -14,7 +14,14 @@ import config.Global._
 
 case class NewPerson(email: String)
 case class Person(id: Long, ip: String, email: String)
+
+case class FindLoc(id: Long, ip: String)
 case class Location(city: String, regionName: String, country: String)
+
+case class FindName(id: Long, email: String)
+
+case class RawName(id: Long, name: String)
+case class ParsedName (id: Long, nameArray: Array[String])
 
 object Person {
 
@@ -57,20 +64,25 @@ object Person {
     println("id is " +id+ " companyRaw is "+companyRaw+ " nameRaw is "+ nameRaw.mkString(" "))
 
     if (nameRaw.last == null) {
+
+      val name: String = nameRaw(0)
+      println("name added to DB in raw form "+name)
       DB.withConnection { implicit c =>
         val result = SQL("UPDATE person SET nameraw = {nameRaw}, companyraw = {companyRaw} WHERE id = {id}")
-          .on('id -> id, 'nameRaw -> nameRaw(0), 'companyRaw -> companyRaw)
+          .on('id -> id, 'nameRaw -> name, 'companyRaw -> companyRaw)
           .executeUpdate()
       }
-      twitterParse ! (id, nameRaw(0))
+      twitterParse ! RawName(id, name)
     }
     else if (nameRaw.length == 2 && nameRaw.last != null) {
+      println("name added to DB with first & last "+ nameRaw.mkString(" "))
       DB.withConnection { implicit c =>
         val result = SQL("UPDATE person SET firstname = {FirstName}, lastname = {LastName}, companyraw = {companyRaw} WHERE id = {id}")
           .on('id -> id, 'FirstName -> nameRaw(0), 'LastName -> nameRaw(1), 'companyRaw -> companyRaw)
           .executeUpdate()
       }
-      twitterParse ! (id, nameRaw)
+      println("sending package to twitterParse")
+      twitterParse ! ParsedName(id, nameRaw)
     }
     else if (nameRaw.length == 3) {
         DB.withConnection { implicit c =>
@@ -78,7 +90,7 @@ object Person {
             .on('id -> id, 'FirstName -> nameRaw(0), 'MiddleName -> nameRaw(1), 'LastName -> nameRaw(2), 'companyRaw -> companyRaw)
             .executeUpdate()
         }
-      twitterParse ! (id, nameRaw)
+      twitterParse ! ParsedName(id, nameRaw)
     }
     else {
       DB.withConnection { implicit c =>

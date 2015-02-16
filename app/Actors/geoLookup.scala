@@ -3,7 +3,7 @@ package Actors
 import akka.actor.Actor
 import play.api.libs.json._
 import play.api.libs.functional.syntax._
-import models.{Person, Location}
+import models.{Person, Location, FindLoc}
 
 //this actor takes the passed ID and IP of the Person just created and pings a geolocation API.
 //it parses the returned JSON and updates the passed ID in the DB with the location data
@@ -21,9 +21,9 @@ class GeoLookup extends Actor {
 
   def receive = {
     //Actor is passed ID, IP
-    case ip: (Long, String) =>
+    case FindLoc(id, ip) =>
 
-      println("IP recevied by GeoLookup " + ip._2)
+      println("IP recevied by GeoLookup " + ip)
       val url = "http://ip-api.com/json/" + "24.22.84.77"
       //create URL and hit the API
       val result = scala.io.Source.fromURL(url).mkString
@@ -34,7 +34,7 @@ class GeoLookup extends Actor {
       //get the result as a Location
       val location = parseResult.get
       //Update location data using the ID
-      Person.insertLocation(ip._1, location)
+      Person.insertLocation(id, location)
 
   }
 }

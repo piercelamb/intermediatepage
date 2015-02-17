@@ -14,24 +14,44 @@ import config.Global._
 
 case class NewPerson(email: String)
 case class Person(id: Long, ip: String, email: String)
+case class PersonForTwitter(id: Long, city: Option[String], regionName: Option[String], regionCode: Option[String], country: Option[String], countryCode: Option[String], firstName: Option[String], middleName: Option[String], lastName: Option[String], nameRaw: Option[String])
 
 case class FindLoc(id: Long, ip: String)
-case class Location(city: String, regionName: String, country: String)
+case class Location(city: String, regionName: String, regionCode: String, country: String, countryCode: String)
 
 case class FindName(id: Long, email: String)
 
 case class RawName(id: Long, name: String)
 case class ParsedName (id: Long, nameArray: Array[String])
+case class TwitterData(twitterID: String, name: String, screenName: String, location: String, description:String)
 
 object Person {
 
-  val parser = {
+  val parserShort = {
     get[Long]("id") ~
     get[String]("ip") ~
       get[String]("email") map {
       case id ~ ip ~ email => Person(id, ip, email)
     }
   }
+
+  val parserLong = {
+    get[Long]("id") ~
+      get[Option[String]]("city") ~
+    get[Option[String]]("regionName") ~
+    get[Option[String]]("regionCode") ~
+    get[Option[String]]("country") ~
+    get[Option[String]]("countryCode") ~
+    get[Option[String]]("firstName") ~
+    get[Option[String]]("middleName") ~
+    get[Option[String]]("lastName") ~
+      get[Option[String]]("nameRaw") map {
+
+      case id ~ city ~ regionName ~ regionCode ~ country ~ countryCode ~ firstName ~ middleName ~ lastName ~ nameRaw =>
+        PersonForTwitter(id, city, regionName, regionCode, country, countryCode, firstName, middleName, lastName, nameRaw)
+    }
+  }
+
   def create(ip: String, email: String): Person = {
     DB.withConnection { implicit c =>
       val id: Long = SQL("INSERT INTO person(ip, email) VALUES({ip}, {email})").on('ip -> ip, 'email -> email)
@@ -42,17 +62,25 @@ object Person {
   }
   def find(id: Long): Person = {
     DB.withConnection{ implicit c =>
-      SQL("SELECT id, ip, email FROM person WHERE id = {id}").on('id -> id).using(Person.parser).single()
+      SQL("SELECT id, ip, email FROM person WHERE id = {id}").on('id -> id).using(Person.parserShort).single()
+    }
+  }
+
+  def twitterCompare(id: Long): PersonForTwitter = {
+    DB.withConnection{ implicit c =>
+      SQL("SELECT id, city, regionname, regioncode, country, countrycode, firstname, middlename, lastname, nameraw FROM person WHERE id = {id}").on('id -> id).using(Person.parserLong).single()
     }
   }
 
   def insertLocation(id: Long, location: Location) = {
     val city = location.city
     val regionName = location.regionName
+    val regionCode = location.regionCode
     val country = location.country
+    val countryCode = location.countryCode
     DB.withConnection { implicit c =>
-     val result: Int = SQL("UPDATE person SET city = {city}, regionname = {regionName}, country = {country} WHERE id = {id}")
-       .on('id -> id, 'city -> city, 'regionName -> regionName, 'country -> country)
+     val result: Int = SQL("UPDATE person SET city = {city}, regionname = {regionName}, regioncode = {regionCode}, country = {country}, countrycode = {countryCode} WHERE id = {id}")
+       .on('id -> id, 'city -> city, 'regionName -> regionName, 'regionCode -> regionCode, 'country -> country, 'countryCode -> countryCode)
       .executeUpdate()
     }
   }

@@ -8,21 +8,22 @@
 //
 //import scala.concurrent.Future
 //
-////
-////object Application extends Controller {
-////
-////
-////
-////  def timeline = Action.async { implicit request =>
-////    Twitter.sessionTokenPair match {
-////      case Some(credentials) => {
-////        WS.url("https://api.twitter.com/1.1/users/search.json?q=pierce%20lamb&page=1&count=3")
-////          .sign(OAuthCalculator(Twitter.KEY, credentials))
-////          .get
-////          .map(result => Ok(result.json))
-////      }
-////
-////    }
-////  }
-////
-////}
+//
+//object Application extends Controller {
+//
+//
+//
+//  def timeline = Action.async { implicit request =>
+//    Twitter.sessionTokenPair match {
+//      case Some(credentials) => {
+//        println("Key & Credentials: "+Twitter.KEY +" "+ credentials.toString())
+//        WS.url("https://api.twitter.com/1.1/users/search.json?q=pierce%20lamb&page=1&count=3")
+//          .sign(OAuthCalculator(Twitter.KEY, credentials))
+//          .get
+//          .map(result => Ok(result.json))
+//      }
+//
+//    }
+//  }
+//
+//}

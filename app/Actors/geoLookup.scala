@@ -15,7 +15,9 @@ class GeoLookup extends Actor {
   implicit val locationReads: Reads[Location] = (
     (JsPath \ "city").read[String] and
       (JsPath \ "regionName").read[String] and
-      (JsPath \ "country").read[String]
+      (JsPath \ "region").read[String] and
+      (JsPath \ "country").read[String] and
+      (JsPath \ "countryCode").read[String]
     )(Location.apply _)
 
 
@@ -33,6 +35,8 @@ class GeoLookup extends Actor {
       val parseResult: JsResult[Location] = jsonResult.validate[Location]
       //get the result as a Location
       val location = parseResult.get
+
+      println(location)
       //Update location data using the ID
       Person.insertLocation(id, location)
 

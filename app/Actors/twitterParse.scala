@@ -142,11 +142,12 @@ class TwitterParse extends Actor {
     }
   }
 
-  def compareDescription(twitDesc: String) = {
+  def compareDescription(twitDesc: String): List[String] = {
 
     val dict = List("hadoop","spark","data","scala","java","founder","vc","startups","tech","geek","developer", "develop", "code", "coder", "hacker", "hacking", "hack", "programmer", "programming", "engineer", "engineering", "architect", "software", "investor", "venture", "angel", "entrepreneur")
     val descCompare = twitDesc.split("[\\p{P}\\s\\t\\n\\r<>\\d]+")
 
+    var matches = List[String]()
     println("\n Twitter description is: " +descCompare.mkString(","))
 
     dict.foreach{element =>
@@ -154,9 +155,11 @@ class TwitterParse extends Actor {
         if (element == item.toLowerCase()){
           score += 3
           println("Interesting word found: "+element+ " score: " +score)
+          matches = element :: matches
         }
       }
     }
+    matches
   }
 
   def receive = {
@@ -200,7 +203,9 @@ class TwitterParse extends Actor {
         compareLocation(element.location.getOrElse(""), DBdata.city, DBdata.regionName, DBdata.regionCode, DBdata.country, DBdata.countryCode)
 
         //find interesting words in description
-        compareDescription(element.description.getOrElse(""))
+        val matches = compareDescription(element.description.getOrElse(""))
+
+        println("\n\nMATCHES ARE\n\n"+matches)
 
         element -> score
 
@@ -303,7 +308,9 @@ class TwitterParse extends Actor {
         compareLocation(element.location.getOrElse(""), DBdata.city, DBdata.regionName, DBdata.regionCode, DBdata.country, DBdata.countryCode)
 
         //find interesting words in description
-        compareDescription(element.description.getOrElse(""))
+        val matches = compareDescription(element.description.getOrElse(""))
+
+        println("\n\nMATCHES ARE\n\n"+matches)
 
         element -> score
       })

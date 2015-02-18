@@ -23,7 +23,7 @@ case class FindName(id: Long, email: String)
 
 case class RawName(id: Long, name: String)
 case class ParsedName (id: Long, nameArray: Array[String])
-case class TwitterData(twitterID: String, name: String, screenName: String, location: String, description:String)
+case class TwitterData(twitterID: Option[String], name: Option[String], screenName: Option[String], followerCount: Option[Long], location: Option[String], description:Option[String])
 
 object Person {
 
@@ -128,6 +128,17 @@ object Person {
       }
 
     }
+  }
+
+  def updateTwitter(id: Long, twitterID: String, screenName: String, followerCount: Long) = {
+
+    println("\nData received by DB\n\n" +id+", "+twitterID+", "+screenName+", "+followerCount)
+    DB.withConnection { implicit c =>
+      val result = SQL("UPDATE person SET twitterid = {twitterID}, screenname = {screenName}, followercount = {followerCount} WHERE id = {id}")
+        .on('id -> id, 'twitterID -> twitterID, 'screenName -> screenName, 'followerCount -> followerCount)
+        .executeUpdate()
+    }
+
   }
 
 }

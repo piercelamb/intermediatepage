@@ -60,7 +60,7 @@ class NameParse extends Actor {
         }
           //johnjimdoe
         else {
-           names = Array(shedDomain, null)
+           names = Array(splitDomain(0), null)
         }
       }
         //not an email or forgot domain

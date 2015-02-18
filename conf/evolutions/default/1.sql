@@ -16,6 +16,9 @@ CREATE TABLE person (
     nameraw varchar(255),
     email varchar(255),
     companyraw varchar(255),
+    twitterid varchar(255),
+    screenname varchar(255),
+    followercount bigint,
     CONSTRAINT person_pkey PRIMARY KEY (id)
 );
 

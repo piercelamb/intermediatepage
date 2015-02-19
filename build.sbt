@@ -8,6 +8,7 @@ scalaVersion := "2.11.4"
 
 val playVersion = "2.3.0-2"
 
+
 libraryDependencies ++= Seq(
   jdbc,
   anorm,
@@ -17,7 +18,8 @@ libraryDependencies ++= Seq(
   "org.webjars" %% "webjars-play" % playVersion,
   "org.postgresql" % "postgresql" % "9.3-1102-jdbc41",
   "org.seleniumhq.selenium" % "selenium-java" % "2.44.0",
-  "com.datastax.cassandra" % "cassandra-driver-core" % "2.1.4"
+  "com.datastax.cassandra" % "cassandra-driver-core" % "2.1.4",
+"ws.securesocial" %% "securesocial" % "3.0-M3"
 )
 
 scalacOptions ++= Seq(

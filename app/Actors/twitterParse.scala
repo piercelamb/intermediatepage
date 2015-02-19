@@ -16,18 +16,21 @@ import models.{Person, RawName, ParsedName, TwitterData}
 import play.api.libs.oauth.ConsumerKey
 import play.api.libs.oauth.RequestToken
 
-//case class TwitterData(twitterID: Long, name: String, screenName: String, location: String, description: String)
+
 
 class TwitterParse extends Actor {
 
+  //credentials needed for twitter
   val KEY = ConsumerKey(current.configuration.getString("twitter.consumer.key").get, current.configuration.getString("twitter.consumer.secret").get)
   val TOKEN = RequestToken(current.configuration.getString("twitter.access.token").get, current.configuration.getString("twitter.access.secret").get)
 
+  //variables i use throughout
   private var buildURL: String = _
   private val urlBoilerPlate = "https://api.twitter.com/1.1/users/search.json?q="
   private val pageCount = "&page=1&count=10"
   private var score: Int = _
 
+  //JSON reader for twitter
   implicit val twitterReads: Reads[TwitterData] = (
     (JsPath \ "id_str").read[Option[String]] and
       (JsPath \ "name").read[Option[String]] and
@@ -37,7 +40,7 @@ class TwitterParse extends Actor {
       (JsPath \ "description").read[Option[String]]
     )(TwitterData.apply _)
 
-
+//Method for comparing twitter location to IP location
   def compareLocation(twitlocation: String, city: Option[String], regionName: Option[String], regionCode: Option[String], country: Option[String], countryCode: Option[String]) = {
 
     //compare city, regionCode (Portland, OR)
@@ -142,50 +145,54 @@ class TwitterParse extends Actor {
     }
   }
 
-  def compareDescription(twitDesc: String): List[String] = {
+  //method for finding keywords in twitter description
+  def compareDescription(twitDesc: String) = {
 
     val dict = List("hadoop","spark","data","scala","java","founder","vc","startups","tech","geek","developer", "develop", "code", "coder", "hacker", "hacking", "hack", "programmer", "programming", "engineer", "engineering", "architect", "software", "investor", "venture", "angel", "entrepreneur")
     val descCompare = twitDesc.split("[\\p{P}\\s\\t\\n\\r<>\\d]+")
 
-    var matches = List[String]()
+
     println("\n Twitter description is: " +descCompare.mkString(","))
 
-    dict.foreach{element =>
-      descCompare.foreach{item =>
-        if (element == item.toLowerCase()){
+    dict.foreach { element =>
+      descCompare.foreach { item =>
+        if (element == item.toLowerCase()) {
           score += 3
-          println("Interesting word found: "+element+ " score: " +score)
-          matches = element :: matches
+          println("Interesting word found: " + element + " score: " + score)
         }
       }
     }
-    matches
   }
 
   def receive = {
 
+    //case when we aren't able to parse an email for a name
     case RawName(id, name) => {
 
       println(s"rawName activated. String is: $name")
 
+      //build up the URL to be sent to twitter
       buildURL = urlBoilerPlate + name + pageCount
 
       println("builtURL: " + buildURL)
 
+      //authenticate and parse twitter response into JSON & validate
       val result = WS.url(buildURL)
         .sign(OAuthCalculator(KEY, TOKEN))
         .get
         .map(result => result.json.validate[List[TwitterData]])
 
-
+//Await parsed result
       val parseResult = Await.result(result, 3 seconds)
 
       val twitterdata = parseResult.get
 
       twitterdata.foreach(println)
 
+      //get the data we have in the DB to compare
       val DBdata = Person.twitterCompare(id)
 
+      //iterate through each piece of TwitterData
       val dataOut = twitterdata.map( element => {
         score = 0
 
@@ -203,14 +210,16 @@ class TwitterParse extends Actor {
         compareLocation(element.location.getOrElse(""), DBdata.city, DBdata.regionName, DBdata.regionCode, DBdata.country, DBdata.countryCode)
 
         //find interesting words in description
-        val matches = compareDescription(element.description.getOrElse(""))
+       compareDescription(element.description.getOrElse(""))
 
-        println("\n\nMATCHES ARE\n\n"+matches)
-
+        //map each piece of twitter data to its score
         element -> score
 
       })
+      //find top piece based on score
         val topScore = dataOut.maxBy(_._2)._2
+
+      //assuming it has a score greater than 0, add it to the DB
       if (topScore > 0) {
         val winner: TwitterData = dataOut.maxBy(_._2)._1
 
@@ -227,19 +236,20 @@ class TwitterParse extends Actor {
       }
     }
 
+      //case for when we can parse the name out of the email
     case ParsedName(id, nameArray) => {
 
       val nmString = nameArray.mkString(" ")
 
       println("ParsedName activated. String is: " + nmString)
 
-
+//case for when we have two elements composing the name
       if (nameArray.length == 2) {
-
 
         buildURL = urlBoilerPlate + nameArray(0) + "%20" + nameArray(1) + pageCount
 
-      } else {
+      } //case for when we have 3
+      else {
 
         buildURL = urlBoilerPlate + nameArray(0) + "%20" + nameArray(1) + "%20" + nameArray(2) + pageCount
 
@@ -308,9 +318,7 @@ class TwitterParse extends Actor {
         compareLocation(element.location.getOrElse(""), DBdata.city, DBdata.regionName, DBdata.regionCode, DBdata.country, DBdata.countryCode)
 
         //find interesting words in description
-        val matches = compareDescription(element.description.getOrElse(""))
-
-        println("\n\nMATCHES ARE\n\n"+matches)
+        compareDescription(element.description.getOrElse(""))
 
         element -> score
       })

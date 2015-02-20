@@ -1,31 +1,53 @@
 package controllers
-import play.api._
-import play.api.i18n.Messages
+
+import play.api.data.Form
 import play.api.mvc._
-import play.api.i18n
-import play.api.libs.json.Json
-import play.api.libs.json.JsError
-
-import models.SimpleClient
-import models.displayTimes
-import models.timeOnPage
-
+import play.api.data.Forms._
+import jp.t2v.lab.play2.auth.LoginLogout
+import views.html
+import models.Account
 import scala.concurrent.Future
-import scala.util.Try
-
-
-
-//Must have a class so the displayTimes function can be passed in. Usually these are objects which is why changes
-//are required to global settings as can be found in app/Global.scala
-class Admin(dt: displayTimes) extends Controller with securesocial.core.SecureSocial {
-
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import models.JsonFormats._
 
-  //use async to get a Result from Future[Result] without blocking, convert all rows to Json. The JsonFormat
-  //defined in models.scala is used.
+object Admin extends Controller with LoginLogout with AuthConfigImpl {
 
-  def index = SecuredAction.async {
-    dt.getAll.map(times => Ok(Json.toJson(times)))
+  /** Your application's login form.  Alter it to fit your application */
+  val loginForm = Form {
+    mapping("email" -> email, "password" -> text)(Account.authenticate)(_.map(u => (u.email, "")))
+      .verifying("Invalid email or password", result => result.isDefined)
   }
+
+  /** Alter the login page action to suit your application. */
+  def login = Action { implicit request =>
+    Ok(html.login(loginForm))
+  }
+
+  /**
+   * Return the `gotoLogoutSucceeded` method's result in the logout action.
+   *
+   * Since the `gotoLogoutSucceeded` returns `Future[Result]`,
+   * you can add a procedure like the following.
+   *
+   *   gotoLogoutSucceeded.map(_.flashing(
+   *     "success" -> "You've been logged out"
+   *   ))
+   */
+  def logout = Action.async { implicit request =>
+    // do something...
+    gotoLogoutSucceeded
+  }
+
+  /**
+   * Return the `gotoLoginSucceeded` method's result in the login action.
+   *
+   * Since the `gotoLoginSucceeded` returns `Future[Result]`,
+   * you can add a procedure like the `gotoLogoutSucceeded`.
+   */
+  def authenticate = Action.async { implicit request =>
+    loginForm.bindFromRequest.fold(
+      formWithErrors => Future.successful(BadRequest(html.login(formWithErrors))),
+      user => gotoLoginSucceeded(user.get.id)
+    )
+  }
+
 }

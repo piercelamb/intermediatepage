@@ -19,7 +19,9 @@ libraryDependencies ++= Seq(
   "org.postgresql" % "postgresql" % "9.3-1102-jdbc41",
   "org.seleniumhq.selenium" % "selenium-java" % "2.44.0",
   "com.datastax.cassandra" % "cassandra-driver-core" % "2.1.4",
-"ws.securesocial" %% "securesocial" % "3.0-M3"
+"jp.t2v" %% "play2-auth"      % "0.13.0",
+"org.mindrot" % "jbcrypt" % "0.3m",
+"org.scalikejdbc" %% "scalikejdbc"       % "2.2.3"
 )
 
 scalacOptions ++= Seq(

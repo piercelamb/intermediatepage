@@ -7,6 +7,9 @@ import org.joda.time.format.ISODateTimeFormat
 import play.api.Application
 import play.api.GlobalSettings
 
+import models.Role._
+import models.Account
+
 import play.api.Logger
 import play.api.mvc._
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -82,18 +85,27 @@ object Global extends GlobalSettings {   //WithFilters(AccessLoggingFilter)//
 
 
   private var cassandra: SimpleClient = _
-  private var controller: controllers.Admin = _
+  private var controller: controllers.Analytics = _
 
   override def onStart(app: Application) {
 
     cassandra = new SimpleClient(app.configuration.getString("cassandra.node")
       .getOrElse(throw new IllegalArgumentException("No 'cassandra.node' config found.")))
-    controller = new controllers.Admin(new displayTimes(cassandra))
+    controller = new controllers.Analytics(new displayTimes(cassandra))
+
+    //create some accounts for /admin
+    if (Account.findAll.isEmpty) {
+      Seq(
+        Account(1, "plamb@snappydata.io", "secret", "Pierce", Administrator),
+        Account(2, "jramnarayan@snappydata.io",   "secret", "Jags",   Administrator),
+        Account(3, "pmclain@snappydata.io", "secret", "Peter", Administrator)
+      ) foreach Account.create
+    }
   }
 
   override def getControllerInstance[A](clazz: Class[A]): A = {
     // as simple as possible, nothing else needed for now...
-    if(clazz == classOf[controllers.Admin])
+    if(clazz == classOf[controllers.Analytics])
       controller.asInstanceOf[A]
     else
       throw new IllegalArgumentException(s"Controller of class $clazz not yet supported")

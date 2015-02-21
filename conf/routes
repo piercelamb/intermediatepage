@@ -23,10 +23,8 @@ GET /admin                      controllers.Admin.login
 POST /admin/login                controllers.Admin.authenticate
 GET /admin/logout               controllers.Admin.logout
 
-GET /admin/messages/main        controllers.Messages.main
-GET /admin/messages/list        controllers.Messages.list
-GET /admin/message/detail/:id   controllers.Messages.detail(id: Int)
-GET /admin/message/write        controllers.Messages.write
+GET /admin/landing/main        controllers.Landing.main
+GET /admin/landing/write        controllers.Landing.write
 
 #GET /admin/analytics @controllers.Analytics.index
 #GET /admin/demo controllers.Demo.index

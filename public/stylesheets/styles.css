@@ -10,8 +10,8 @@ overflow-y:scroll;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
  font-family: "ProximaNovaT-Thin", "Helvetica Neue", Helvetica, Arial, sans-serif;
-          font-weight:100;
           color: white;
+          font-weight:100
 }
 
 .clearfix:before, .clearfix:after {

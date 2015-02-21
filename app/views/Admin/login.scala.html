@@ -1,44 +1,88 @@
 @(form: Form[Option[Account]])(implicit flash: Flash)
 <!DOCTYPE html>
-
-<html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-    <title>Login</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SnappyData Admin</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+
     <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/MyFontsWebfontsKit.css")">
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/normalize.css")">
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
-    <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/login_styles.css")">
+    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
-<body>
+<body class="Aligner">
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
 
+<!-- Add your site or application content here -->
+<div class="CTA Aligner-item">
+    <p>Welcome to SnappyData Administration, please login</p>
   @helper.form(controllers.routes.Admin.authenticate) {
 
-    <h1>Sign in</h1>
-
     @form.globalError.map { error =>
-      <p class="error">
+      <input>
         @error.message
-      </p>
+
     }
 
     @flash.get("success").map { message =>
-      <p class="success">
+      <input>
         @message
-      </p>
+
     }
 
-    <p>
-      <input type="email" name="email" placeholder="Email" id="email" value="@form("email").value">
-    </p>
-    <p>
-      <input type="password" name="password" id="password" placeholder="Password">
-    </p>
-    <p>
-      <button type="submit" id="loginbutton">Login</button>
-    </p>
+
+
+        <input type="email" name="email" id="email" class="box" value="@form("email").value"/>
+        <span class="placeholder">Feed me your email!</span>
+        <input type="password" name="password" id="password" class="box" />
+        <span class="placeholder">Feed me your password!</span>
+        <button type="submit" >Login</button>
+
+
 
   }
 
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="@routes.Assets.at("javascripts/plugins.js")"></script>
+    <script src="@routes.Assets.at("javascripts/main.js")"></script>
+
+<script>
+    $(document).ready(function(){
+
+    $( "input").focus(function(e) {
+
+        $( e.target ).next(".placeholder").addClass( "blur" ).fadeOut( 900 );
+    });
+    $( "input" ).blur(function(e) {
+        var val=$(e.target).val();
+        if(!val){
+            $(  e.target  ).next(".placeholder").removeClass( "blur" ).fadeIn( 300 );
+        }
+
+    });
+    $( ".placeholder " ).click(function(e) {
+
+        $( e.target ).addClass( "blur" ).fadeOut( 900 );
+        $(e.target).prev("input").focus();
+    });
+});
+    </script>
+
+
 </body>
 </html>
+)

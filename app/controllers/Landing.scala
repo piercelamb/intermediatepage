@@ -5,7 +5,7 @@ import play.api.mvc._
 import models.Role._
 import views.html
 
-trait Messages extends Controller with Pjax with AuthElement with AuthConfigImpl {
+trait Landing extends Controller with Pjax with AuthElement with AuthConfigImpl {
 
   // The `StackAction` method
   //    takes `(AuthorityKey, Authority)` as the first argument and
@@ -18,30 +18,19 @@ trait Messages extends Controller with Pjax with AuthElement with AuthConfigImpl
   def main = StackAction(AuthorityKey -> NormalUser) { implicit request =>
     val user = loggedIn
     val title = "message main"
-    Ok(html.Admin.message.main(title))
+    Ok(html.Admin.landing.main(title))
   }
 
-  def list = StackAction(AuthorityKey -> NormalUser) { implicit request =>
-    val user = loggedIn
-    val title = "all messages"
-    Ok(html.Admin.message.list(title))
-  }
-
-  def detail(id: Int) = StackAction(AuthorityKey -> NormalUser) { implicit request =>
-    val user = loggedIn
-    val title = "messages detail "
-    Ok(html.Admin.message.detail(title + id))
-  }
 
   // Only Administrator can execute this action.
   def write = StackAction(AuthorityKey -> Administrator) { implicit request =>
     val user = loggedIn
     val title = "write message"
-    Ok(html.Admin.message.write(title))
+    Ok(html.Admin.landing.write(title))
   }
 
   protected val fullTemplate: User => Template = html.Admin.fullTemplate.apply
 
 }
 
-object Messages extends Messages
+object Landing extends Landing

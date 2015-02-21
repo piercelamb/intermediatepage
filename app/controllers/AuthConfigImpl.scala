@@ -56,9 +56,11 @@ trait AuthConfigImpl extends AuthConfig {
   /**
    * Where to redirect the user after a successful login.
    */
-  def loginSucceeded(request: RequestHeader)(implicit ctx: ExecutionContext): Future[Result] =
-    Future.successful(Redirect(routes.Messages.main))
-
+  def loginSucceeded(request: RequestHeader, userRole: Authority)(implicit ctx: ExecutionContext): Future[Result] = {
+    println("Request is: "+request)
+    println("User authority from loginSucceeded: " +userRole)
+    Future.successful(Redirect(routes.Landing.main))
+  }
   /**
    * Where to redirect the user after logging out
    */

@@ -3,13 +3,12 @@ package controllers
 import play.api.data.Form
 import play.api.mvc._
 import play.api.data.Forms._
-import jp.t2v.lab.play2.auth.LoginLogout
 import views.html
 import models.Account
 import scala.concurrent.Future
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 
-object Admin extends Controller with LoginLogout with AuthConfigImpl {
+object Admin extends Controller with LoginLogout_plamb with AuthConfigImpl {
 
   /** Your application's login form.  Alter it to fit your application */
   val loginForm = Form {
@@ -33,9 +32,7 @@ object Admin extends Controller with LoginLogout with AuthConfigImpl {
    *   ))
    */
   def logout = Action.async { implicit request =>
-    gotoLogoutSucceeded.map(_.flashing(
-      "success" -> "You've been logged out"
-    ))
+    gotoLogoutSucceeded
   }
 
   /**
@@ -47,7 +44,11 @@ object Admin extends Controller with LoginLogout with AuthConfigImpl {
   def authenticate = Action.async { implicit request =>
     loginForm.bindFromRequest.fold(
       formWithErrors => Future.successful(BadRequest(html.Admin.login(formWithErrors))),
-      user => gotoLoginSucceeded(user.get.id)
+      user => {
+        val lol = user.get.role
+        println("user role is: "+lol)
+        gotoLoginSucceeded(user.get.id, user.get.role)
+      }
     )
   }
 

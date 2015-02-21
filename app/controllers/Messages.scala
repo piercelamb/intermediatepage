@@ -5,7 +5,7 @@ import play.api.mvc._
 import models.Role._
 import views.html
 
-object Messages extends Controller with AuthElement with AuthConfigImpl {
+trait Messages extends Controller with Pjax with AuthElement with AuthConfigImpl {
 
   // The `StackAction` method
   //    takes `(AuthorityKey, Authority)` as the first argument and
@@ -40,4 +40,8 @@ object Messages extends Controller with AuthElement with AuthConfigImpl {
     Ok(html.Admin.message.write(title))
   }
 
+  protected val fullTemplate: User => Template = html.Admin.fullTemplate.apply
+
 }
+
+object Messages extends Messages

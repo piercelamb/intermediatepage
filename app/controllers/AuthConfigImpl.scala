@@ -7,6 +7,8 @@ import scala.concurrent.ExecutionContext
 import play.api.mvc._
 import scala.reflect._
 import models.{Role, Account}
+import models.Role._
+import play.api.mvc.Results._
 
 
 
@@ -16,7 +18,7 @@ trait AuthConfigImpl extends AuthConfig {
    * A type that is used to identify a user.
    * `String`, `Int`, `Long` and so on.
    */
-  type Id = String
+  type Id = Int
 
   /**
    * A type that represents a user in your application.
@@ -49,25 +51,25 @@ trait AuthConfigImpl extends AuthConfig {
    * A function that returns a `User` object from an `Id`.
    * You can alter the procedure to suit your application.
    */
-  def resolveUser(id: Id)(implicit ctx: ExecutionContext): Future[Option[User]] = Account.findById(id)
+  def resolveUser(id: Id)(implicit ctx: ExecutionContext) = Future.successful(Account.findById(id))
 
   /**
    * Where to redirect the user after a successful login.
    */
   def loginSucceeded(request: RequestHeader)(implicit ctx: ExecutionContext): Future[Result] =
-    Future.successful(Redirect(routes.Admin.index))
+    Future.successful(Redirect(routes.Messages.main))
 
   /**
    * Where to redirect the user after logging out
    */
   def logoutSucceeded(request: RequestHeader)(implicit ctx: ExecutionContext): Future[Result] =
-    Future.successful(Redirect(routes.Application.login))
+    Future.successful(Redirect(routes.Admin.login))
 
   /**
    * If the user is not logged in and tries to access a protected resource then redirct them as follows:
    */
   def authenticationFailed(request: RequestHeader)(implicit ctx: ExecutionContext): Future[Result] =
-    Future.successful(Redirect(routes.Application.login))
+    Future.successful(Redirect(routes.Admin.login))
 
   /**
    * If authorization failed (usually incorrect password) redirect the user as follows:

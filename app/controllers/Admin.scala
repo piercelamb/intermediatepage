@@ -19,7 +19,7 @@ object Admin extends Controller with LoginLogout with AuthConfigImpl {
 
   /** Alter the login page action to suit your application. */
   def login = Action { implicit request =>
-    Ok(html.login(loginForm))
+    Ok(html.Admin.login(loginForm))
   }
 
   /**
@@ -33,8 +33,9 @@ object Admin extends Controller with LoginLogout with AuthConfigImpl {
    *   ))
    */
   def logout = Action.async { implicit request =>
-    // do something...
-    gotoLogoutSucceeded
+    gotoLogoutSucceeded.map(_.flashing(
+      "success" -> "You've been logged out"
+    ))
   }
 
   /**
@@ -45,7 +46,7 @@ object Admin extends Controller with LoginLogout with AuthConfigImpl {
    */
   def authenticate = Action.async { implicit request =>
     loginForm.bindFromRequest.fold(
-      formWithErrors => Future.successful(BadRequest(html.login(formWithErrors))),
+      formWithErrors => Future.successful(BadRequest(html.Admin.login(formWithErrors))),
       user => gotoLoginSucceeded(user.get.id)
     )
   }

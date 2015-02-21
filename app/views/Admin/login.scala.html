@@ -1,0 +1,44 @@
+@(form: Form[Option[Account]])(implicit flash: Flash)
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/MyFontsWebfontsKit.css")">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/normalize.css")">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+    <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+
+  @helper.form(controllers.routes.Admin.authenticate) {
+
+    <h1>Sign in</h1>
+
+    @form.globalError.map { error =>
+      <p class="error">
+        @error.message
+      </p>
+    }
+
+    @flash.get("success").map { message =>
+      <p class="success">
+        @message
+      </p>
+    }
+
+    <p>
+      <input type="email" name="email" placeholder="Email" id="email" value="@form("email").value">
+    </p>
+    <p>
+      <input type="password" name="password" id="password" placeholder="Password">
+    </p>
+    <p>
+      <button type="submit" id="loginbutton">Login</button>
+    </p>
+
+  }
+
+</body>
+</html>

@@ -7,6 +7,7 @@ import views.html
 import models.Account
 import scala.concurrent.Future
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import controllers.auth._
 
 object Admin extends Controller with LoginLogout_plamb with AuthConfigImpl {
 
@@ -45,9 +46,7 @@ object Admin extends Controller with LoginLogout_plamb with AuthConfigImpl {
     loginForm.bindFromRequest.fold(
       formWithErrors => Future.successful(BadRequest(html.Admin.login(formWithErrors))),
       user => {
-        val lol = user.get.role
-        println("user role is: "+lol)
-        gotoLoginSucceeded(user.get.id, user.get.role)
+        gotoLoginSucceeded(user.get.id, user.get.role, user.get.name)
       }
     )
   }

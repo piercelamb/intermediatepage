@@ -1,17 +1,15 @@
-package controllers
+package controllers.auth
 
 import play.api.mvc._
-import play.api.mvc.Cookie
-import play.api.libs.Crypto
-import jp.t2v.lab.play2.auth.CookieSupport
-import scala.concurrent.{Future, ExecutionContext}
+
+import scala.concurrent.{ExecutionContext, Future}
 
 
-trait LoginLogout_plamb extends CookieSupport {
+trait LoginLogout_plamb extends CookieSupport_plamb {
   self: Controller with AuthConfigImpl =>
 
-  def gotoLoginSucceeded(userId: Id, userRole: Authority)(implicit request: RequestHeader, ctx: ExecutionContext): Future[Result] = {
-    gotoLoginSucceeded(userId, loginSucceeded(request, userRole))
+  def gotoLoginSucceeded(userId: Id, userRole: Authority, name: String)(implicit request: RequestHeader, ctx: ExecutionContext): Future[Result] = {
+    gotoLoginSucceeded(userId, loginSucceeded(request, userRole, name))
   }
 
   def gotoLoginSucceeded(userId: Id, result: => Future[Result])(implicit request: RequestHeader, ctx: ExecutionContext): Future[Result] = for {

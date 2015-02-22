@@ -1,18 +1,16 @@
-package controllers
+package controllers.auth
 
 
-import jp.t2v.lab.play2.auth.AuthConfig
-import scala.concurrent.Future
-import scala.concurrent.ExecutionContext
-import play.api.mvc._
-import scala.reflect._
-import models.{Role, Account}
+import jp.t2v.lab.play2.auth.{AsyncIdContainer, CacheIdContainer}
 import models.Role._
+import models.{Account, Role}
 import play.api.mvc.Results._
+import play.api.mvc._
+import scala.concurrent.{ExecutionContext, Future}
+import scala.reflect._
+import config.Global._
 
-
-
-trait AuthConfigImpl extends AuthConfig {
+trait AuthConfigImpl {
 
   /**
    * A type that is used to identify a user.
@@ -56,22 +54,30 @@ trait AuthConfigImpl extends AuthConfig {
   /**
    * Where to redirect the user after a successful login.
    */
-  def loginSucceeded(request: RequestHeader, userRole: Authority)(implicit ctx: ExecutionContext): Future[Result] = {
-    println("Request is: "+request)
-    println("User authority from loginSucceeded: " +userRole)
-    Future.successful(Redirect(routes.Landing.main))
+  def loginSucceeded(request: RequestHeader, userRole: Authority, userName: String)(implicit ctx: ExecutionContext): Future[Result] = {
+
+    if (userRole == Role.Administrator) {
+      println("User "+userName+ " with IP "+ip+" logged into admin/landing with " +userRole)
+
+      Future.successful(Redirect(routes.Landing.choose))
+    }
+    else {
+
+      println("User "+userName+ " with IP "+ip+" logged into demo with " +userRole)
+      Future.successful(Redirect(routes.Landing.demo))
+    }
   }
   /**
    * Where to redirect the user after logging out
    */
   def logoutSucceeded(request: RequestHeader)(implicit ctx: ExecutionContext): Future[Result] =
-    Future.successful(Redirect(routes.Admin.login))
+    Future.successful(Redirect(controllers.routes.Admin.login))
 
   /**
    * If the user is not logged in and tries to access a protected resource then redirct them as follows:
    */
   def authenticationFailed(request: RequestHeader)(implicit ctx: ExecutionContext): Future[Result] =
-    Future.successful(Redirect(routes.Admin.login))
+    Future.successful(Redirect(controllers.routes.Admin.login))
 
   /**
    * If authorization failed (usually incorrect password) redirect the user as follows:
@@ -91,16 +97,30 @@ trait AuthConfigImpl extends AuthConfig {
     }
   }
 
+
+  lazy val idContainer: AsyncIdContainer[Id] = AsyncIdContainer(new CacheIdContainer[Id])
+
+  lazy val cookieName: String = "PLAY2AUTH_SESS_ID"
+
+  lazy val cookieSecureOption: Boolean = false
+
+  lazy val cookieHttpOnlyOption: Boolean = true
+
+  lazy val cookieDomainOption: Option[String] = None
+
+  lazy val cookiePathOption: String = "/"
+
+  lazy val isTransientCookie: Boolean = false
   /**
    * Whether use the secure option or not use it in the cookie.
    * However default is false, I strongly recommend using true in a production.
    */
-  override lazy val cookieSecureOption: Boolean = play.api.Play.isProd(play.api.Play.current)
+  //override lazy val cookieSecureOption: Boolean = play.api.Play.isProd(play.api.Play.current)
 
   /**
    * Whether a login session is closed when the brower is terminated.
    * default is false.
    */
-  override lazy val isTransientCookie: Boolean = false
+  //override lazy val isTransientCookie: Boolean = false
 
 }

@@ -1,6 +1,5 @@
-package controllers
+package controllers.auth
 
-import controllers.AuthConfigImpl
 import jp.t2v.lab.play2.auth.AuthElement
 import jp.t2v.lab.play2.stackc.{RequestAttributeKey, RequestWithAttributes, StackableController}
 import play.api.mvc.{Controller, Result}
@@ -9,7 +8,7 @@ import views.html
 
 import scala.concurrent.Future
 
-trait Pjax extends StackableController with AuthElement {
+trait Pjax extends StackableController with AuthElement_plamb {
   self: Controller with AuthConfigImpl =>
 
   type Template = String => Html => Html

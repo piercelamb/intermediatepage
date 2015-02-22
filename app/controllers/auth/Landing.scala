@@ -1,11 +1,10 @@
-package controllers
+package controllers.auth
 
-import jp.t2v.lab.play2.auth.AuthElement
-import play.api.mvc._
 import models.Role._
+import play.api.mvc._
 import views.html
 
-trait Landing extends Controller with Pjax with AuthElement with AuthConfigImpl {
+trait Landing extends Controller with Pjax with AuthElement_plamb with AuthConfigImpl {
 
   // The `StackAction` method
   //    takes `(AuthorityKey, Authority)` as the first argument and
@@ -15,18 +14,18 @@ trait Landing extends Controller with Pjax with AuthElement with AuthConfigImpl 
   // thw `loggedIn` method
   //     returns current logged in user
 
-  def main = StackAction(AuthorityKey -> NormalUser) { implicit request =>
+  def demo = StackAction(AuthorityKey -> NormalUser) { implicit request =>
     val user = loggedIn
-    val title = "message main"
-    Ok(html.Admin.landing.main(title))
+    val title = "SnappyData demo"
+    Ok(html.Admin.landing.demo(title))
   }
 
 
   // Only Administrator can execute this action.
-  def write = StackAction(AuthorityKey -> Administrator) { implicit request =>
+  def choose = StackAction(AuthorityKey -> Administrator) { implicit request =>
     val user = loggedIn
-    val title = "write message"
-    Ok(html.Admin.landing.write(title))
+    val title = "SnappyData Admin"
+    Ok(html.Admin.landing.choose(title))
   }
 
   protected val fullTemplate: User => Template = html.Admin.fullTemplate.apply

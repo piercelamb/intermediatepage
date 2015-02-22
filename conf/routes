@@ -23,12 +23,11 @@ GET /admin                      controllers.Admin.login
 POST /admin/login                controllers.Admin.authenticate
 GET /admin/logout               controllers.Admin.logout
 
-GET /admin/landing/main        controllers.Landing.main
-GET /admin/landing/write        controllers.Landing.write
+GET /admin/landing                controllers.auth.Landing.choose
+GET /admin/demo                   controllers.auth.Landing.demo
+GET /admin/analytics                @controllers.Analytics.index
+#GET /admin/db                     controllers.DB.index
 
-#GET /admin/analytics @controllers.Analytics.index
-#GET /admin/demo controllers.Demo.index
-#GET /admin/db controllers.DB.index
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -1,3 +1,5 @@
+people.list.title={0,choice,0#No people|1#One person|1<{0,number,integer} people} found
+
 global.about = About us
 global.appName = Playful Prelaunch App
 global.companyName = Playful Prelaunch LLC.

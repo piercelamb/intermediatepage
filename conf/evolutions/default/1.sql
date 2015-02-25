@@ -19,6 +19,7 @@ CREATE TABLE person (
     twitterid varchar(255),
     screenname varchar(255),
     followercount bigint,
+    checked boolean,
     CONSTRAINT person_pkey PRIMARY KEY (id)
 );
 

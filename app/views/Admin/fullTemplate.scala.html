@@ -1,23 +1,31 @@
-@(account: Account)(title: String)(content: Html)
+@(name: String, title: String)(content: Html)
 
 <!DOCTYPE html>
 
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@title</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/MyFontsWebfontsKit.css")">
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/normalize.css")">
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/admin_landing_styles.css")">
     <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <header>
-    <h1>Logged in as @account.name</h1>
-    <a href="@controllers.routes.Admin.logout">logout</a>
+    <div><h2>Logged in as @name</h2><a href="@controllers.routes.Admin.logout">Logout</a></div>
+    <h1>SnappyData @title</h1>
 </header>
 <body>
 
 
 @content
+
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

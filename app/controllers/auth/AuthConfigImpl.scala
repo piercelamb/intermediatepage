@@ -59,12 +59,12 @@ trait AuthConfigImpl {
     if (userRole == Role.Administrator) {
       println("User "+userName+ " with IP "+ip+" logged into admin/landing with " +userRole)
 
-      Future.successful(Redirect(routes.Landing.choose))
+      Future.successful(Redirect(routes.Landing.choose(userName)))
     }
     else {
 
       println("User "+userName+ " with IP "+ip+" logged into demo with " +userRole)
-      Future.successful(Redirect(routes.Landing.demo))
+      Future.successful(Redirect(routes.Landing.demo(userName)))
     }
   }
   /**

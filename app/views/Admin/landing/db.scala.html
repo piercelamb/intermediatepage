@@ -1,0 +1,128 @@
+
+@(title: String, currentPage: Page[DataBase], currentOrderBy: Int, name: String)(implicit flash: play.api.mvc.Flash)
+
+
+@****************************************
+* Helper generating navigation links    *
+****************************************@
+@link(newPage: Int, newOrderBy: Option[Int] = None) = @{
+auth.routes.Landing.db(newPage, newOrderBy.map { orderBy =>
+if(orderBy == scala.math.abs(currentOrderBy)) -currentOrderBy else orderBy
+}.getOrElse(currentOrderBy), title, name)
+}
+
+@**********************************
+* Helper generating table headers *
+***********************************@
+@header(orderBy: Int, title: String) = {
+<th class="col@orderBy header @if(scala.math.abs(currentOrderBy) == orderBy) @{if(currentOrderBy < 0) "headerSortDown" else "headerSortUp"}">
+<a href="@link(0, Some(orderBy))">@title</a>
+</th>
+}
+
+@views.html.Admin.fullTemplate(name, title) {
+
+<main class="table">
+
+
+<h1>@Messages("people.list.title", currentPage.total)</h1>
+
+@flash.get("success").map { message =>
+<div class="alert-message warning">
+    <strong>Done!</strong> @message
+</div>
+}
+
+
+@Option(currentPage.items).filterNot(_.isEmpty).map { persons =>
+
+<table>
+    <thead>
+    <tr>
+        @header(2, "Email")
+        @header(3, "City")
+        @header(4, "Region")
+        @header(5, "Country")
+        @header(6, "First Name")
+        @header(7, "Last Name")
+        @header(8, "Raw Name")
+        @header(9, "Twitter")
+        @header(10, "Followers")
+        @header(11, "Checked")
+    </tr>
+    </thead>
+    <tbody>
+
+    @persons.map {
+    case DataBase(id, city, regionName, country, firstName, lastName, rawName, email, screenName, followerCount, checked) => {
+    <tr>
+        <td><a href="#">@email</a></td>
+        <td>
+            @city.getOrElse { <em>-</em> }
+        </td>
+        <td>
+            @regionName.getOrElse { <em>-</em> }
+        </td>
+        <td>
+            @country.getOrElse { <em>-</em> }
+        </td>
+        <td>
+            @firstName.getOrElse { <em>-</em> }
+        </td>
+        <td>
+            @lastName.getOrElse { <em>-</em> }
+        </td>
+        <td>
+            @rawName.getOrElse { <em>-</em> }
+        </td>
+        <td>
+            <a target="_blank" href="http://www.twitter.com/@screenName.getOrElse{""}">@screenName.getOrElse { <em>-</em> }
+        </td>
+        <td>
+            @followerCount.getOrElse { <em>-</em> }
+        </td>
+        <td>
+            @checked
+        </td>
+    </tr>
+        }
+    }
+
+    </tbody>
+</table>
+
+<div id="pagination" class="pagination">
+    <ul>
+        @currentPage.prev.map { page =>
+        <li class="prev">
+            <a href="@link(page)">&larr; Previous</a>
+        </li>
+        }.getOrElse {
+        <li class="prev disabled">
+            <a>&larr; Previous</a>
+        </li>
+        }
+        <li class="current">
+            <a>Displaying @(currentPage.offset + 1) to @(currentPage.offset + persons.size) of @currentPage.total</a>
+        </li>
+        @currentPage.next.map { page =>
+        <li class="next">
+            <a href="@link(page)">Next &rarr;</a>
+        </li>
+        }.getOrElse {
+        <li class="next disabled">
+            <a>Next &rarr;</a>
+        </li>
+        }
+    </ul>
+</div>
+
+}.getOrElse {
+
+<div class="well">
+    <em>Nothing to display</em>
+</div>
+
+}
+</main>
+}

@@ -12,10 +12,9 @@ GET     /    controllers.Registration.newReg
 GET    /register    controllers.Registration.newReg
 POST   /register    controllers.Registration.create
 
-# TwitterTest
+#deprecated analytics
 
-#GET /twitter controllers.Application.timeline
-#GET /auth controllers.Twitter.authenticate()
+GET /analytics @controllers.Analytics.index
 
 # Admin
 
@@ -23,10 +22,12 @@ GET /admin                      controllers.Admin.login
 POST /admin/login                controllers.Admin.authenticate
 GET /admin/logout               controllers.Admin.logout
 
-GET /admin/landing                controllers.auth.Landing.choose
-GET /admin/demo                   controllers.auth.Landing.demo
-GET /admin/analytics                @controllers.Analytics.index
-#GET /admin/db                     controllers.DB.index
+GET /admin/landing                controllers.auth.Landing.choose(name)
+GET /admin/create                   controllers.auth.Landing.createUser(name)
+GET /admin/demo                   controllers.auth.Landing.demo(name)
+GET /admin/analytics                controllers.auth.Landing.analytics(name)
+#GET /admin/db                       controllers.db.index
+GET /admin/db                controllers.auth.Landing.db(p:Int ?= 0, s:Int ?= 2, t:String ?= "", n:String ?= "")
 
 
 # Map static resources from the /public folder to the /assets URL path

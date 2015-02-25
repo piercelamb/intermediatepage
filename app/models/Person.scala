@@ -25,6 +25,16 @@ case class RawName(id: Long, name: String)
 case class ParsedName (id: Long, nameArray: Array[String])
 case class TwitterData(twitterID: Option[String], name: Option[String], screenName: Option[String], followerCount: Option[Long], location: Option[String], description:Option[String])
 
+case class DataBase(id: Long, city: Option[String], regionName: Option[String], country: Option[String], firstName: Option[String], lastName: Option[String], nameRaw: Option[String], email: String, screenName: Option[String], followerCount: Option[Long], checked: Boolean)
+
+/**
+ * Helper for pagination.
+ */
+case class Page[A](items: Seq[A], page: Int, offset: Long, total: Long) {
+  lazy val prev = Option(page - 1).filter(_ >= 0)
+  lazy val next = Option(page + 1).filter(_ => (offset + items.size) < total)
+}
+
 object Person {
 
   val parserShort = {
@@ -52,9 +62,26 @@ object Person {
     }
   }
 
+  val parserdb = {
+    get[Long]("id") ~
+      get[Option[String]]("city") ~
+      get[Option[String]]("regionName") ~
+      get[Option[String]]("country") ~
+      get[Option[String]]("firstName") ~
+      get[Option[String]]("lastName") ~
+      get[Option[String]]("nameRaw") ~
+      get[String]("email") ~
+      get[Option[String]]("screenName") ~
+      get[Option[Long]]("followerCount") ~
+      get[Boolean]("checked") map {
+      case id ~ city ~ regionName ~ country ~ firstName ~ lastName ~ nameRaw ~ email ~ screenName ~ followerCount ~ checked =>
+        DataBase(id, city, regionName, country, firstName, lastName, nameRaw, email, screenName, followerCount, checked)
+    }
+  }
+
   def create(ip: String, email: String): Person = {
     DB.withConnection { implicit c =>
-      val id: Long = SQL("INSERT INTO person(ip, email) VALUES({ip}, {email})").on('ip -> ip, 'email -> email)
+      val id: Long = SQL("INSERT INTO person(ip, email, checked) VALUES({ip}, {email}, FALSE)").on('ip -> ip, 'email -> email)
         .executeInsert(scalar[Long] single)
 
       return Person.find(id)
@@ -140,5 +167,50 @@ object Person {
     }
 
   }
+
+  def getRows: List[DataBase] = {
+    DB.withConnection { implicit c =>
+      SQL("SELECT id, city, regionname, country, firstname, lastname, nameraw, email, screenname, followercount FROM person ").as(Person.parserdb.*)
+    }
+  }
+
+  /**
+   * Return a page of DataBase.
+   *
+   * @param page Page to display
+   * @param pageSize Number of computers per page
+   * @param orderBy Computer property used for sorting
+   */
+  def list(page: Int = 0, pageSize: Int = 10, orderBy: Int = 1): Page[DataBase] = {
+
+    val offset = pageSize * page
+
+    DB.withConnection { implicit connection =>
+
+      val databases = SQL(
+        """
+         SELECT id, city, regionname, country, firstname, lastname, nameraw, email, screenname, followercount, checked FROM person
+        """
+      ).on(
+          'pageSize -> pageSize,
+          'offset -> offset,
+          'orderBy -> orderBy
+        ).as(Person.parserdb.*)
+
+      val totalRows = SQL(
+        """
+          select count(*) from person
+        """
+      ).as(scalar[Long].single)
+
+      println("offset + items.size= " +offset+" + "+databases.size +" < "+totalRows)
+
+
+      Page(databases, page, offset, totalRows)
+
+    }
+
+  }
+
 
 }

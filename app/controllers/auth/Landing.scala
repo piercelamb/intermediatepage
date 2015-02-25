@@ -1,10 +1,13 @@
 package controllers.auth
 
+import models.Person
 import models.Role._
+import models.Page
+import models.DataBase
 import play.api.mvc._
 import views.html
 
-trait Landing extends Controller with Pjax with AuthElement_plamb with AuthConfigImpl {
+trait Landing extends Controller with AuthElement_plamb with AuthConfigImpl {
 
   // The `StackAction` method
   //    takes `(AuthorityKey, Authority)` as the first argument and
@@ -14,21 +17,41 @@ trait Landing extends Controller with Pjax with AuthElement_plamb with AuthConfi
   // thw `loggedIn` method
   //     returns current logged in user
 
-  def demo = StackAction(AuthorityKey -> NormalUser) { implicit request =>
+  def demo(name: String) = StackAction(AuthorityKey -> NormalUser) { implicit request =>
     val user = loggedIn
-    val title = "SnappyData demo"
-    Ok(html.Admin.landing.demo(title))
+    val title = "Demo"
+    Ok(html.Admin.landing.demo(title, name))
   }
 
 
   // Only Administrator can execute this action.
-  def choose = StackAction(AuthorityKey -> Administrator) { implicit request =>
+  def choose(name: String) = StackAction(AuthorityKey -> Administrator) { implicit request =>
     val user = loggedIn
-    val title = "SnappyData Admin"
-    Ok(html.Admin.landing.choose(title))
+    val title = "Admin"
+    Ok(html.Admin.landing.choose(title, name))
   }
 
-  protected val fullTemplate: User => Template = html.Admin.fullTemplate.apply
+  def createUser(name: String) = StackAction(AuthorityKey -> Administrator) { implicit request =>
+    val user = loggedIn
+    val title = "Users"
+    Ok(html.Admin.landing.create(title, name))
+  }
+
+  def db(page: Int, orderBy: Int, title: String, name: String) = StackAction(AuthorityKey -> Administrator) { implicit request =>
+    val user = loggedIn
+    val title = "Database"
+    val rows: Page[DataBase] = Person.list(page, orderBy)
+    Ok(html.Admin.landing.db(title, rows, orderBy, name))
+  }
+
+
+
+  def analytics(name: String) = StackAction(AuthorityKey -> Administrator) { implicit request =>
+    val user = loggedIn
+    val title = "SnappyData Analytics"
+    Ok(html.Admin.landing.analytics(title, name))
+  }
+
 
 }
 

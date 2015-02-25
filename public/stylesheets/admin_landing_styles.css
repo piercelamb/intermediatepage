@@ -1,0 +1,246 @@
+html {
+  height:100%;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+     font-family: "ProximaNovaT-Thin", "Helvetica Neue", Helvetica, Arial, sans-serif;
+          color: white;
+          font-weight:100;
+}
+
+.clearfix:before, .clearfix:after {
+  content: "";
+display: table;
+}
+
+.clearfix:after {
+clear: both;
+}
+
+
+h1, p, h2 {
+	margin:0;
+}
+
+h1 {
+	font-size:50px;
+}
+
+h2 {
+	font-size:25px;
+}
+
+p, li {
+	font-size:25px;
+}
+
+a {
+  font-size:20px;
+}
+
+.Aligner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Aligner-item {
+  max-width: 50%;
+}
+
+
+/*begin styles */
+
+body {
+  height:100%;
+  background:#23272C;
+}
+
+main {
+  height:100%;
+  width:100%;
+}
+
+
+header {
+position:fixed;
+top:0%;
+left:0%;
+width:100%;
+height:75px;
+background:#141F28;
+text-align:center;
+box-shadow: rgba(0, 0, 0, 0.8) 0px 20px 70px;
+}
+
+header > div {
+  float:left;
+  display:inline-block;
+  position:absolute;
+  top:0;
+  left:0;
+  text-align:left;
+}
+
+header > div > a {
+color:#72B1DB;
+text-decoration:none;
+}
+
+header > div > a:hover {
+color:#3498DB
+}
+
+header > div > h2 {
+  color:#F2E096
+}
+
+header > h1 {
+  margin:0px auto;
+}
+
+.CTA {
+  text-align: center
+}
+.CTA > div {
+    margin-top:15px;
+  margin-left:auto;
+  margin-right:auto;
+  background: #eaf8fc;
+        background-image: -moz-linear-gradient(#fff, #d4e8ec);
+        background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #d4e8ec),color-stop(1, #fff));
+        border-width: 1px;
+        border-style: solid;
+        border-color: #c4d9df #a4c3ca #83afb7; 
+  -moz-border-radius: 5px;
+  border-radius: 5px;            
+  width: 100%;
+  max-width:600px;
+  height: auto;
+  padding: 10px;
+  overflow: hidden;
+  position:relative;
+  box-shadow: rgba(0, 0, 0, 0.8) 0px 20px 70px;
+}
+
+
+.CTA > div > a  {
+text-decoration:none;
+  display:block;
+  height:100px;
+  width:100%;
+  -moz-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+   -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+             -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+             box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset; 
+   text-align:left;
+   padding-left:20px;
+   padding-right:20px;
+   cursor: pointer;
+   text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
+
+.CTA > div > a:not(:first-child){
+  margin-top:10px;
+}
+
+.CTA > div > a > h1 {
+  font-size:40px;
+}
+
+.CTA > div > a:first-child{
+      background: #16A085;
+            background-image: -moz-linear-gradient(#107562, #16A085);
+            background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #107562),color-stop(1, #16A085));
+}
+
+.CTA > div > a:first-child:hover {
+      background: #16A085;
+            background-image: -moz-linear-gradient(#16A085, #107562);
+            background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #16A085),color-stop(1, #107562));
+}
+
+.CTA > div > a:nth-child(2){
+       background: #2980B9;
+            background-image: -moz-linear-gradient(#1E628F, #2980B9);
+            background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #1E628F),color-stop(1, #2980B9));
+}
+
+.CTA > div > a:nth-child(2):hover {
+      background: #2980B9;
+            background-image: -moz-linear-gradient(#2980B9, #1E628F);
+            background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #2980B9),color-stop(1, #1E628F));
+}
+
+.CTA > div > a:nth-child(3) {
+       background: #8E44AD;
+            background-image: -moz-linear-gradient(#71378A, #8E44AD);
+            background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #71378A),color-stop(1, #8E44AD));
+}
+
+.CTA > div > a:nth-child(3):hover {
+      background: #8E44AD;
+            background-image: -moz-linear-gradient(#8E44AD, #71378A);
+            background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #8E44AD),color-stop(1, #71378A));
+}
+
+.CTA > div > a:last-child {
+      background: #C0392B;
+            background-image: -moz-linear-gradient(#8C2A20, #C0392B);
+            background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #8C2A20),color-stop(1, #C0392B));
+}
+
+.CTA > div > a:last-child:hover {
+      background: #C0392B;
+            background-image: -moz-linear-gradient(#C0392B, #8C2A20);
+            background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #C0392B),color-stop(1, #8C2A20));
+}
+
+
+.CTA > form > a:active {
+      outline: none;
+           
+             -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+             -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;    
+}
+
+.CTA > form > a::-moz-focus-inner {
+  border: none;
+}
+
+.table {
+  margin-top: 150px;
+text-align: center;
+}
+
+.table > h1 {
+  font-size:45px;
+}
+
+table {
+  margin:0px auto;
+}
+
+th {
+  font-size:30px;
+}
+
+.table > ul{
+list-style-type:none;
+list-style:none;
+}
+
+@media (max-width: 1200px) /* phone portrait resolution */ {
+header > div > h2 {
+font-size:18px;
+}
+
+header > div > a {
+font-size:15px;
+}
+}

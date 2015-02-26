@@ -4,6 +4,10 @@ import models.Person
 import models.Role._
 import models.Page
 import models.DataBase
+import models.editForm
+import models.Account._
+import models.Account
+import scalikejdbc.ResultName
 import views.html
 import play.api.data.{FormError, Form}
 import play.api.data.Forms._
@@ -39,6 +43,16 @@ trait Landing extends Controller with AuthElement_plamb with AuthConfigImpl {
     Ok(html.Admin.landing.create(title, name))
   }
 
+//  val accountForm = Form(
+//  mapping(
+//  "id" -> ignored(23L),
+//  "email" -> email,
+//  "password" -> nonEmptyText,
+//  "name" -> nonEmptyText,
+//  "role" -> nonEmptyText
+//  )(Account.apply)(Account.unapply)
+//  )
+
   def db(page: Int, orderBy: Int, title: String, name: String) = StackAction(AuthorityKey -> Administrator) { implicit request =>
     val user = loggedIn
     val title = "Database"
@@ -48,7 +62,6 @@ trait Landing extends Controller with AuthElement_plamb with AuthConfigImpl {
 
   val personForm = Form(
   mapping(
-  "id" -> ignored(23L),
   "city" -> optional(text),
   "regionName" -> optional(text),
   "country" -> optional(text),
@@ -57,9 +70,8 @@ trait Landing extends Controller with AuthElement_plamb with AuthConfigImpl {
   "nameRaw" -> optional(text),
   "email" -> email,
   "screenName" -> optional(text),
-  "followerCount" -> ignored(None:Option[Long]),
   "checked" -> boolean
-  )(DataBase.apply)(DataBase.unapply)
+  )(editForm.apply)(editForm.unapply)
   )
 
   def edit(id: Long, title: String, name: String) = StackAction(AuthorityKey -> Administrator) { implicit request =>
@@ -75,12 +87,12 @@ trait Landing extends Controller with AuthElement_plamb with AuthConfigImpl {
     println("update initiated")
     personForm.bindFromRequest.fold(
     formWithErrors => BadRequest(html.Admin.landing.editForm(id, formWithErrors, title, name,formWithErrors.errors.toString())),
-    DataBase => {
+    editForm => {
       println("bindForm success")
-      Person.updateDataBase(id, DataBase)
+      Person.updateDataBase(id, editForm)
       println("DB updated")
       println("\n\nPerson is updated, redirecting\n\n")
-      Redirect(controllers.auth.routes.Landing.db(0, 2,title,name)).flashing("success" -> "Person %s has been updated".format(DataBase.email))
+      Redirect(controllers.auth.routes.Landing.db(0, 2,title,name)).flashing("success" -> "Person %s has been updated".format(editForm.email))
     }
     )
   }

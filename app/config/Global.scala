@@ -1,4 +1,7 @@
 package config
+
+import anorm._
+import play.api.db._
 import models.SimpleClient
 import models.displayTimes
 import org.joda.time.DateTime
@@ -101,6 +104,18 @@ object Global extends GlobalSettings {   //WithFilters(AccessLoggingFilter)//
         Account(3, "pmclain@snappydata.io", "secret", "Peter", Administrator)
       ) foreach Account.create
     }
+//    DB.withConnection { implicit connection =>
+//      SQL(
+//      """
+//         CREATE FUNCTION twitter() RETURNS trigger AS $twitter$
+//         BEGIN
+//            NEW.screenname;
+//          RETURN NEW;
+//         END;
+//         $twitter$ LANGUAGE plpgsql;
+//      """
+//      )}
+
   }
 
   override def getControllerInstance[A](clazz: Class[A]): A = {

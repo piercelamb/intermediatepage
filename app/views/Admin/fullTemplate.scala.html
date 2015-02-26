@@ -26,5 +26,26 @@
 
 <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
+<script>
+    $(document).ready(function(){
+
+    $( "input").focus(function(e) {
+
+        $( e.target ).next(".placeholder").addClass( "blur" ).fadeOut( 900 );
+    });
+    $( "input" ).blur(function(e) {
+        var val=$(e.target).val();
+        if(!val){
+            $(  e.target  ).next(".placeholder").removeClass( "blur" ).fadeIn( 300 );
+        }
+
+    });
+    $( ".placeholder " ).click(function(e) {
+
+        $( e.target ).addClass( "blur" ).fadeOut( 900 );
+        $(e.target).prev("input").focus();
+    });
+});
+    </script>
 </body>
 </html>

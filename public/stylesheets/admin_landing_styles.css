@@ -287,7 +287,7 @@ dd {
 }
 
 
-.CTA > form > a:active {
+.CTA > div > a:active {
       outline: none;
            
              -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
@@ -295,7 +295,7 @@ dd {
              box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;    
 }
 
-.CTA > form > a::-moz-focus-inner {
+.CTA > div > a::-moz-focus-inner {
   border: none;
 }
 
@@ -328,6 +328,170 @@ text-decoration:none;
 .alert-message {
 color:#F2E096
 }
+
+/* create user styles */
+.CTA {
+  text-align:center;
+}
+
+.CTA > form > input {
+margin-bottom:10px;
+}
+
+.CTA > form {
+  margin-top:15px;
+  margin-left:auto;
+  margin-right:auto;
+  background: #eaf8fc;
+        background-image: -moz-linear-gradient(#fff, #d4e8ec);
+        background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #d4e8ec),color-stop(1, #fff));
+        border-width: 1px;
+        border-style: solid;
+        border-color: #c4d9df #a4c3ca #83afb7;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  width: 100%;
+  max-width:600px;
+  height: auto;
+  padding: 10px;
+  overflow: hidden;
+  position:relative;
+  box-shadow: rgba(0, 0, 0, 0.8) 0px 20px 70px;
+}
+
+.CTA > form > *, .CTA > div > * {
+  float:left;
+}
+
+.CTA > form > .box {
+      padding: 5px 9px;
+            height: 50px;
+            width: 100%;
+            border: 1px solid #a4c3ca;
+-moz-border-radius: 10px 10px 10px 10px;
+             border-radius: 10px 10px 10px 10px;
+            background: #f1f1f1;
+            font-size:25px;
+            color:black;
+            text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+
+             -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) inset, 0 1px 0 rgba(255, 255, 255, 1);
+             -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) inset, 0 1px 0 rgba(255, 255, 255, 1);
+             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) inset, 0 1px 0 rgba(255, 255, 255, 1);
+
+              transition: all 1s ease-in-out;
+-webkit-transition: all 1s ease-in-out;
+-moz-transition: all 1s ease-in-out;
+-o-transition: all 1s ease-in-out;
+}
+
+.CTA > form > .box:focus {
+ border-color: #8badb4;
+            background: #fff;
+            outline: none;
+}
+
+.CTA > form > span {
+  position: absolute;
+color: #8F9294;
+font-size: 25px;
+left: 3.5%;
+}
+
+.CTA > form > span:first-of-type {
+  bottom: 83%;
+}
+
+.CTA > form > span:nth-of-type(2) {
+bottom: 64%;
+}
+
+.CTA > form > span:nth-of-type(3) {
+bottom: 44%;
+}
+
+.CTA > form > span:last-of-type {
+bottom: 25%;
+}
+
+.CTA > form > button {
+    background: #3498DB;
+            background-image: -moz-linear-gradient(#2980B9, #3498DB);
+            background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #2980B9),color-stop(1, #3498DB));
+
+
+            border-width: 1px;
+            border-style: solid;
+            border-color: #3498DB #2C80B8 #2770A1;
+             -moz-border-radius: 10px 10px 10px 10px;
+            border-radius: 10px 10px 10px 10px;
+
+
+             -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+             -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+             box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+      font-size:25px;
+      height: 50px;
+      /*margin: 0 0 0 10px;*/
+      padding: 0;
+      width: 100%;
+      /*font-weight:bold;*/
+      cursor: pointer;
+      color: white;
+
+      text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+
+  transition: all 0.4s ease-in-out;
+-webkit-transition: all 0.4s ease-in-out;
+-moz-transition: all 0.4s ease-in-out;
+-o-transition: all 0.4s ease-in-out;
+    }
+
+.CTA > form > button:hover {
+  background: #3498DB;
+            background-image: -moz-linear-gradient(#3498DB, #2980B9);
+            background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #3498DB),color-stop(1, #2980B9));
+}
+
+.CTA > form > button:active {
+   background: #3498DB;
+      outline: none;
+
+             -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+             -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+}
+
+.CTA > form > button::-moz-focus-inner {
+  border: none;
+}
+
+
+.blur{
+   text-shadow: 0 0 10px #646D6E;
+   color: transparent;
+
+  animation: scale 1s ease-in-out  alternate;
+    -webkit-animation: scale 1s ease-in-out  alternate;
+   -moz-animation: scale 1s ease-in-out  alternate;
+}
+
+
+
+@keyframes scale {
+  50% { transform: scale(1.3)}
+
+  }
+@-webkit-keyframes scale {
+  50% { -webkit-transform: scale(1.3)}
+
+  }
+  @-moz-keyframes scale {
+  50% { -moz-transform: scale(1.3)}
+
+  }
+
+/* end create user styles */
 
 
 @media (max-width: 1200px) /* phone portrait resolution */ {

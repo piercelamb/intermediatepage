@@ -26,7 +26,7 @@ case class ParsedName (id: Long, nameArray: Array[String])
 case class TwitterData(twitterID: Option[String], name: Option[String], screenName: Option[String], followerCount: Option[Long], location: Option[String], description:Option[String])
 
 case class DataBase(id: Long, city: Option[String], regionName: Option[String], country: Option[String], firstName: Option[String], lastName: Option[String], nameRaw: Option[String], email: String, screenName: Option[String], followerCount: Option[Long], checked: Boolean)
-
+case class editForm(city: Option[String], regionName: Option[String], country: Option[String], firstName: Option[String], lastName: Option[String], nameRaw: Option[String], email: String, screenName: Option[String],checked: Boolean)
 /**
  * Helper for pagination.
  */
@@ -36,6 +36,7 @@ case class Page[A](items: Seq[A], page: Int, offset: Long, total: Long) {
 }
 
 object Person {
+
 
   val parserShort = {
     get[Long]("id") ~
@@ -79,6 +80,21 @@ object Person {
     }
   }
 
+  val editParserDB = {
+      get[Option[String]]("city") ~
+      get[Option[String]]("regionName") ~
+      get[Option[String]]("country") ~
+      get[Option[String]]("firstName") ~
+      get[Option[String]]("lastName") ~
+      get[Option[String]]("nameRaw") ~
+      get[String]("email") ~
+      get[Option[String]]("screenName") ~
+      get[Boolean]("checked") map {
+      case city ~ regionName ~ country ~ firstName ~ lastName ~ nameRaw ~ email ~ screenName ~ checked =>
+        editForm(city, regionName, country, firstName, lastName, nameRaw, email, screenName, checked)
+    }
+  }
+
   def create(ip: String, email: String): Person = {
     DB.withConnection { implicit c =>
       val id: Long = SQL("INSERT INTO person(ip, email, checked) VALUES({ip}, {email}, FALSE)").on('ip -> ip, 'email -> email)
@@ -87,6 +103,7 @@ object Person {
       return Person.find(id)
     }
   }
+
   def find(id: Long): Person = {
     DB.withConnection{ implicit c =>
       SQL("SELECT id, ip, email FROM person WHERE id = {id}").on('id -> id).using(Person.parserShort).single()
@@ -168,11 +185,11 @@ object Person {
 
   }
 
-  def findById(id:Long): Option[DataBase] = {
+  def findById(id:Long): Option[editForm] = {
     DB.withConnection { implicit c =>
-      SQL("SELECT id, city, regionname, country, firstname, lastname, nameraw, email, screenname, followercount, checked FROM person WHERE id = {id} ")
+      SQL("SELECT city, regionname, country, firstname, lastname, nameraw, email, screenname, checked FROM person WHERE id = {id} ")
         .on('id -> id)
-        .as(Person.parserdb.singleOpt)
+        .as(Person.editParserDB.singleOpt)
     }
   }
 
@@ -214,12 +231,18 @@ object Person {
 
   }
 
-  def updateDataBase(id: Long, person: DataBase) = {
+  var checkedTwitter: String = _
+
+  def updateDataBase(id: Long, person: editForm) = {
+    if (person.checked == true) {
+      checkedTwitter = person.screenName.get
+      println("checked twitter = " +checkedTwitter)
+    }
     DB.withConnection { implicit connection =>
       SQL(
         """
           update person
-          set city = {city}, regionname = {regionName}, country = {country}, firstname = {firstName}, lastname = {lastName}, nameraw = {nameRaw}, email = {email}, screenname = {screenName}, followercount = {followerCount}, checked = {checked}
+          set city = {city}, regionname = {regionName}, country = {country}, firstname = {firstName}, lastname = {lastName}, nameraw = {nameRaw}, email = {email}, screenname = {screenName}, checked = {checked}
           where id = {id}
         """
       ).on(
@@ -232,7 +255,6 @@ object Person {
           'nameRaw -> person.nameRaw,
           'email -> person.email,
           'screenName -> person.screenName,
-          'followerCount -> person.followerCount,
           'checked -> person.checked
         ).executeUpdate()
     }
@@ -245,5 +267,6 @@ object Person {
       SQL("delete from person where id = {id}").on('id -> id).executeUpdate()
     }
   }
+
 
 }

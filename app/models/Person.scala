@@ -168,9 +168,11 @@ object Person {
 
   }
 
-  def getRows: List[DataBase] = {
+  def findById(id:Long): Option[DataBase] = {
     DB.withConnection { implicit c =>
-      SQL("SELECT id, city, regionname, country, firstname, lastname, nameraw, email, screenname, followercount FROM person ").as(Person.parserdb.*)
+      SQL("SELECT id, city, regionname, country, firstname, lastname, nameraw, email, screenname, followercount, checked FROM person WHERE id = {id} ")
+        .on('id -> id)
+        .as(Person.parserdb.singleOpt)
     }
   }
 
@@ -212,5 +214,36 @@ object Person {
 
   }
 
+  def updateDataBase(id: Long, person: DataBase) = {
+    DB.withConnection { implicit connection =>
+      SQL(
+        """
+          update person
+          set city = {city}, regionname = {regionName}, country = {country}, firstname = {firstName}, lastname = {lastName}, nameraw = {nameRaw}, email = {email}, screenname = {screenName}, followercount = {followerCount}, checked = {checked}
+          where id = {id}
+        """
+      ).on(
+          'id -> id,
+          'city -> person.city,
+          'regionName -> person.regionName,
+          'country -> person.country,
+          'firstName -> person.firstName,
+          'lastName -> person.lastName,
+          'nameRaw -> person.nameRaw,
+          'email -> person.email,
+          'screenName -> person.screenName,
+          'followerCount -> person.followerCount,
+          'checked -> person.checked
+        ).executeUpdate()
+    }
+
+    println("\n\n"+person.email+" Updated\n\n")
+  }
+
+  def delete(id: Long) = {
+    DB.withConnection { implicit connection =>
+      SQL("delete from person where id = {id}").on('id -> id).executeUpdate()
+    }
+  }
 
 }

@@ -4,8 +4,10 @@ import models.Person
 import models.Role._
 import models.Page
 import models.DataBase
-import play.api.mvc._
 import views.html
+import play.api.data.{FormError, Form}
+import play.api.data.Forms._
+import play.api.mvc._
 
 trait Landing extends Controller with AuthElement_plamb with AuthConfigImpl {
 
@@ -44,7 +46,49 @@ trait Landing extends Controller with AuthElement_plamb with AuthConfigImpl {
     Ok(html.Admin.landing.db(title, rows, orderBy, name))
   }
 
+  val personForm = Form(
+  mapping(
+  "id" -> ignored(23L),
+  "city" -> optional(text),
+  "regionName" -> optional(text),
+  "country" -> optional(text),
+  "firstName" -> optional(text),
+  "lastName" -> optional(text),
+  "nameRaw" -> optional(text),
+  "email" -> email,
+  "screenName" -> optional(text),
+  "followerCount" -> ignored(None:Option[Long]),
+  "checked" -> boolean
+  )(DataBase.apply)(DataBase.unapply)
+  )
 
+  def edit(id: Long, title: String, name: String) = StackAction(AuthorityKey -> Administrator) { implicit request =>
+    val user = loggedIn
+    val title = "Edit Person"
+    Person.findById(id).map { person =>
+      Ok(html.Admin.landing.editForm(id, personForm.fill(person), title, name, person.email))
+    }.getOrElse(NotFound)
+  }
+
+  def update(id: Long, title: String, name:String) = StackAction(AuthorityKey -> Administrator) { implicit request =>
+    val user = loggedIn
+    println("update initiated")
+    personForm.bindFromRequest.fold(
+    formWithErrors => BadRequest(html.Admin.landing.editForm(id, formWithErrors, title, name,formWithErrors.errors.toString())),
+    DataBase => {
+      println("bindForm success")
+      Person.updateDataBase(id, DataBase)
+      println("DB updated")
+      println("\n\nPerson is updated, redirecting\n\n")
+      Redirect(controllers.auth.routes.Landing.db(0, 2,title,name)).flashing("success" -> "Person %s has been updated".format(DataBase.email))
+    }
+    )
+  }
+
+  def delete(id: Long, title: String, name: String) = StackAction(AuthorityKey -> Administrator) { implicit request =>
+  Person.delete(id)
+    Redirect(controllers.auth.routes.Landing.db(0, 2,title,name)).flashing("success" -> "Person has been deleted")
+  }
 
   def analytics(name: String) = StackAction(AuthorityKey -> Administrator) { implicit request =>
     val user = loggedIn

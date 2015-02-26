@@ -64,7 +64,6 @@ main {
   width:100%;
 }
 
-
 header {
 position:fixed;
 top:0%;
@@ -85,12 +84,13 @@ header > div {
   text-align:left;
 }
 
-header > div > a {
+header > div > a, .edit > form > div > a {
 color:#72B1DB;
 text-decoration:none;
+font-size:20px;
 }
 
-header > div > a:hover {
+header > div > a:hover, .edit > form > div > a:hover {
 color:#3498DB
 }
 
@@ -105,7 +105,7 @@ header > h1 {
 .CTA {
   text-align: center
 }
-.CTA > div {
+.CTA > div, .edit > form:first-of-type {
     margin-top:15px;
   margin-left:auto;
   margin-right:auto;
@@ -126,9 +126,42 @@ header > h1 {
   box-shadow: rgba(0, 0, 0, 0.8) 0px 20px 70px;
 }
 
+.edit > form:last-of-type {
+  margin-top:45px;
+}
 
-.CTA > div > a  {
-text-decoration:none;
+.edit > form:last-of-type > input {
+ background: #E74C3C;
+            background-image: -moz-linear-gradient(#943329, #E74C3C);
+            background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #943329),color-stop(1, #E74C3C));
+            border-width: 1px;
+            border-style: solid;
+            border-color: #E74C3C #B04035 #943329;
+             -moz-border-radius: 10px 10px 10px 10px;
+            border-radius: 10px 10px 10px 10px;
+             -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+             -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+             box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset; 
+      font-size:25px;
+      height: 50px;
+      padding: 0;
+      width: 100%;
+      cursor: pointer;
+      color: white;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
+
+.edit > form:last-of-type > input:hover {
+      background: #E74C3C;
+            background-image: -moz-linear-gradient(#E74C3C, #943329);
+            background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #E74C3C),color-stop(1, #943329));
+}
+
+.CTA > div > a, .edit > form > fieldset > dl:not(:last-child) {
+  margin:0px 0px 10px 0px
+}
+
+.CTA > div > a, .edit > form > fieldset > dl > dd > input  {
   display:block;
   height:100px;
   width:100%;
@@ -143,6 +176,59 @@ text-decoration:none;
    cursor: pointer;
    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
 }
+
+.edit {
+  max-width: 500px;
+margin: 0px auto;
+text-align: center;
+margin-top: 150px;
+}
+
+dd {
+  margin:0;
+}
+
+.edit > h1 {
+  font-size:40px;
+}
+
+.edit > form > fieldset > dl > dt > label {
+  color:#23272C;
+  font-size:25px;
+}
+
+.edit > form > fieldset > dl > dd > input {
+  cursor:default;
+  height:45px;
+}
+
+.edit > form > div > input {
+ background: #3498DB;
+            background-image: -moz-linear-gradient(#2980B9, #3498DB);
+            background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #2980B9),color-stop(1, #3498DB));
+            border-width: 1px;
+            border-style: solid;
+            border-color: #3498DB #2C80B8 #2770A1;
+             -moz-border-radius: 10px 10px 10px 10px;
+            border-radius: 10px 10px 10px 10px;
+             -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+             -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+             box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset; 
+      font-size:25px;
+      height: 50px;
+      padding: 0;
+      width: 100%;
+      cursor: pointer;
+      color: white;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
+
+.edit > form > div > input:hover {
+    background: #3498DB;
+            background-image: -moz-linear-gradient(#3498DB, #2980B9);
+            background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #3498DB),color-stop(1, #2980B9));
+}
+
 
 .CTA > div > a:not(:first-child){
   margin-top:10px;
@@ -230,10 +316,19 @@ th {
   font-size:30px;
 }
 
-.table > ul{
+.table > div > ul{
 list-style-type:none;
 list-style:none;
 }
+
+.CTA > div > a {
+text-decoration:none;
+}
+
+.alert-message {
+color:#F2E096
+}
+
 
 @media (max-width: 1200px) /* phone portrait resolution */ {
 header > div > h2 {

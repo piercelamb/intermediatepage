@@ -56,7 +56,7 @@ if(orderBy == scala.math.abs(currentOrderBy)) -currentOrderBy else orderBy
     @persons.map {
     case DataBase(id, city, regionName, country, firstName, lastName, rawName, email, screenName, followerCount, checked) => {
     <tr>
-        <td><a href="#">@email</a></td>
+        <td><a href="@controllers.auth.routes.Landing.edit(id, title, name)">@email</a></td>
         <td>
             @city.getOrElse { <em>-</em> }
         </td>

@@ -26,8 +26,10 @@ GET /admin/landing                controllers.auth.Landing.choose(name)
 GET /admin/create                   controllers.auth.Landing.createUser(name)
 GET /admin/demo                   controllers.auth.Landing.demo(name)
 GET /admin/analytics                controllers.auth.Landing.analytics(name)
-#GET /admin/db                       controllers.db.index
 GET /admin/db                controllers.auth.Landing.db(p:Int ?= 0, s:Int ?= 2, t:String ?= "", n:String ?= "")
+GET /admin/db/:id               controllers.auth.Landing.edit(id: Long, title, name)
+POST /admin/db/:id              controllers.auth.Landing.update(id: Long, title, name)
+POST /admin/db/:id/delete       controllers.auth.Landing.delete(id:Long, title, name)
 
 
 # Map static resources from the /public folder to the /assets URL path

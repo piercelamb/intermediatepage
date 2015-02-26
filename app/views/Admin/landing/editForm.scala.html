@@ -1,0 +1,44 @@
+@(id: Long, personForm: Form[DataBase], title: String, name: String, email: String)
+
+@import helper._
+
+@views.html.Admin.fullTemplate(name, title) {
+<div class="edit">
+<h1>Edit @email</h1>
+
+@form(auth.routes.Landing.update(id, title, name)) {
+
+<fieldset>
+
+    @inputText(personForm("city"), '_label -> "City", '_help -> "")
+    @inputText(personForm("regionName"), '_label -> "Region", '_help -> "")
+    @inputText(personForm("country"), '_label -> "Country", '_help -> "")
+    @inputText(personForm("firstName"), '_label -> "Firstname", '_help -> "")
+    @inputText(personForm("lastName"), '_label -> "Lastname", '_help -> "")
+    @inputText(personForm("nameRaw"), '_label -> "Raw Name", '_help -> "")
+    @inputText(personForm("email"), '_label -> "email", '_help -> "")
+    @inputText(personForm("screenName"), '_label -> "Twitter", '_help -> "")
+    @inputText(personForm("checked"), '_label -> "Checked", '_help -> "")
+
+</fieldset>
+
+<div>
+    <input type="submit" value="Save this Person">
+    <a href="@controllers.auth.routes.Landing.db()" class="btn">Cancel</a>
+</div>
+
+@if(personForm.hasGlobalErrors) {
+<ul>
+    @for(error <- personForm.globalErrors) {
+    <li>@error.message</li>
+    }
+</ul>
+}
+
+}
+    @form(auth.routes.Landing.delete(id, title, name)) {
+    <input type="submit" value="Delete this Person">
+    }
+
+</div>
+}

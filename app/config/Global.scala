@@ -87,7 +87,7 @@ import scala.concurrent.Future
 object Global extends GlobalSettings {   //WithFilters(AccessLoggingFilter)//
 
 
-  private var cassandra: SimpleClient = _
+  var cassandra: SimpleClient = _
   private var controller: controllers.Analytics = _
 
   override def onStart(app: Application) {
@@ -99,22 +99,11 @@ object Global extends GlobalSettings {   //WithFilters(AccessLoggingFilter)//
     //create some accounts for /admin
     if (Account.findAll.isEmpty) {
       Seq(
-        Account(1, "plamb@snappydata.io", "secret", "Pierce", Administrator),
-        Account(2, "jramnarayan@snappydata.io",   "secret", "Jags",   Administrator),
-        Account(3, "pmclain@snappydata.io", "secret", "Peter", Administrator)
+        Account(0, "plamb@snappydata.io", "secret", "Pierce", Administrator)
       ) foreach Account.create
+      //lol
     }
-//    DB.withConnection { implicit connection =>
-//      SQL(
-//      """
-//         CREATE FUNCTION twitter() RETURNS trigger AS $twitter$
-//         BEGIN
-//            NEW.screenname;
-//          RETURN NEW;
-//         END;
-//         $twitter$ LANGUAGE plpgsql;
-//      """
-//      )}
+
 
   }
 

@@ -4,6 +4,7 @@ import org.mindrot.jbcrypt.BCrypt
 import scalikejdbc._
 
 case class Account(id: Int, email: String, password: String, name: String, role: Role)
+case class newAccount(email: String, password: String, firstName: String, role: String)
 
 object Account extends SQLSyntaxSupport[Account] {
 
@@ -42,6 +43,20 @@ object Account extends SQLSyntaxSupport[Account] {
       val pass = BCrypt.hashpw(account.password, BCrypt.gensalt())
       insert.into(Account).values(id, email, pass, name, role.toString)
     }.update.apply()
+  }
+
+  private val ac = Account.column
+
+  def addNewAccount(email: String, password: String, firstName: String, role: Role)(implicit s: DBSession = auto) {
+    val id = withSQL {
+      val pass = BCrypt.hashpw(password, BCrypt.gensalt())
+      QueryDSL.insert.into(Account).namedValues(
+        ac.email -> email,
+        ac.password -> pass,
+        ac.name -> firstName,
+        ac.role -> role.toString()
+      )
+    }.updateAndReturnGeneratedKey.apply()
   }
 
 }

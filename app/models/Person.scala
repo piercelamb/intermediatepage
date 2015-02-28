@@ -1,9 +1,10 @@
 package models
 
-import Actors.TwitterParse
+import Actors.{twitterCassandra, TwitterParse}
 import akka.actor.Props
 import anorm._
 import anorm.SqlParser._
+import org.mindrot.jbcrypt.BCrypt
 import play.api.db._
 import play.api.Play.current
 import play.api.libs.concurrent.Akka
@@ -27,6 +28,8 @@ case class TwitterData(twitterID: Option[String], name: Option[String], screenNa
 
 case class DataBase(id: Long, city: Option[String], regionName: Option[String], country: Option[String], firstName: Option[String], lastName: Option[String], nameRaw: Option[String], email: String, screenName: Option[String], followerCount: Option[Long], checked: Boolean)
 case class editForm(city: Option[String], regionName: Option[String], country: Option[String], firstName: Option[String], lastName: Option[String], nameRaw: Option[String], email: String, screenName: Option[String],checked: Boolean)
+
+
 /**
  * Helper for pagination.
  */
@@ -103,6 +106,7 @@ object Person {
       return Person.find(id)
     }
   }
+
 
   def find(id: Long): Person = {
     DB.withConnection{ implicit c =>
@@ -230,13 +234,15 @@ object Person {
     }
 
   }
-
+  //val client = new SimpleClient("127.0.0.1")
+  val twitterCassandra = Akka.system.actorOf(Props(classOf[twitterCassandra], cassandra), name = "twitterCassandra")
   var checkedTwitter: String = _
 
   def updateDataBase(id: Long, person: editForm) = {
     if (person.checked == true) {
       checkedTwitter = person.screenName.get
       println("checked twitter = " +checkedTwitter)
+      twitterCassandra ! checkedTwitter
     }
     DB.withConnection { implicit connection =>
       SQL(

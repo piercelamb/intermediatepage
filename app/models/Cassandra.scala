@@ -30,6 +30,13 @@ class SimpleClient(node: String) {
     session.executeAsync(query)
   }
 
+  def insertTwitter(screenName: String) = {
+    println("insertTwitter Activated, inserting: " +screenName)
+    val query = QueryBuilder.insertInto("twitter", "tweets")
+                            .value("handle",screenName)
+    session.executeAsync(query)
+  }
+
   def close() {
     session.close
     cluster.close

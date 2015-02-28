@@ -1,26 +1,60 @@
-
-@(title: String, name: String)
-
+@(form: Form[newAccount], title: String, name: String)(implicit flash: play.api.mvc.Flash)
 
 @views.html.Admin.fullTemplate(name, title) {
 
 <main class = "Aligner">
     <div class="CTA Aligner-item">
+        @flash.get("success").map { message =>
+        <div class="alert-message">
+            <strong>Done!</strong> @message
+        </div>
+        }
+
+        @form.errors.map { error =>
+        <div class="alert-message">
+            <strong>Failed</strong> @error.message
+        </div>
+        }
         <p>Create a new User Account</p>
 
-        <form class="emailbox">
-            <input type="email" class="box" />
+@helper.form(auth.routes.Landing.addAccount(title, name)) {
+
+
+            <input type="email" name="email" id="email" class="box" value="@form("email").value" />
             <span class="placeholder">Email</span>
-            <input type="password" class="box" />
+            <input type="password" name="password" id="password" class="box" value="@form("password").value" />
             <span class="placeholder">Password</span>
-            <input type="password" class="box" />
+            <input type="text" name="firstName" id="firstName" class="box" value="@form("firstName").value"/>
             <span class="placeholder">First Name</span>
-            <input type="password" class="box" />
+            <input type="text" name="role" id="role" class="box" value="@form("role").value"/>
             <span class="placeholder">"NormalUser" or "Administrator"</span>
             <button type="submit">Create Account</button>
-        </form>
+
+
+
+}
     </div>
 
 </main>
+<script>
+    $(document).ready(function(){
 
+    $( "input").focus(function(e) {
+
+        $( e.target ).next(".placeholder").addClass( "blur" ).fadeOut( 900 );
+    });
+    $( "input" ).blur(function(e) {
+        var val=$(e.target).val();
+        if(!val){
+            $(  e.target  ).next(".placeholder").removeClass( "blur" ).fadeIn( 300 );
+        }
+
+    });
+    $( ".placeholder " ).click(function(e) {
+
+        $( e.target ).addClass( "blur" ).fadeOut( 900 );
+        $(e.target).prev("input").focus();
+    });
+});
+    </script>
 }

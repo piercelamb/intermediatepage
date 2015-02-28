@@ -326,7 +326,14 @@ text-decoration:none;
 }
 
 .alert-message {
-color:#F2E096
+color:#F2E096;
+background:none !important;
+background-image:none !important;
+border:none !important;
+margin:0 !important;
+border-radius:0 !important;
+padding:0 !important;
+box-shadow:none !important;
 }
 
 /* create user styles */

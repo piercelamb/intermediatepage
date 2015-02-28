@@ -38,10 +38,11 @@ class displayTimes(client: SimpleClient) {
     timeOnPage(row.getString("ip"), row.getMap("page", classOf[String], classOf[java.lang.Long]).toMap.asInstanceOf[Map[String,Long]])
 }
 
+
+
 //this will be used in the controller to take scala data and convert to JSON
 object JsonFormats {
 
     implicit val timeFormat: Format[timeOnPage] = Json.format[timeOnPage]
-
 
 }

@@ -1,17 +1,14 @@
 package controllers.auth
 
-import models.Person
+import models._
 import models.Role._
-import models.Page
-import models.DataBase
-import models.editForm
-import models.Account._
-import models.Account
-import scalikejdbc.ResultName
+import models.Account.addNewAccount
+import models.newAccount
 import views.html
-import play.api.data.{FormError, Form}
+import play.api.data.{Form}
 import play.api.data.Forms._
 import play.api.mvc._
+import scala.Nothing
 
 trait Landing extends Controller with AuthElement_plamb with AuthConfigImpl {
 
@@ -40,18 +37,28 @@ trait Landing extends Controller with AuthElement_plamb with AuthConfigImpl {
   def createUser(name: String) = StackAction(AuthorityKey -> Administrator) { implicit request =>
     val user = loggedIn
     val title = "Users"
-    Ok(html.Admin.landing.create(title, name))
+    Ok(html.Admin.landing.create(accountForm, title, name))
   }
 
-//  val accountForm = Form(
-//  mapping(
-//  "id" -> ignored(23L),
-//  "email" -> email,
-//  "password" -> nonEmptyText,
-//  "name" -> nonEmptyText,
-//  "role" -> nonEmptyText
-//  )(Account.apply)(Account.unapply)
-//  )
+  val accountForm = Form(
+  mapping(
+  "email" -> email,
+  "password" -> nonEmptyText,
+  "firstName" -> nonEmptyText,
+  "role" -> nonEmptyText.verifying("Must be NormalUser or Administrator", Set("NormalUser", "Administrator").contains(_))
+  )(newAccount.apply)(newAccount.unapply)
+  )
+
+  def addAccount(title: String, name: String) = StackAction(AuthorityKey -> Administrator) { implicit request =>
+    val user = loggedIn
+    accountForm.bindFromRequest.fold(
+    formWithErrors => BadRequest(html.Admin.landing.create(formWithErrors, title, name)),
+    newAccount => {
+      val id = addNewAccount(newAccount.email, newAccount.password, newAccount.firstName, Role.valueOf(newAccount.role))
+      Redirect(controllers.auth.routes.Landing.createUser(name)).flashing("success" -> "Account %s has been created".format(newAccount.firstName))
+    }
+    )
+  }
 
   def db(page: Int, orderBy: Int, title: String, name: String) = StackAction(AuthorityKey -> Administrator) { implicit request =>
     val user = loggedIn
@@ -84,14 +91,10 @@ trait Landing extends Controller with AuthElement_plamb with AuthConfigImpl {
 
   def update(id: Long, title: String, name:String) = StackAction(AuthorityKey -> Administrator) { implicit request =>
     val user = loggedIn
-    println("update initiated")
     personForm.bindFromRequest.fold(
     formWithErrors => BadRequest(html.Admin.landing.editForm(id, formWithErrors, title, name,formWithErrors.errors.toString())),
     editForm => {
-      println("bindForm success")
       Person.updateDataBase(id, editForm)
-      println("DB updated")
-      println("\n\nPerson is updated, redirecting\n\n")
       Redirect(controllers.auth.routes.Landing.db(0, 2,title,name)).flashing("success" -> "Person %s has been updated".format(editForm.email))
     }
     )

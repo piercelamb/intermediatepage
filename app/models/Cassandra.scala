@@ -4,6 +4,7 @@ import com.datastax.driver.core.querybuilder.QueryBuilder
 import com.datastax.driver.core.Cluster
 import com.datastax.driver.core.ResultSetFuture
 import com.datastax.driver.core.Session
+import play.api.libs.json.JsValue
 import scala.collection.JavaConversions._
 import play.api.Logger
 import com.datastax.driver.core.Metadata
@@ -30,10 +31,11 @@ class SimpleClient(node: String) {
     session.executeAsync(query)
   }
 
-  def insertTwitter(screenName: String) = {
+  def insertTwitter(screenName: String, tweets: String) = {
     println("insertTwitter Activated, inserting: " +screenName)
     val query = QueryBuilder.insertInto("twitter", "tweets")
                             .value("handle",screenName)
+                            .value("tweets",tweets)
     session.executeAsync(query)
   }
 

@@ -187,7 +187,6 @@ class TwitterParse extends Actor {
 
       val twitterdata = parseResult.get
 
-      twitterdata.foreach(println)
 
       //get the data we have in the DB to compare
       val DBdata = Person.twitterCompare(id)

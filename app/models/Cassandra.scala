@@ -31,7 +31,7 @@ class SimpleClient(node: String) {
     session.executeAsync(query)
   }
 
-  def insertTwitter(screenName: String, tweets: String) = {
+  def insertTwitter(screenName: String, tweets: java.util.Set[String]) = {
     println("insertTwitter Activated, inserting: " +screenName)
     val query = QueryBuilder.insertInto("twitter", "tweets")
                             .value("handle",screenName)

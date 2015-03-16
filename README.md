@@ -46,12 +46,19 @@
 Currently depends on:
 
 Scala 2.11.4
+
 Play 2.3.0
+
 postgresql 9.3
+
 selenium 2.44.0
+
 cassandra 2.1.4
+
 play2-auth 0.13.0
+
 jbcrypt 0.3m
+
 scalikejdbc 2.2.0
 
 

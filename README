@@ -1,4 +1,32 @@
-This is your new Play application
-=================================
+(this code depends on a local cassandra instance running and a local postgres instance running called "my-playful-prelaunch-development" I'm not sure if it will run otherwise)"
 
-This file will be packaged with your application, when using `activator dist`.
+To run this code:
+
+a.) If you have activator installed:
+
+1.) git clone to the dir of your choice.
+2.) navigate to that dir and type "activator run"
+3.) open a browser and go to http://localhost:9000 (note this will begin the compilation process so could take a bit)
+(I'm assuming sbt will download all the necessary dependencies)
+
+b.) If activator isnt installed:
+
+1.) Download activator: https://typesafe.com/get-started
+2.) add activator to your PATH: export PATH=$PATH:/relativePath/to/activator
+3.) refer to a.)
+
+
+Currently depends on:
+
+Scala 2.11.4
+Play 2.3.0
+postgresql 9.3
+selenium 2.44.0
+cassandra 2.1.4
+play2-auth 0.13.0
+jbcrypt 0.3m
+scalikejdbc 2.2.0
+
+
+
+

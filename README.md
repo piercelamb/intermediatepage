@@ -4,10 +4,10 @@
 
 ##a.) If you have activator installed:
 
-1.) git clone to the dir of your choice.
-2.) navigate to that dir and type "activator run"
-3.) open a browser and go to http://localhost:9000 (note this will begin the compilation process so could take a bit)
-(I'm assuming sbt will download all the necessary dependencies, if it doesn't try "activator clean compile" then "activator run")
+```1.) git clone to the dir of your choice.\n
+2.) navigate to that dir and type "activator run"\n
+3.) open a browser and go to http://localhost:9000 (note this will begin the compilation process so could take a bit)\n
+(I'm assuming sbt will download all the necessary dependencies, if it doesn't try "activator clean compile" then "activator run")```
 
 ##b.) If activator isnt installed:
 

@@ -21,7 +21,8 @@ libraryDependencies ++= Seq(
 "jp.t2v" %% "play2-auth"      % "0.13.0",
 "org.mindrot" % "jbcrypt" % "0.3m",
 "org.scalikejdbc" %% "scalikejdbc"       % "2.2.0",
-"org.scalikejdbc" %% "scalikejdbc-play-plugin"           % "2.3.0"
+"org.scalikejdbc" %% "scalikejdbc-play-plugin"           % "2.3.0",
+"io.prismic" %% "scala-kit" % "1.3.3"
 )
 
 scalacOptions ++= Seq(

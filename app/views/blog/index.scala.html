@@ -19,10 +19,20 @@
 
 <ul>
     @response.results.map { document =>
-    <li>
+
+
+    <div>
+        <div></div><time>@document.getDate("article.date").fold("no date found")(_.asText("MM/dd/yyyy"))</time>
+
+            <p>@document.getText("article.author").getOrElse("Anonymous")</p>
+    </div>
+
+<div>
         <a href="@routes.PrismicMain.detail(document.id, document.slug)">
             @document.slug
         </a>
+    <p>@document.getText("article.longlede").getOrElse("")</p>
+    </div>
     </li>
     }
 </ul>

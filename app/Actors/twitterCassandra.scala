@@ -40,11 +40,9 @@ class twitterCassandra(client: SimpleClient) extends Actor {
         .get
         .map(result => (result.json \\ "text").map(_.validate[String]))
 
-
       val parseResult = Await.result(result, 5 seconds)
 
       val finalResult = parseResult.map(JsSuccess => JsSuccess.get).toSet
-
 
       println("twitter Actor received, sending: " +screenName)
       client.insertTwitter(screenName, finalResult)

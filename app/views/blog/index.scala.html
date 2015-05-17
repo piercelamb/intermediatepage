@@ -16,27 +16,28 @@
     case n => { Showing @n out of @response.totalResultsSize documents }
     }
 </h2>
-
+<section>
 <ul>
     @response.results.map { document =>
+<li>
 
+    <aside>
+        <img src="@document.getImage("article.illustration", "icon").fold("")(_.url)" />
+    </aside>
 
-    <div>
-        <div></div><time>@document.getDate("article.date").fold("no date found")(_.asText("MM/dd/yyyy"))</time>
+<article>
+    <a href="@routes.PrismicMain.detail(document.id, document.slug)">
+        @document.getText("article.explicittitle").getOrElse("")
+    </a>
+    <time>@document.getDate("article.date").fold("")(_.asText("MM-dd-yyyy"))</time>
+    <p class="author">@document.getText("article.author").getOrElse("Anonymous")</p>
 
-            <p>@document.getText("article.author").getOrElse("Anonymous")</p>
-    </div>
-
-<div>
-        <a href="@routes.PrismicMain.detail(document.id, document.slug)">
-            @document.slug
-        </a>
     <p>@document.getText("article.longlede").getOrElse("")</p>
-    </div>
+    </article>
     </li>
     }
 </ul>
-
+</section>
 @if(response.totalPages > 1) {
 <div>
     @if(response.prevPage.isDefined) {

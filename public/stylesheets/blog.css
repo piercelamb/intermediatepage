@@ -1,0 +1,60 @@
+html {
+  box-sizing: border-box; }
+
+*, *::after, *::before {
+  box-sizing: inherit; }
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+section {
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto; }
+  section::after {
+    clear: both;
+    content: "";
+    display: table; }
+  section ul {
+    display: block; }
+    section ul::after {
+      clear: both;
+      content: "";
+      display: table; }
+    section ul li {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 91.4702%; }
+      section ul li:last-child {
+        margin-right: 0; }
+      section ul li aside {
+        display: inline-block;
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 14.70196%;
+        text-align: right; }
+        section ul li aside:last-child {
+          margin-right: 0; }
+      section ul li article {
+        display: inline-block;
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 82.94039%; }
+        section ul li article:last-child {
+          margin-right: 0; }
+        section ul li article a {
+          display: block; }
+        section ul li article time {
+          display: inline-block; }
+        section ul li article .author {
+          display: inline-block;
+          margin: 0; }
+        section ul li article p:last-of-type {
+          margin: 0; }
+
+/*# sourceMappingURL=blog.css.map */

@@ -69,9 +69,9 @@ object PrismicHelper {
     Api.get(config("prismic.api"), accessToken = token, cache = Cache, logger = Logger)
 
   // -- Helper: Retrieve a single document by Id
-  def getDocument(id: String)(implicit ctx: PrismicHelper.Context): Future[Option[Document]] =
+  def getDocument(uid: String)(implicit ctx: PrismicHelper.Context): Future[Option[Document]] =
     ctx.api.forms("everything")
-      .query(Predicate.at("document.id", id))
+      .query(Predicate.at("my.article.uid", uid))
       .ref(ctx.ref).submit() map (_.results.headOption)
 
   // -- Helper: Retrieve several documents by Id
@@ -88,10 +88,11 @@ object PrismicHelper {
     ctx.api.bookmarks.get(bookmark).map(id => getDocument(id)).getOrElse(Future.successful(None))
 
   // -- Helper: Check if the slug is valid and redirect to the most recent version id needed
-  def checkSlug(document: Option[Document], slug: String)(callback: Either[String, Document] => Result)(implicit r: PrismicHelper.Request[_]) =
+  def checkUID(document: Option[Document], uid: String)(callback: Either[String, Document] => Result)(implicit r: PrismicHelper.Request[_]) =
     document.collect {
-      case document if document.slug == slug => callback(Right(document))
-      case document if document.slugs.contains(slug) => callback(Left(document.slug))
+
+      case document if document.uid.getOrElse(sys.error("no uid")) == uid => callback(Right(document))
+      //case document if document.uid.getOrElse(sys.error("no uid").  .contains(uid) => callback(Left(uid))
     }.getOrElse {
       PrismicMain.PageNotFound
     }

@@ -12,6 +12,7 @@ server.pid
 .cache
 
 # Ignore activator stuff
+node_modules
 logs
 project/project
 target/

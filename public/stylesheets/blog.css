@@ -9,52 +9,72 @@ html {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-section {
+main {
   max-width: 68em;
   margin-left: auto;
   margin-right: auto; }
-  section::after {
+  main::after {
     clear: both;
     content: "";
     display: table; }
-  section ul {
+
+.summary {
+  display: inline-block; }
+  .summary a {
     display: block; }
-    section ul::after {
-      clear: both;
-      content: "";
-      display: table; }
-    section ul li {
+  .summary time {
+    display: inline-block; }
+  .summary .author {
+    display: inline-block;
+    margin: 0; }
+  .summary p:last-of-type {
+    margin: 0; }
+
+.landing img, .summary > img {
+  display: inline-block;
+  float: left; }
+
+.container {
+  display: block; }
+  .container::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+.landing ul {
+  display: block; }
+  .landing ul::after {
+    clear: both;
+    content: "";
+    display: table; }
+  .landing ul li {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 91.4702%; }
+    .landing ul li:last-child {
+      margin-right: 0; }
+    .landing ul li section {
       float: left;
       display: block;
       margin-right: 2.35765%;
-      width: 91.4702%; }
-      section ul li:last-child {
+      width: 82.94039%; }
+      .landing ul li section:last-child {
         margin-right: 0; }
-      section ul li aside {
-        display: inline-block;
-        float: left;
-        display: block;
-        margin-right: 2.35765%;
-        width: 14.70196%;
-        text-align: right; }
-        section ul li aside:last-child {
-          margin-right: 0; }
-      section ul li article {
-        display: inline-block;
-        float: left;
-        display: block;
-        margin-right: 2.35765%;
-        width: 82.94039%; }
-        section ul li article:last-child {
-          margin-right: 0; }
-        section ul li article a {
-          display: block; }
-        section ul li article time {
-          display: inline-block; }
-        section ul li article .author {
-          display: inline-block;
-          margin: 0; }
-        section ul li article p:last-of-type {
-          margin: 0; }
+
+.main section {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 82.94039%; }
+  .main section:last-child {
+    margin-right: 0; }
+.main article {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 82.94039%; }
+  .main article:last-child {
+    margin-right: 0; }
 
 /*# sourceMappingURL=blog.css.map */

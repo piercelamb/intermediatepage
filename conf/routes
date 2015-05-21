@@ -10,7 +10,7 @@ GET     /    controllers.Registration.newReg
 GET     /blog                                           controllers.PrismicMain.index(page: Int ?= 1)
 
 # Document detail
-GET     /blog/$id<[-_a-zA-Z0-9]{16}>/:slug     controllers.PrismicMain.detail(id, slug)
+GET     /blog/:uid   controllers.PrismicMain.detail(uid)
 
 # Basic search
 GET     /blog/search                                     controllers.PrismicMain.search(q: Option[String] ?= None, page: Int ?= 1)

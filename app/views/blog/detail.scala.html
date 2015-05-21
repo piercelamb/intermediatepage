@@ -1,9 +1,25 @@
 @(document: io.prismic.Document)(implicit ctx: PrismicHelper.Context)
 
-@main(s"Document detail ${document.slug}") {
+@main(s"Document detail ${document.uid}") {
 
-<article id="@document.id">
+<main class="main">
+    <div class="container">
+<section class="summary">
+    <img src="@document.getImage("article.illustration", "icon").fold("")(_.url)" />
+
+
+
+    <a href="@routes.PrismicMain.detail(document.uid.getOrElse(""))">
+        @document.getText("article.explicittitle").getOrElse("")
+    </a>
+    <time>@document.getDate("article.date").fold("")(_.asText("MM-dd-yyyy"))</time>
+    <p class="author">@document.getText("article.author").getOrElse("Anonymous")</p>
+</section>
+    <article id="@document.uid.getOrElse("")>
     @Html(document.asHtml(ctx.linkResolver))
 </article>
 
+
 }
+        </div>
+</main>

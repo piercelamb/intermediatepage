@@ -10,34 +10,29 @@
 <hr>
 
 <h2>
-    @response.resultsSize match {
-    case 0 => { No documents found }
-    case 1 => { One document found }
-    case n => { Showing @n out of @response.totalResultsSize documents }
-    }
+
 </h2>
-<section>
+<main class="landing">
 <ul>
     @response.results.map { document =>
+
 <li>
+    <img src="@document.getImage("article.illustration", "icon").fold("")(_.url)" />
 
-    <aside>
-        <img src="@document.getImage("article.illustration", "icon").fold("")(_.url)" />
-    </aside>
 
-<article>
-    <a href="@routes.PrismicMain.detail(document.id, document.slug)">
+<section class="summary">
+    <a href="@routes.PrismicMain.detail(document.uid.getOrElse(""))">
         @document.getText("article.explicittitle").getOrElse("")
     </a>
     <time>@document.getDate("article.date").fold("")(_.asText("MM-dd-yyyy"))</time>
     <p class="author">@document.getText("article.author").getOrElse("Anonymous")</p>
 
     <p>@document.getText("article.longlede").getOrElse("")</p>
-    </article>
+    </section>
     </li>
     }
 </ul>
-</section>
+</main>
 @if(response.totalPages > 1) {
 <div>
     @if(response.prevPage.isDefined) {

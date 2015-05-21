@@ -2,9 +2,14 @@
 
 <!DOCTYPE html>
 
-<html>
+<html class="no-js" lang="">
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>@title</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/normalize.css")">
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/blog.css")">
     <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
@@ -28,6 +33,7 @@
 @* Then include this to use prismic.io experiments:
 * @experiment()
 *@
-
+<script src="@routes.Assets.at("javascripts/plugins.js")"></script>
+    <script src="@routes.Assets.at("javascripts/main.js")"></script>
 </body>
 </html>

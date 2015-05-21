@@ -4,6 +4,8 @@ import play.api.mvc._
 import views.html
 
 import scala.concurrent._
+import scala.concurrent.Await
+import scala.concurrent.duration._
 import play.api.libs.concurrent.Execution.Implicits._
 
 import io.prismic._
@@ -14,8 +16,10 @@ object PrismicMain extends Controller with PrismicController {
 
   // -- Resolve links to documents
   def linkResolver(api: Api)(implicit request: RequestHeader) = DocumentLinkResolver(api) {
-    case (docLink, maybeBookmarked) if !docLink.isBroken => routes.PrismicMain.detail(docLink.id, docLink.slug).absoluteURL()
-    case _ => routes.PrismicMain.brokenLink().absoluteURL()
+    case (docLink, maybeBookmarked)
+      if !docLink.isBroken => routes.PrismicMain.detail(docLink.uid.getOrElse(sys.error("no uid found"))).absoluteURL()
+    case _ =>
+      routes.PrismicMain.brokenLink().absoluteURL()
   }
 
   // -- Page not found
@@ -33,12 +37,12 @@ object PrismicMain extends Controller with PrismicController {
   }
 
   // -- Document detail
-  def detail(id: String, slug: String) = PrismicAction { implicit request =>
+  def detail(uid: String) = PrismicAction { implicit request =>
     for {
-      maybeDocument <- getDocument(id)
+      maybeDocument <- getDocument(uid)
     } yield {
-      checkSlug(maybeDocument, slug) {
-        case Left(newSlug)   => MovedPermanently(routes.PrismicMain.detail(id, newSlug).url)
+      checkUID(maybeDocument, uid) {
+        //case Left(uid)   =>  MovedPermanently(routes.PrismicMain.detail(uid).url)
         case Right(document) => Ok(html.blog.detail(document))
       }
     }

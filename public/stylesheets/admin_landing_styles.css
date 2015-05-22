@@ -198,6 +198,7 @@ dd {
 }
 
 .edit > form > fieldset > dl > dd > input {
+    color:black;
   cursor:default;
   height:45px;
 }

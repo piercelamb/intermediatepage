@@ -31,11 +31,12 @@ class SimpleClient(node: String) {
     session.executeAsync(query)
   }
 
-  def insertTwitter(screenName: String, tweets: java.util.Set[String]) = {
+  def insertTwitter(screenName: String, tweets: cassandraReady) = {
     println("insertTwitter Activated, inserting: " +screenName)
     val query = QueryBuilder.insertInto("twitter", "tweets")
                             .value("handle",screenName)
-                            .value("tweets",tweets)
+                            .value("sinceID", tweets.sinceID.getOrElse(-1))
+                            .value("tweets",tweets.tweets)
     session.executeAsync(query)
   }
 

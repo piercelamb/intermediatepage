@@ -17,7 +17,7 @@
     @response.results.map { document =>
 
 <li>
-    <img src="@document.getImage("article.illustration", "icon").fold("")(_.url)" />
+    <img src="@document.getImage("article.illustration", "icon").fold("/assets/images/default.png")(_.url)" />
 
 
 <section class="summary">
@@ -46,5 +46,5 @@
     <span>Next</span>
     }
 </div>
-}
+    }
 }

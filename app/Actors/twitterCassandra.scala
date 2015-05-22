@@ -28,11 +28,11 @@ class twitterCassandra(client: SimpleClient) extends Actor {
 
   private var buildURL: String = _
   private val urlBoilerPlate = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name="
-  private val parameters = "&count=5&trim_user=true"
+  private val parameters = "&count=200&trim_user=true"
 
   implicit val twitterReads: Reads[Twits] = (
-      (JsPath \ "id").read[Option[Long]] and
-      (JsPath \\ "text").read[Option[String]]
+      (JsPath \ "id").readNullable[Long] and
+      (JsPath \ "text").readNullable[String]
     )(Twits.apply _)
 
   def receive = {
@@ -48,7 +48,6 @@ class twitterCassandra(client: SimpleClient) extends Actor {
         .map(result => result.json.validate[List[Twits]])
 
       val parseResult = Await.result(result, 5 seconds)
-      println(parseResult)
 
       val sinceID = parseResult.get.last.id
 

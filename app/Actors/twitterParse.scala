@@ -32,12 +32,12 @@ class TwitterParse extends Actor {
 
   //JSON reader for twitter
   implicit val twitterReads: Reads[TwitterData] = (
-    (JsPath \ "id_str").read[Option[String]] and
-      (JsPath \ "name").read[Option[String]] and
-      (JsPath \ "screen_name").read[Option[String]] and
-      (JsPath \ "followers_count").read[Option[Long]] and
-      (JsPath \ "location").read[Option[String]] and
-      (JsPath \ "description").read[Option[String]]
+    (JsPath \ "id_str").readNullable[String] and
+      (JsPath \ "name").readNullable[String] and
+      (JsPath \ "screen_name").readNullable[String] and
+      (JsPath \ "followers_count").readNullable[Long] and
+      (JsPath \ "location").readNullable[String] and
+      (JsPath \ "description").readNullable[String]
     )(TwitterData.apply _)
 
 //Method for comparing twitter location to IP location

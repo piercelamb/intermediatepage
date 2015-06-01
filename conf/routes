@@ -4,7 +4,6 @@
 
 # Home page
 GET     /    controllers.Registration.newReg
-#GET     /                           controllers.Application.index
 
 # blog page
 GET     /blog                                           controllers.PrismicMain.index(page: Int ?= 1)

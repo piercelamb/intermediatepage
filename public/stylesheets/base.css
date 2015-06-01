@@ -1,0 +1,89 @@
+html {
+  box-sizing: border-box; }
+
+*, *::after, *::before {
+  box-sizing: inherit; }
+
+@font-face {
+  font-family: Lato_a;
+  src: url(../fonts/Lato-Reg.ttf); }
+@font-face {
+  font-family: Lato_b;
+  src: url(../fonts/Lato-Reg.ttf); }
+input:focus {
+  outline: none; }
+
+.container {
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto; }
+  .container::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+h1, p, h2, h3 {
+  color: #222222;
+  text-decoration: none; }
+
+h1 {
+  font-size: 4em; }
+
+h2 {
+  font-size: 1.5em; }
+
+h3 {
+  font-size: 1.2em; }
+
+p {
+  font-size: 1em; }
+
+ul {
+  list-style: none;
+  list-style-type: none; }
+
+a {
+  cursor: pointer;
+  font-size: 0.8em;
+  text-decoration: none; }
+
+.Aligner {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.Aligner-item {
+  max-width: 50%; }
+
+.Aligner-item--top {
+  align-self: flex-start; }
+
+.Aligner-item--bottom {
+  align-self: flex-end; }
+
+.Site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column; }
+
+.Site-content {
+  flex: 1; }
+
+.blur {
+  text-shadow: 0 0 10px #646D6E;
+  color: transparent;
+  animation: scale 1s ease-in-out  alternate;
+  -webkit-animation: scale 1s ease-in-out  alternate;
+  -moz-animation: scale 1s ease-in-out  alternate; }
+
+@keyframes scale {
+  50% {
+    transform: scale(1.3); } }
+@-webkit-keyframes scale {
+  50% {
+    -webkit-transform: scale(1.3); } }
+@-moz-keyframes scale {
+  50% {
+    -moz-transform: scale(1.3); } }
+
+/*# sourceMappingURL=base.css.map */

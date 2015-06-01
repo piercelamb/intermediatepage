@@ -3,87 +3,71 @@
 @(newPersonForm: Form[NewPerson])
 
 @main("Welcome to SnappyData") {
-<header class="background">
-    <div>
-        <h1>Control the latency of your SQL queries</h1>
-    </div>
-    <div class="SQL">
-        <span id="typed" style="white-space:pre;"></span>
-    </div>
-    <div class="CTA">
-        <p>Be the first to know when we <b>open source our beta</b></p>
-
-        <form action="/register" method="POST" >
-            <input type="text" id="email" name="email" value="" />
-            <span class="placeholder">Feed me your email!</span>
-            <input type="submit" value="Notify me" />
-        </form>
-    </div>
-</header>
 <main>
-    <section class="benefits">
-        <div class="wow fadeInLeft" data-wow-duration="3s">
-            <h2>INTRODUCING</h2>
-            <h1>Precis</h1>
-            <p>By executing queries over multi-dimensional samples of very large datasets, Precis enables you to control the latency of your SQL queries with very high bounded accuracy</p>
+    <section class="hero">
+        <div class="container">
+            <h1>Ask bigger questions, get snappy answers </h1>
+            <p>Be the first to know when we open source our beta</p>
+            <form action="/register" method="POST" >
+                <input type="text" id="email" name="email" value="" />
+                <span class="placeholder">email</span>
+                <input type="submit" value="Notify me" />
+            </form>
         </div>
-        <div>
+    </section>
+    <section class="explainerWhat">
+        <div class="container">
+            <div>
+                <p>what?</p>
+                <h2 class="wow fadeInDown" data-wow-duration="2s">Introducing Snappy</h2>
+                <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">An in-memory approximation store that executes SQL & prodcedural queries on probabilistic & sampling-based data structures designed for speed. <a href="#">Learn more on our blog</a></p>
+            </div>
+
             <ul>
-                <li class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">Trade off accuracy of SQL queries for response time</li>
-                <li class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="1s">Execute queries on historical or streaming data</li>
-                <li class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="1.5s">Linearly scalable, highly available, massively parallel design</li>
+                <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
+                    <i class="fa fa-file-image-o fa-5x"></i>
+                    <h3>Spark Programming Model</h3>
+                    <p>Snappy aims for ease of use by exposing a simple, well known Spark programming model</p>
+                </li>
+                <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.5s">
+                    <i class="fa fa-file-image-o fa-5x"></i>
+                    <h3>Scalable Continuous Query</h3>
+                    <p>Continuous querying of approximate streaming data delivers fast, continuous updates.</p>
+                </li>
+                <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="2s">
+                    <i class="fa fa-file-image-o fa-5x"></i>
+                    <h3>Streaming & Batch Architecture</h3>
+                    <p>Use low latency approximate querying techniques in both batch and streaming contexts</p>
+                </li>
             </ul>
         </div>
-
     </section>
-    <section class="experience">
-        <div class="wow fadeInDown" data-wow-duration="2s" data-wow-delay="0.5s">
-            <h2>HOW DOES IT WORK?</h2>
-            <p>Precis works by automatically maintaining multi-dimensional samples of original data and selecting the right sample based on latency or error specified</p>
-        </div>
+    <section class="explainerHow">
+        <div class="container">
+            <div>
+                <p>how?</p>
+                <h2 class="wow fadeInDown" data-wow-duration="2s">How does it work?</h2>
+                <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">Snappy works by computing synopsis and probabilistic data structures that it maintains in memory. A Spark programming model is exposed to easily query Snappy's infrastructure. <a href="#">Learn more on our blog</a></p>
 
-        <div class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="1s">
-
-            <div class="SQL"> <!--wow fadeInUp" data-wow-duration="2s" data-wow-delay="1s" >-->
-                <p>SELECT avg(sessionTime)</p>
-                <p>FROM Table</p>
-                <p>WHERE city='Portland'</p>
-                <p>WITHIN 2 SECONDS</p>
             </div>
-            <div> <!--class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="1.5s">-->
-                <div>
-                    <p>Query Plan</p>
-                </div>
-                <div>
-                    <p>Sample Selection</p>
-                </div>
-            </div>
-            <div class="SQL"> <!--class="SQL wow fadeInUp" data-wow-duration="2s" data-wow-delay="2s">-->
-                <p>Result (2s)</p>
-                <p>182.23 &plusmn; 5.56</p>
-                <p>(95% confidence)</p>
-            </div>
-
+            <i style="font-size:20em;" class="fa fa-line-chart fa-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.5s"></i>
         </div>
     </section>
-    <section class="team">
-        <div>
-            <h1 class="wow fadeInDown" data-wow-duration="2s" data-wow-delay="0.5s" >We are SnappyData</h1>
-            <h2 class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s" >We are a team of engineers & evangelists with a decade of experience together in the in-memory computing industry. We're shaking things up in Portland, OR.</h2>
+    <section class="finalCTA">
+        <div class="container">
+            <div>
+                <h2>Stay Informed</h2>
+                <p>Be the first to know when we open source our beta</p>
+            </div>
+            <form action="/register" method="POST" >
+                <input type="text" id="email" name="email" value="" />
+                <span class="placeholder">email</span>
+                <input type="submit" value="Notify me" />
+            </form>
         </div>
     </section>
 </main>
-<footer>
-    <div class="CTA">
-        <p>Be the first to know when we <b>open source our beta</b></p>
 
-        <form action="/register" method="POST" >
-            <input type="text" id="email" name="email" value="" />
-            <span class="placeholder">Feed me your email!</span>
-            <input type="submit" value="Notify me" />
-        </form>
-    </div>
-</footer>
 
 
 

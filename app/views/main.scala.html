@@ -1,67 +1,86 @@
 @(title: String)(content: Html)
 
 <!DOCTYPE html>
-
-<html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html class="no-js" lang="">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>SnappyData</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/MyFontsWebfontsKit.css")">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/normalize.css")">
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/font-awesome.css")">
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/animate.css")">
-    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/styles.css")">
-    <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
-    <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-    <script src="@routes.Assets.at("javascripts/modernizr-2.6.2.min.js")"></script>
-
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/landing.css")">
+    <script src="@routes.Assets.at("javascripts/vendor/modernizr-2.8.3.min.js")"></script>
 </head>
+
 <body>
        <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+        <header>
+    <div class="container">
+        <div class="logo">
+            <h1>
+                <a href="@routes.Registration.newReg">
+                    <img src="@routes.Assets.at("images/SNP-Icon-White.png")" alt="SnappyData" />
+                </a>
+            </h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="@routes.PrismicMain.index()">blog</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
 @content
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<footer>
+    <div class="container Aligner">
+        <nav class="Aligner-item">
+            <ul>
+                <li><a href="@routes.PrismicMain.index()">blog</a></li>
+                <li><a>what?</a></li>
+                <li><a>how?</a></li>
+                <li><a>who?</a></li>
+            </ul>
+        </nav>
+        <div class="logo Aligner-item">
+            <h1>
+                <a href="@routes.Registration.newReg">
+                    <img src="@routes.Assets.at("images/SNP-Icon-Green.png")" alt="SnappyData" />
+                </a>
+            </h1>
+        </div>
+        <div class="social Aligner-item">
+            <ul>
+                <li>
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</footer>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="@routes.Assets.at("javascripts/vendor/jquery-1.11.3.min.js")"><\/script>')</script>
 <script src="@routes.Assets.at("javascripts/plugins.js")"></script>
-    <script src="@routes.Assets.at("javascripts/main.js")"></script>
-    <script src="@routes.Assets.at("javascripts/typed.js")"></script>
     <script src="@routes.Assets.at("javascripts/wow.js")"></script>
         <script>
         if (window.screen.width > 1025) {
  new WOW().init();}
         </script>
-    <script>
-    $(function(){
-
-        $("#typed").typed({
-            strings: ["SELECT COUNT(*)\nFROM Sessions\nWHERE Genre = 'western'\nGROUP BY OS\n<span>WITHIN 5 SECONDS</span>"],
-            typeSpeed: 20,
-            backDelay: 500,
-            loop: false,
-            contentType: 'html', // or text
-            // defaults to false for infinite loop
-            loopCount: false,
-            callback: function(){ foo(); },
-            resetCallback: function() { newTyped(); }
-        });
-
-
-    });
-
-    function newTyped(){ /* A new typed object */ }
-
-    function foo(){ console.log("Callback"); }
-
-    </script>
 
     <script>
     $(document).ready(function(){

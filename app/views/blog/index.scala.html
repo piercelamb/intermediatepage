@@ -2,36 +2,34 @@
 
 @main("All documents") {
 
-<form action="@routes.PrismicMain.search()" method="GET">
-    <input type="text" name="q" value="">
-    <input type="submit" value="Search">
-</form>
+<main>
+    <section class="hero">
+        <h1>Snappy Blog</h1>
 
-<hr>
+    </section>
+    <section class="blogroll">
 
-<h2>
-
-</h2>
-<main class="landing">
-<ul>
+        <ul class="container">
     @response.results.map { document =>
 
 <li>
+    <article>
     <img src="@document.getImage("article.illustration", "icon").fold("/assets/images/default.png")(_.url)" />
 
-
-<section class="summary">
+        <div>
     <a href="@routes.PrismicMain.detail(document.uid.getOrElse(""))">
         @document.getText("article.explicittitle").getOrElse("")
     </a>
     <time>@document.getDate("article.date").fold("")(_.asText("MM-dd-yyyy"))</time>
-    <p class="author">@document.getText("article.author").getOrElse("Anonymous")</p>
+    <p>| @document.getText("article.author").getOrElse("Anonymous")</p>
 
     <p>@document.getText("article.longlede").getOrElse("")</p>
-    </section>
-    </li>
+        </div>
+    </article>
+</li>
     }
 </ul>
+        </section>
 </main>
 @if(response.totalPages > 1) {
 <div>

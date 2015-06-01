@@ -2,19 +2,19 @@
 
 @main(s"Document detail ${document.uid}") {
 
-<main class="main">
-    <div class="container">
-<section class="summary">
+<main>
+<div class="container">
+    <article class="summary">
     <img src="@document.getImage("article.illustration", "icon").fold("/assets/images/default.png")(_.url)" />
-
-
+        <div>
 
     <a href="@routes.PrismicMain.detail(document.uid.getOrElse(""))">
         @document.getText("article.explicittitle").getOrElse("")
     </a>
     <time>@document.getDate("article.date").fold("")(_.asText("MM-dd-yyyy"))</time>
-    <p class="author">@document.getText("article.author").getOrElse("Anonymous")</p>
-</section>
+    <p>| @document.getText("article.author").getOrElse("Anonymous")</p>
+        </div>
+    </article>
     <article id="@document.uid.getOrElse("")>
     @Html(document.asHtml(ctx.linkResolver))
 </article>

@@ -22,7 +22,8 @@ if(orderBy == scala.math.abs(currentOrderBy)) -currentOrderBy else orderBy
 
 @views.html.Admin.fullTemplate(name, title) {
 
-<main class="table">
+<main>
+    <div class="container">
 
 
 <h1>@Messages("people.list.title", currentPage.total)</h1>
@@ -124,5 +125,6 @@ if(orderBy == scala.math.abs(currentOrderBy)) -currentOrderBy else orderBy
 </div>
 
 }
+        </div>
 </main>
 }

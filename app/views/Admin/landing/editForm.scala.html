@@ -3,8 +3,10 @@
 @import helper._
 
 @views.html.Admin.fullTemplate(name, title) {
-<div class="edit">
-<h1>Edit @email</h1>
+<main>
+    <section class="hero person">
+        <div class="container">
+            <h2>Edit @email</h2>
 
 @form(auth.routes.Landing.update(id, title, name)) {
 
@@ -22,10 +24,8 @@
 
 </fieldset>
 
-<div>
-    <input type="submit" value="Save this Person">
-    <a href="@controllers.auth.routes.Landing.db()" class="btn">Cancel</a>
-</div>
+
+    <input type="submit" value="Save">
 
 @if(personForm.hasGlobalErrors) {
 <ul>
@@ -37,8 +37,10 @@
 
 }
     @form(auth.routes.Landing.delete(id, title, name)) {
-    <input type="submit" value="Delete this Person">
+    <input type="submit" value="Delete">
     }
 
 </div>
+        </section>
+    </main>
 }

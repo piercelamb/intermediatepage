@@ -1,31 +1,108 @@
 @(name: String, title: String)(content: Html)
 
-<!DOCTYPE html>
-
-<html>
+<!doctype html>
+<html class="no-js" lang="">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@title</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>SnappyAdmin</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/MyFontsWebfontsKit.css")">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/normalize.css")">
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
-    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/admin_landing_styles.css")">
-    <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/font-awesome.css")">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/admin.css")">
+    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body>
 <header>
-    <div><h2>Logged in as @name</h2><a href="@controllers.routes.Admin.logout">Logout</a></div>
-    <h1>SnappyData @title</h1>
+    <div class="container">
+        <div class="logo">
+            <h1>
+                <a href="/snappy">
+                    <img src="../../assets/images/SNP-Icon-White.png" alt="SnappyData" />
+                </a>
+            </h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="@controllers.routes.Admin.logout">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
 
 @content
 
-<script src="js/plugins.js"></script>
-<script src="js/main.js"></script>
+<footer>
+    <div class="container Aligner">
+        <nav class="Aligner-item">
+            <ul>
+                <li><a href="@routes.PrismicMain.index()">blog</a></li>
+                <li><a>what?</a></li>
+                <li><a>how?</a></li>
+                <li><a>who?</a></li>
+            </ul>
+        </nav>
+        <div class="logo Aligner-item">
+            <h1>
+                <a href="@routes.Registration.newReg">
+                    <img src="@routes.Assets.at("images/SNP-Icon-Green.png")" alt="SnappyData" />
+                </a>
+            </h1>
+        </div>
+        <div class="social Aligner-item">
+            <ul>
+                <li>
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</footer>
 
-</body>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="@routes.Assets.at("javascripts/vendor/jquery-1.11.3.min.js")"><\/script>')</script>
+<script src="@routes.Assets.at("javascripts/plugins.js")"></script>
+
+<script>
+    $(document).ready(function(){
+
+    $( "input").focus(function(e) {
+
+        $( e.target ).next(".placeholder").addClass( "blur" ).fadeOut( 900 );
+    });
+    $( "input" ).blur(function(e) {
+        var val=$(e.target).val();
+        if(!val){
+            $(  e.target  ).next(".placeholder").removeClass( "blur" ).fadeIn( 300 );
+        }
+
+    });
+    $( ".placeholder " ).click(function(e) {
+
+        $( e.target ).addClass( "blur" ).fadeOut( 900 );
+        $(e.target).prev("input").focus();
+    });
+});
+    </script>
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
 </html>

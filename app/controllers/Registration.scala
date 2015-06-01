@@ -39,14 +39,13 @@ object Registration extends Controller {
       errors => BadRequest(views.html.registration.newReg(errors)),
       person => {
         newPerson = Person.create(ip, person.email)
-        //Ok(views.html.registration.registrationSuccess(newPerson.email))
       }
     )
   //send messages off to actors
   geoLookup ! FindLoc(newPerson.id, newPerson.ip)
   nameParse ! FindName(newPerson.id, newPerson.email)
-    Ok(views.html.registration.newReg(newPersonForm))
-
+    //Ok(views.html.registration.newReg(newPersonForm))
+  Ok(views.html.registration.registrationSuccess(newPerson.email))
   }
 
 }

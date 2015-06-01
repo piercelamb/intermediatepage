@@ -1,0 +1,347 @@
+html {
+  box-sizing: border-box; }
+
+*, *::after, *::before {
+  box-sizing: inherit; }
+
+html {
+  box-sizing: border-box; }
+
+*, *::after, *::before {
+  box-sizing: inherit; }
+
+@font-face {
+  font-family: Lato_a;
+  src: url(../fonts/Lato-Reg.ttf); }
+@font-face {
+  font-family: Lato_b;
+  src: url(../fonts/Lato-Reg.ttf); }
+input:focus {
+  outline: none; }
+
+.container {
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto; }
+  .container::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+h1, p, h2, h3 {
+  color: #222222;
+  text-decoration: none; }
+
+h1 {
+  font-size: 4em; }
+
+h2 {
+  font-size: 1.5em; }
+
+h3 {
+  font-size: 1.2em; }
+
+p {
+  font-size: 1em; }
+
+ul {
+  list-style: none;
+  list-style-type: none; }
+
+a {
+  cursor: pointer;
+  font-size: 0.8em;
+  text-decoration: none; }
+
+.Aligner {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.Aligner-item {
+  max-width: 50%; }
+
+.Aligner-item--top {
+  align-self: flex-start; }
+
+.Aligner-item--bottom {
+  align-self: flex-end; }
+
+.Site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column; }
+
+.Site-content {
+  flex: 1; }
+
+.blur {
+  text-shadow: 0 0 10px #646D6E;
+  color: transparent;
+  animation: scale 1s ease-in-out  alternate;
+  -webkit-animation: scale 1s ease-in-out  alternate;
+  -moz-animation: scale 1s ease-in-out  alternate; }
+
+@keyframes scale {
+  50% {
+    transform: scale(1.3); } }
+@-webkit-keyframes scale {
+  50% {
+    -webkit-transform: scale(1.3); } }
+@-moz-keyframes scale {
+  50% {
+    -moz-transform: scale(1.3); } }
+* {
+  font-family: Lato_a; }
+
+header {
+  width: 100%;
+  background-color: #8bcfb5;
+  color: #FFFFFF;
+  text-align: center;
+  position: relative;
+  padding: 3%; }
+
+.logo {
+  display: inline-block; }
+  .logo h1 {
+    margin: 0; }
+  .logo img {
+    display: block;
+    width: 70px;
+    height: 53px; }
+
+nav {
+  display: inline-block;
+  text-transform: uppercase;
+  position: absolute;
+  top: 35%;
+  right: 5%;
+  height: 30px; }
+  nav ul {
+    padding: 0;
+    margin: 5px 0px 0px 0px; }
+  nav a {
+    margin: 0px 10px;
+    font-family: Lato_b;
+    letter-spacing: 1px;
+    color: #FFFFFF; }
+    nav a:before, nav a:after {
+      position: absolute;
+      left: 0px;
+      width: 100%;
+      height: 2px;
+      background: #FFFFFF;
+      content: "";
+      opacity: 0;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s; }
+    nav a:before {
+      top: 0px;
+      -webkit-transform: translateY(15px);
+      -moz-transform: translateY(15px);
+      -ms-transform: translateY(15px);
+      -o-transform: translateY(15px);
+      transform: translateY(15px); }
+    nav a:after {
+      bottom: 0px;
+      -webkit-transform: translateY(-15px);
+      -moz-transform: translateY(-15px);
+      -ms-transform: translateY(-15px);
+      -o-transform: translateY(-15px);
+      transform: translateY(-15px); }
+    nav a:hover:before, nav a:hover:after {
+      opacity: 1;
+      -webkit-transform: translateY(2px);
+      -moz-transform: translateY(2px);
+      -ms-transform: translateY(2px);
+      -o-transform: translateY(2px);
+      transform: translateY(2px); }
+
+.hero {
+  background: #8bcfb5;
+  padding: 7% 6% 11% 6%;
+  text-align: center;
+  max-height: 625px; }
+  .hero h1, .hero p {
+    color: #FFFFFF; }
+  .hero h1 {
+    margin: 0 auto 4% auto;
+    max-width: 700px; }
+  .hero p {
+    margin: 0 24%; }
+    .hero p a {
+      color: #5f6764;
+      -webkit-transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      transition: all 0.4s ease-in-out;
+      text-decoration: none;
+      font-size: 1em; }
+      .hero p a:hover {
+        color: #222222; }
+    .hero p span {
+      color: #5f6764; }
+
+form {
+  width: 60%;
+  margin: 4% auto 0 auto;
+  position: relative; }
+  form::after {
+    clear: both;
+    content: "";
+    display: table; }
+  form * {
+    letter-spacing: 1px;
+    font-family: Lato_b;
+    font-size: 0.8em;
+    text-transform: uppercase; }
+  form input {
+    border: none;
+    height: 50px;
+    text-align: center;
+    float: left; }
+  form input:first-child {
+    width: 65%;
+    color: #5f6764; }
+  form span {
+    position: absolute;
+    bottom: 30%;
+    left: 29%;
+    color: #5f6764 !important; }
+  form input:last-child {
+    width: 34%;
+    background-color: #222222 !important;
+    color: #FFFFFF !important;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out; }
+    form input:last-child:hover {
+      box-shadow: 0px 50px 0px 0px #5f6764 inset; }
+
+section {
+  text-align: center;
+  padding: 4% 2% 7% 2%; }
+  section div.container div {
+    padding: 0 25%; }
+    section div.container div p:first-of-type {
+      letter-spacing: 1px;
+      font-family: Lato_b;
+      font-size: 0.8em;
+      text-transform: uppercase;
+      color: #5f6764;
+      margin-bottom: 6%; }
+    section div.container div h2 {
+      margin-bottom: 2%;
+      margin-top: 0; }
+    section div.container div p:last-of-type {
+      margin-top: 0; }
+      section div.container div p:last-of-type a {
+        color: #8bcfb5;
+        -webkit-transition: all 0.4s ease-in-out;
+        -moz-transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out;
+        text-decoration: none;
+        font-size: 1em; }
+        section div.container div p:last-of-type a:hover {
+          color: #5f6764; }
+
+.explainerWhat .container ul {
+  margin: 8% 4% 0% 4%;
+  padding: 0; }
+  .explainerWhat .container ul::after {
+    clear: both;
+    content: "";
+    display: table; }
+  .explainerWhat .container ul li {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 31.76157%; }
+    .explainerWhat .container ul li:last-child {
+      margin-right: 0; }
+    .explainerWhat .container ul li i {
+      color: #8bcfb5; }
+    .explainerWhat .container ul li h3 {
+      margin-bottom: 2%; }
+    .explainerWhat .container ul li p {
+      margin-top: 0; }
+
+.explainerHow {
+  background-color: #5f6764; }
+  .explainerHow * {
+    color: #FFFFFF; }
+  .explainerHow div p:first-of-type {
+    color: #FFFFFF !important; }
+  .explainerHow div p:last-of-type a:hover {
+    color: #222222 !important; }
+
+.team {
+  background-image: url(../images/portland_BW.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center; }
+  .team div p a {
+    color: #5f6764 !important; }
+    .team div p a:hover {
+      color: #8bcfb5 !important; }
+
+.finalCTA {
+  background-color: #8bcfb5; }
+  .finalCTA .container div * {
+    color: #FFFFFF !important;
+    margin: 4% 0% 1% 0% !important; }
+
+footer {
+  background-color: #222222;
+  text-align: center;
+  padding: 5% 2% 5% 2%; }
+  footer * {
+    color: #5f6764 !important; }
+  footer nav, footer .logo, footer .social {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 31.76157%; }
+    footer nav:last-child, footer .logo:last-child, footer .social:last-child {
+      margin-right: 0; }
+  footer .container nav {
+    position: static;
+    height: auto; }
+    footer .container nav ul {
+      margin: 0; }
+      footer .container nav ul li {
+        display: inline-block;
+        position: relative; }
+        footer .container nav ul li a:before, footer .container nav ul li a:after {
+          background: #5f6764; }
+  footer .container .logo {
+    height: auto;
+    margin-top: 0; }
+    footer .container .logo img {
+      display: block;
+      width: 45px;
+      height: 34px;
+      margin: 0 auto; }
+  footer .container .social {
+    margin-right: 2.35765%; }
+    footer .container .social * {
+      color: #FFFFFF !important; }
+    footer .container .social ul {
+      padding: 0; }
+      footer .container .social ul li {
+        display: inline-block; }
+        footer .container .social ul li a i {
+          font-size: 1.2em;
+          -webkit-transition: all 0.4s ease-in-out;
+          -moz-transition: all 0.4s ease-in-out;
+          transition: all 0.4s ease-in-out; }
+        footer .container .social ul li a:hover i {
+          color: #8bcfb5 !important;
+          text-shadow: 0 0 2px #8bcfb5; }
+      footer .container .social ul li:first-child {
+        padding-right: 5%; }
+      footer .container .social ul li:last-child {
+        padding-left: 5%; }
+
+/*# sourceMappingURL=landing.css.map */

@@ -4,31 +4,29 @@
 
 @views.html.Admin.fullTemplate(name, title) {
 
-<main class = "Aligner">
-    <div class="CTA Aligner-item">
+<main>
+    <section class="hero">
+        <h1>Welcome @name</h1>
+        <div class="container">
 
-        <p>Pick your poison</p>
-        <div>
+            <div class="adminOptions">
             <a href="@controllers.auth.routes.Landing.createUser(name)">
-                <h1>Create User</h1>
-                <p>Create NormalUsers or Admins</p>
+                Create User
             </a>
             <a href="@controllers.auth.routes.Landing.demo(name)">
-                <h1>Demo</h1>
-                <p>View the demo</p>
+                demo
             </a>
             <a href="@controllers.auth.routes.Landing.db(0, 2, "",name)">
-                <h1>DB Maintenance</h1>
-                <p>Update DB rows</p>
+                DB maintenance
             </a>
             <a href="@controllers.auth.routes.Landing.analytics(name)">
-                <h1>Analytics</h1>
-                <p>Learn about our users</p>
+               analytics
             </a>
         </div>
 
 
     </div>
+    </section>
 
 </main>
 

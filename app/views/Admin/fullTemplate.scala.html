@@ -1,5 +1,7 @@
 @(name: String, title: String)(content: Html)
 
+@import helper._
+
 <!doctype html>
 <html class="no-js" lang="">
 <head>
@@ -22,7 +24,7 @@
     <div class="container">
         <div class="logo">
             <h1>
-                <a href="@routes.Registration.newReg">
+                <a href="@auth.routes.Landing.choose(name)">
                     <img src="@routes.Assets.at("images/SNP-Icon-White.png")" alt="SnappyData" />
                 </a>
             </h1>
@@ -57,13 +59,13 @@
         <div class="social Aligner-item">
             <ul>
                 <li>
-                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a target="_blank" href="http://www.facebook.com/snappydata"><i class="fa fa-facebook"></i></a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a target="_blank" href="http://twitter.com/SnappyData"><i class="fa fa-twitter"></i></a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                    <a target="_blank" href="http://www.linkedin.com/company/snappydata"><i class="fa fa-linkedin"></i></a>
                 </li>
             </ul>
         </div>

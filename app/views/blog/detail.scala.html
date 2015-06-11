@@ -7,15 +7,18 @@
     <article class="summary">
     <img src="@document.getImage("article.illustration", "icon").fold("/assets/images/default.png")(_.url)" />
         <div>
-
+<div>
     <a href="@routes.PrismicMain.detail(document.uid.getOrElse(""))">
         @document.getText("article.explicittitle").getOrElse("")
     </a>
+</div>
+<div>
     <time>@document.getDate("article.date").fold("")(_.asText("MM-dd-yyyy"))</time>
     <p>| @document.getText("article.author").getOrElse("Anonymous")</p>
+</div>
         </div>
     </article>
-    <article id="@document.uid.getOrElse("")>
+    <article id="@document.uid.getOrElse("")">
     @Html(document.asHtml(ctx.linkResolver))
 </article>
 

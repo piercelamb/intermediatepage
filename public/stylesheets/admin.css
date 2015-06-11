@@ -4,11 +4,15 @@ html {
 *, *::after, *::before {
   box-sizing: inherit; }
 
-html {
-  box-sizing: border-box; }
-
-*, *::after, *::before {
-  box-sizing: inherit; }
+.container {
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center; }
+  .container::after {
+    clear: both;
+    content: "";
+    display: table; }
 
 @font-face {
   font-family: Lato_a;
@@ -16,113 +20,96 @@ html {
 @font-face {
   font-family: Lato_b;
   src: url(../fonts/Lato-Reg.ttf); }
-input:focus {
-  outline: none; }
-
-.container {
-  max-width: 68em;
-  margin-left: auto;
-  margin-right: auto; }
-  .container::after {
-    clear: both;
-    content: "";
-    display: table; }
-
 h1, p, h2, h3 {
-  color: #222222;
-  text-decoration: none; }
+  text-decoration: none;
+  font-family: Lato_a; }
 
 h1 {
-  font-size: 4em; }
+  font-size: 4.5em; }
+  @media screen and (max-width: 1200px) {
+    h1 {
+      font-size: 4em; } }
+  @media screen and (max-width: 970px) {
+    h1 {
+      font-size: 3.5em; } }
+  @media screen and (max-width: 650px) {
+    h1 {
+      font-size: 3em; } }
+  @media screen and (max-width: 533px) {
+    h1 {
+      font-size: 2.7em; } }
+  @media screen and (max-width: 415px) {
+    h1 {
+      font-size: 2.5em; } }
+  @media screen and (max-width: 330px) {
+    h1 {
+      font-size: 2.3em; } }
 
 h2 {
-  font-size: 1.5em; }
+  font-size: 2.3em; }
+  @media screen and (max-width: 768px) {
+    h2 {
+      font-size: 2em; } }
+  @media screen and (max-width: 533px) {
+    h2 {
+      font-size: 1.8em; } }
+  @media screen and (max-width: 330px) {
+    h2 {
+      font-size: 1.5em; } }
 
 h3 {
-  font-size: 1.2em; }
+  font-size: 1.8em; }
+  @media screen and (max-width: 970px) {
+    h3 {
+      font-size: 1.5em; } }
+  @media screen and (max-width: 768px) {
+    h3 {
+      font-size: 1.3em; } }
+  @media screen and (max-width: 768px) {
+    h3 {
+      font-size: 1.2em; } }
 
 p {
-  font-size: 1em; }
+  font-size: 1.3em; }
+  @media screen and (max-width: 970px) {
+    p {
+      font-size: 1.2em; } }
+  @media screen and (max-width: 768px) {
+    p {
+      font-size: 1.1em; } }
+  @media screen and (max-width: 533px) {
+    p {
+      font-size: 0.9em; } }
+
+a {
+  font-size: 1.4em;
+  text-decoration: none;
+  color: #8bcfb5;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out; }
+  a:hover {
+    cursor: pointer; }
+
+nav a, form input, form span {
+  font-size: 1em;
+  text-transform: uppercase; }
+  @media screen and (max-width: 770px) {
+    nav a, form input, form span {
+      font-size: 0.8em; } }
 
 ul {
+  padding: 0;
   list-style: none;
   list-style-type: none; }
 
-a {
-  cursor: pointer;
-  font-size: 0.8em;
-  text-decoration: none; }
-
-.Aligner {
-  display: flex;
-  align-items: center;
-  justify-content: center; }
-
-.Aligner-item {
-  max-width: 50%; }
-
-.Aligner-item--top {
-  align-self: flex-start; }
-
-.Aligner-item--bottom {
-  align-self: flex-end; }
-
-.Site {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column; }
-
-.Site-content {
-  flex: 1; }
-
-.blur {
-  text-shadow: 0 0 10px #646D6E;
-  color: transparent;
-  animation: scale 1s ease-in-out  alternate;
-  -webkit-animation: scale 1s ease-in-out  alternate;
-  -moz-animation: scale 1s ease-in-out  alternate; }
-
-@keyframes scale {
-  50% {
-    transform: scale(1.3); } }
-@-webkit-keyframes scale {
-  50% {
-    -webkit-transform: scale(1.3); } }
-@-moz-keyframes scale {
-  50% {
-    -moz-transform: scale(1.3); } }
-* {
-  font-family: Lato_a; }
-
-header {
-  width: 100%;
-  background-color: #8bcfb5;
-  color: #FFFFFF;
-  text-align: center;
-  position: relative;
-  padding: 3%; }
-
-.logo {
-  display: inline-block; }
-  .logo h1 {
-    margin: 0; }
-  .logo img {
-    display: block;
-    width: 70px;
-    height: 53px; }
+input:focus {
+  outline: none; }
 
 nav {
-  display: inline-block;
-  text-transform: uppercase;
-  position: absolute;
-  top: 35%;
-  right: 5%;
-  height: 30px; }
-  nav ul {
-    padding: 0;
-    margin: 5px 0px 0px 0px; }
+  display: inline-block; }
   nav a {
-    margin: 0px 10px;
+    color: #5f6764;
     font-family: Lato_b;
     letter-spacing: 1px;
     color: #FFFFFF; }
@@ -159,58 +146,24 @@ nav {
       -o-transform: translateY(2px);
       transform: translateY(2px); }
 
-.hero {
-  background: #8bcfb5;
-  padding: 7% 6% 11% 6%;
-  text-align: center;
-  max-height: 625px; }
-  .hero h1, .hero p {
-    color: #FFFFFF; }
-  .hero h1 {
-    margin: 0 auto 4% auto;
-    max-width: 700px; }
-  .hero p {
-    margin: 0 24%; }
-    .hero p a {
-      color: #5f6764;
-      -webkit-transition: all 0.4s ease-in-out;
-      -moz-transition: all 0.4s ease-in-out;
-      transition: all 0.4s ease-in-out;
-      text-decoration: none;
-      font-size: 1em; }
-      .hero p a:hover {
-        color: #222222; }
-    .hero p span {
-      color: #5f6764; }
-
 form {
-  width: 60%;
-  margin: 4% auto 0 auto;
+  width: 70%;
+  letter-spacing: 1px;
+  font-family: Lato_b;
+  margin: 0 auto;
   position: relative; }
   form::after {
     clear: both;
     content: "";
     display: table; }
-  form * {
-    letter-spacing: 1px;
-    font-family: Lato_b;
-    font-size: 0.8em;
-    text-transform: uppercase; }
   form input {
     border: none;
     height: 50px;
-    text-align: center;
-    float: left; }
-  form input:first-child {
-    width: 65%;
-    color: #5f6764; }
+    text-align: center; }
   form span {
     position: absolute;
-    bottom: 30%;
-    left: 29%;
-    color: #5f6764 !important; }
+    color: #5f6764; }
   form input:last-child {
-    width: 34%;
     background-color: #222222;
     color: #FFFFFF;
     -webkit-transition: all 0.4s ease-in-out;
@@ -219,85 +172,108 @@ form {
     form input:last-child:hover {
       box-shadow: 0px 50px 0px 0px #5f6764 inset; }
 
+header {
+  width: 100%;
+  background-color: #8bcfb5;
+  color: #FFFFFF;
+  position: relative;
+  padding: 3%; }
+  header img {
+    width: 70px;
+    height: 53px; }
+  header nav {
+    position: absolute;
+    top: 35%;
+    right: 5%;
+    height: 30px; }
+    header nav ul {
+      margin: 5px 0px 0px 0px; }
+      header nav ul a {
+        margin: 0px 10px; }
+
+.logo {
+  display: inline-block; }
+  .logo h1 {
+    margin: 0; }
+  .logo img {
+    display: block; }
+
 section {
-  text-align: center;
-  padding: 4% 2% 7% 2%; }
-  section div.container div {
-    padding: 0 25%; }
-    section div.container div p:first-of-type {
-      letter-spacing: 1px;
-      font-family: Lato_b;
-      font-size: 0.8em;
-      text-transform: uppercase;
+  padding: 6% 2% 6% 2%; }
+  @media screen and (max-width: 1200px) {
+    section {
+      padding: 8% 2% 8% 2%; } }
+  @media screen and (max-width: 970px) {
+    section {
+      padding: 9% 2% 9% 2%; } }
+  @media screen and (max-width: 650px) {
+    section {
+      padding: 13% 2% 13% 2%; } }
+  @media screen and (max-width: 533px) {
+    section {
+      padding: 16% 2% 16% 2%; } }
+  @media screen and (max-width: 330px) {
+    section {
+      padding: 22% 2% 22% 2%; } }
+  section div.container h1, section div.container h2 {
+    margin: 0; }
+  section div.container h1 {
+    max-width: 950px;
+    margin: 0 auto; }
+    @media screen and (max-width: 970px) {
+      section div.container h1 {
+        max-width: 700px; } }
+    @media screen and (max-width: 650px) {
+      section div.container h1 {
+        max-width: 650px; } }
+    @media screen and (max-width: 500px) {
+      section div.container h1 {
+        max-width: 450px; } }
+  section div.container p {
+    margin: 4% auto;
+    max-width: 800px; }
+    section div.container p a {
+      font-size: 1em;
+      color: #5f6764; }
+      section div.container p a:hover {
+        color: #222222; }
+  section div.container div h2 {
+    position: relative; }
+    section div.container div h2:before {
+      position: absolute;
       color: #5f6764;
-      margin-bottom: 6%; }
-    section div.container div h2 {
-      margin-bottom: 2%;
-      margin-top: 0; }
-    section div.container div p:last-of-type {
-      margin-top: 0; }
-      section div.container div p:last-of-type a {
-        color: #8bcfb5;
-        -webkit-transition: all 0.4s ease-in-out;
-        -moz-transition: all 0.4s ease-in-out;
-        transition: all 0.4s ease-in-out;
-        text-decoration: none;
-        font-size: 1em; }
-        section div.container div p:last-of-type a:hover {
-          color: #5f6764; }
-
-.explainerWhat .container ul {
-  margin: 8% 4% 0% 4%;
-  padding: 0; }
-  .explainerWhat .container ul::after {
-    clear: both;
-    content: "";
-    display: table; }
-  .explainerWhat .container ul li {
-    float: left;
-    display: block;
-    margin-right: 2.35765%;
-    width: 31.76157%; }
-    .explainerWhat .container ul li:last-child {
-      margin-right: 0; }
-    .explainerWhat .container ul li i {
-      color: #8bcfb5; }
-    .explainerWhat .container ul li h3 {
-      margin-bottom: 2%; }
-    .explainerWhat .container ul li p {
-      margin-top: 0; }
-
-.explainerHow {
-  background-color: #5f6764; }
-  .explainerHow * {
-    color: #FFFFFF; }
-  .explainerHow div p:first-of-type {
-    color: #FFFFFF !important; }
-  .explainerHow div p:last-of-type a:hover {
-    color: #222222 !important; }
-
-.team {
-  background-image: url(../images/portland_BW.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center; }
-  .team div p a {
-    color: #5f6764 !important; }
-    .team div p a:hover {
-      color: #8bcfb5 !important; }
-
-.finalCTA {
-  background-color: #8bcfb5; }
-  .finalCTA .container div * {
-    color: #FFFFFF !important;
-    margin: 4% 0% 1% 0% !important; }
+      font-family: Lato_a;
+      top: -91%;
+      font-size: 0.5em;
+      text-transform: uppercase; }
+  section div.container div p {
+    margin: 1% auto;
+    max-width: 825px; }
+    @media screen and (max-width: 970px) {
+      section div.container div p {
+        max-width: 635px; } }
+    @media screen and (max-width: 670px) {
+      section div.container div p {
+        max-width: 440px; } }
+    @media screen and (max-width: 533px) {
+      section div.container div p {
+        max-width: 360px; } }
+    @media screen and (max-width: 415px) {
+      section div.container div p {
+        max-width: 259px; } }
+    @media screen and (max-width: 330px) {
+      section div.container div p {
+        max-width: 235px; } }
+    section div.container div p a {
+      color: #8bcfb5;
+      font-size: 1em; }
+      section div.container div p a:hover {
+        color: black; }
 
 footer {
   background-color: #222222;
   text-align: center;
   padding: 5% 2% 5% 2%; }
-  footer * {
-    color: #5f6764 !important; }
   footer nav, footer .logo, footer .social {
     float: left;
     display: block;
@@ -313,36 +289,316 @@ footer {
       footer .container nav ul li {
         display: inline-block;
         position: relative; }
-        footer .container nav ul li a:before, footer .container nav ul li a:after {
-          background: #5f6764; }
-  footer .container .logo {
-    height: auto;
-    margin-top: 0; }
-    footer .container .logo img {
-      display: block;
-      width: 45px;
-      height: 34px;
-      margin: 0 auto; }
+        footer .container nav ul li a {
+          color: #5f6764; }
+          footer .container nav ul li a:before, footer .container nav ul li a:after {
+            background: #5f6764; }
+      footer .container nav ul li {
+        margin-right: 7px; }
+      footer .container nav ul li:last-child {
+        margin-right: 0; }
+  footer .container img {
+    width: 45px;
+    height: 34px;
+    margin: 0 auto; }
   footer .container .social {
     margin-right: 2.35765%; }
-    footer .container .social * {
-      color: #FFFFFF !important; }
-    footer .container .social ul {
-      padding: 0; }
-      footer .container .social ul li {
+    footer .container .social ul li {
+      display: inline-block; }
+      footer .container .social ul li a i {
+        color: #FFFFFF;
+        font-size: 1.2em;
+        -webkit-transition: all 0.4s ease-in-out;
+        -moz-transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out; }
+        @media screen and (max-width: 650px) {
+          footer .container .social ul li a i {
+            font-size: 0.9em; } }
+      footer .container .social ul li a:hover i {
+        color: #8bcfb5;
+        text-shadow: 0 0 2px #8bcfb5; }
+    footer .container .social ul li:first-child {
+      padding-right: 5%; }
+    footer .container .social ul li:last-child {
+      padding-left: 5%; }
+
+.blur {
+  text-shadow: 0 0 10px #646D6E;
+  color: transparent;
+  animation: scale 1s ease-in-out  alternate;
+  -webkit-animation: scale 1s ease-in-out  alternate;
+  -moz-animation: scale 1s ease-in-out  alternate; }
+
+@keyframes scale {
+  50% {
+    transform: scale(1.3); } }
+@-webkit-keyframes scale {
+  50% {
+    -webkit-transform: scale(1.3); } }
+@-moz-keyframes scale {
+  50% {
+    -moz-transform: scale(1.3); } }
+.Aligner-inline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center; }
+
+.Aligner {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.Aligner-item {
+  max-width: 50%; }
+
+.Aligner-item--top {
+  align-self: flex-start; }
+
+.Aligner-item--bottom {
+  align-self: flex-end; }
+
+.Site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column; }
+
+.Site-content {
+  flex: 1; }
+
+form input {
+  float: left; }
+form input:first-child {
+  width: 65%; }
+  @media screen and (max-width: 600px) {
+    form input:first-child {
+      width: 100%; } }
+form span {
+  bottom: 25%;
+  left: 30%; }
+  @media screen and (max-width: 770px) {
+    form span {
+      bottom: 31%; } }
+  @media screen and (max-width: 600px) {
+    form span {
+      bottom: 65%;
+      left: 43%; } }
+form input:last-child {
+  width: 34%; }
+  @media screen and (max-width: 600px) {
+    form input:last-child {
+      width: 100%;
+      margin-top: 2%; } }
+
+.hero {
+  background-color: #8bcfb5;
+  color: #FFFFFF; }
+  @media screen and (max-width: 900px) {
+    .hero div.container p {
+      max-width: 650px; } }
+  @media screen and (max-width: 750px) {
+    .hero div.container p {
+      max-width: 500px; } }
+  @media screen and (max-width: 550px) {
+    .hero div.container p {
+      max-width: 400px; } }
+  @media screen and (max-width: 415px) {
+    .hero div.container p {
+      max-width: 215px;
+      margin: 6% auto; } }
+
+.explainerWhat h2:before {
+  left: 47%;
+  content: "what?"; }
+  @media screen and (max-width: 900px) {
+    .explainerWhat h2:before {
+      left: 46%; } }
+  @media screen and (max-width: 450px) {
+    .explainerWhat h2:before {
+      left: 45%; } }
+.explainerWhat ul {
+  margin: 8% 0 0 0; }
+  .explainerWhat ul::after {
+    clear: both;
+    content: "";
+    display: table; }
+  .explainerWhat ul li {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 31.76157%; }
+    .explainerWhat ul li:last-child {
+      margin-right: 0; }
+    @media screen and (max-width: 600px) {
+      .explainerWhat ul li {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto !important;
+        float: none; }
+        .explainerWhat ul li:last-child {
+          margin-right: 0; } }
+  @media screen and (max-width: 600px) and (max-width: 415px) {
+    .explainerWhat ul li {
+      max-width: 259px; } }
+
+    .explainerWhat ul li i {
+      color: #8bcfb5; }
+    .explainerWhat ul li h3 {
+      margin-bottom: 2%; }
+    .explainerWhat ul li p {
+      margin-top: 0; }
+      .explainerWhat ul li p a {
+        color: #8bcfb5;
+        -webkit-transition: all 0.4s ease-in-out;
+        -moz-transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out;
+        text-decoration: none;
+        font-size: 1em; }
+        .explainerWhat ul li p a:hover {
+          color: #5f6764; }
+
+.explainerHow {
+  background-color: #5f6764;
+  color: #FFFFFF; }
+  .explainerHow .container div h2:before {
+    color: #FFFFFF;
+    left: 47%;
+    content: "how?"; }
+    @media screen and (max-width: 900px) {
+      .explainerHow .container div h2:before {
+        left: 46%; } }
+    @media screen and (max-width: 450px) {
+      .explainerHow .container div h2:before {
+        left: 45%; } }
+  .explainerHow .container ul {
+    width: 60%;
+    margin: 6% auto 0 auto; }
+    @media screen and (max-width: 600px) {
+      .explainerHow .container ul {
+        width: 80%; } }
+    .explainerHow .container ul li {
+      width: 100%;
+      background: #FFFFFF;
+      margin-bottom: 1%;
+      padding: 1% 1% 1% 1%;
+      justify-content: initial; }
+      .explainerHow .container ul li::after {
+        clear: both;
+        content: "";
+        display: table; }
+      .explainerHow .container ul li * {
         display: inline-block; }
-        footer .container .social ul li a i {
-          font-size: 1.2em;
-          -webkit-transition: all 0.4s ease-in-out;
-          -moz-transition: all 0.4s ease-in-out;
-          transition: all 0.4s ease-in-out; }
-        footer .container .social ul li a:hover i {
-          color: #8bcfb5 !important;
-          text-shadow: 0 0 2px #8bcfb5; }
-      footer .container .social ul li:first-child {
-        padding-right: 5%; }
-      footer .container .social ul li:last-child {
-        padding-left: 5%; }
+      .explainerHow .container ul li p:first-of-type {
+        float: left;
+        font-size: 3em;
+        margin: 0;
+        background: #8bcfb5;
+        padding: 1% 3%; }
+      .explainerHow .container ul li p:last-of-type {
+        color: #5f6764;
+        display: block;
+        margin: 0 auto;
+        font-size: 1.2em;
+        min-width: 400px;
+        max-width: 500px; }
+        @media screen and (max-width: 1200px) {
+          .explainerHow .container ul li p:last-of-type {
+            min-width: 350px;
+            max-width: 400px; } }
+        @media screen and (max-width: 900px) {
+          .explainerHow .container ul li p:last-of-type {
+            font-size: 1.1em;
+            min-width: 300px;
+            max-width: 350px; } }
+        @media screen and (max-width: 650px) {
+          .explainerHow .container ul li p:last-of-type {
+            font-size: 1em;
+            min-width: 208px;
+            max-width: 250px; } }
+        @media screen and (max-width: 533px) {
+          .explainerHow .container ul li p:last-of-type {
+            font-size: 0.9em;
+            min-width: 180px;
+            max-width: 220px; } }
+    .explainerHow .container ul li:last-child {
+      margin-bottom: 0; }
+
+.features {
+  background-color: #222222;
+  color: #FFFFFF; }
+  .features h2:before {
+    left: 45%;
+    content: "features?"; }
+    @media screen and (max-width: 900px) {
+      .features h2:before {
+        left: 43%; } }
+    @media screen and (max-width: 450px) {
+      .features h2:before {
+        left: 42%; } }
+  .features ul {
+    margin: 6% auto 0 auto;
+    padding: 0;
+    width: 80%; }
+    .features ul li {
+      display: inline-block;
+      width: 49%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center; }
+      @media screen and (max-width: 650px) {
+        .features ul li {
+          width: 100%; } }
+      .features ul li * {
+        display: inline-block;
+        max-width: 50%; }
+      .features ul li i {
+        color: #5f6764;
+        margin: 0; }
+      .features ul li p {
+        color: #FFFFFF;
+        text-align: left;
+        margin: auto 0 auto 10px;
+        max-width: 176px; }
+        @media screen and (max-width: 650px) {
+          .features ul li p {
+            max-width: 144px; } }
+    .features ul li:nth-child(n+3) {
+      margin-top: 4%; }
+    @media screen and (max-width: 650px) {
+      .features ul li:nth-child(2) {
+        margin-top: 4%; } }
+
+.team h2:before {
+  left: 47.5%;
+  top: -179% !important;
+  content: "who?"; }
+  @media screen and (max-width: 900px) {
+    .team h2:before {
+      left: 46%; } }
+  @media screen and (max-width: 450px) {
+    .team h2:before {
+      left: 45%; } }
+.team img {
+  width: 45px;
+  height: 34px; }
+
+.finalCTA {
+  background-color: #8bcfb5;
+  color: #FFFFFF; }
+  @media screen and (max-width: 600px) {
+    .finalCTA p {
+      max-width: 182px;
+      margin: 6% auto !important; } }
+  .finalCTA span {
+    bottom: 28%; }
+    @media screen and (max-width: 600px) {
+      .finalCTA span {
+        bottom: 68%; } }
+    @media screen and (max-width: 330px) {
+      .finalCTA span {
+        bottom: 66%; } }
 
 .hero {
   max-height: none; }

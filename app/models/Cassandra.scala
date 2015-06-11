@@ -48,7 +48,9 @@ class SimpleClient(node: String) {
 }
 //connect
   object Cassandra extends App {
-    val client = new SimpleClient("127.0.0.1")
+  import play.api.Play.current
+    val client = new SimpleClient(current.configuration.getString("cassandra.node")
+      .getOrElse(throw new IllegalArgumentException("No 'cassandra.node' config found.")))
     //println(client.getRows)
     client.close
   }

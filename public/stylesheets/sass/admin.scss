@@ -1,0 +1,202 @@
+@import "landing_redux";
+
+.hero {
+	max-height:none;
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px $white inset;
+    -webkit-text-fill-color:$grey;
+}
+
+form {
+		input {
+width:100% !important;
+margin-bottom:5px;
+
+	}
+
+	input:last-of-type {
+		margin-bottom:0;
+	}
+}
+
+.login {
+	
+	span:first-of-type {
+		  bottom: 79%;
+  		left:47%;
+	}
+
+	span:last-of-type {
+		bottom: 45%;
+  		left:44%;
+  	}
+
+}
+
+.create {
+
+	span:nth-child(2) {
+  		bottom: 87%;
+  		left:47%
+	}
+
+		span:nth-child(4) {
+  		bottom: 67%;
+  		left:44%
+	}
+
+			span:nth-child(6) {
+  		bottom: 47%;
+  		left:44%
+	}
+
+			span:nth-child(8) {
+  		bottom: 26%;
+  		left:30%
+	}
+
+}
+
+.adminOptions {
+	width:60%;
+	margin:0 auto;
+	padding:0 !important;
+
+	*{
+		letter-spacing:1px;
+		font-family:Lato_b;
+		font-size:0.8em;
+		text-transform:uppercase;
+		color:$white;
+	}
+
+	a {
+		border:none;
+		height:50px;
+		text-align:center;
+		width:100%;
+		display:block;
+		margin-bottom:1%;
+		line-height:3.6;
+		@include transition(all 0.4s ease-in-out);
+		background:$black;
+
+				&:hover {
+			box-shadow: 0px 50px 0px 0px $grey inset;
+			color:$green;
+			}
+
+		}
+
+	
+
+	a:last-of-type{
+		margin-bottom:0
+	}
+
+}
+
+main {
+text-align:center;
+
+	table {
+		margin:0 auto;
+		border-spacing:6px;
+		border-collapse:separate;
+			a {
+			@include transition(all 0.4s ease-in-out);
+		}
+
+		thead {
+
+
+			a {
+				font-size:1.5em;
+				color:$grey;
+
+				&:hover {
+					color:$green;
+				}
+			}
+		}
+		tbody {
+			
+
+			a {
+				font-size:1em;
+				color:$green;
+
+				&:hover {
+					color:$grey;
+				}
+			}
+		}
+
+
+	}
+
+}
+
+.pagination {
+	
+
+	* {
+		font-size:1em;
+
+		a {
+			@include transition(all 0.4s ease-in-out);
+		&:hover {
+			color:$green;
+		}
+		}
+	}
+}
+
+.hero {
+	h2 {
+		 color:$white;
+	}
+}
+
+.person {
+
+	form:last-of-type {
+		margin:1% auto 0 auto;
+	}
+
+	fieldset{
+
+		dl {
+
+			dt{
+				margin-bottom:1%;
+		label {
+			font-size:2em;
+			color:$white;
+			
+		}
+	}
+		dd{
+			margin-left:0;
+		input {
+			font-size:1.5em;
+			background:$white;
+			color:$grey;
+			float:none;
+
+			&:hover {
+				box-shadow: 0px 50px 0px 0px $white inset;
+			}
+		}
+	}
+	}
+
+	}
+}
+
+
+.delete {
+	margin-top:1%;
+}
+

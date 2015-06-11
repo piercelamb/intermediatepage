@@ -1,0 +1,343 @@
+@import "base_redux";
+
+
+form {
+
+	input {
+		float:left;
+	}
+	input:first-child {
+		width:65%;
+		@include media(max-width 600px) {
+			width:100%
+		}
+	}
+
+	span {
+  		bottom: 25%;
+  		left: 30%;
+  			@include media(max-width 770px) {
+		bottom:31%;
+	}
+		@include media(max-width 600px) {
+			bottom:65%;
+			left:43%;
+		}
+
+	}
+
+	input:last-child {
+		width:34%;
+				@include media(max-width 600px) {
+			width:100%;
+			margin-top:2%;
+		}
+	}
+}
+
+.hero {
+background-color:$green;
+color:$white;
+
+div.container{
+
+
+
+p {
+
+		@include media(max-width 900px) {
+		max-width:650px;
+	}
+
+			@include media(max-width 750px) {
+		max-width:500px;
+	}
+
+				@include media(max-width 550px) {
+		max-width:400px;
+	}
+
+	@include media(max-width 415px) {
+		max-width:215px;
+		margin:6% auto;
+	}
+	}
+}
+}
+
+.explainerWhat {
+
+	h2 {
+		&:before {
+			left:47%;
+			content: "what?";
+
+			@include media(max-width 900px) {
+				left:46%;
+			}
+
+				@include media(max-width 450px) {
+				left:45%;
+			}
+		}
+	}
+
+		ul {
+				margin:8% 0 0 0;
+				@include clearfix;
+
+				li {
+					@include span-columns(4);
+					@include media(max-width 600px) {
+						@include span-columns(12);
+					
+						max-width:300px;
+						margin:0 auto !important;
+						float:none;
+
+						@include media(max-width 415px) {
+							max-width:259px;
+						}
+
+					}
+					i {
+						color:$green;
+					}
+
+				h3	{
+					margin-bottom:2%;
+				}
+
+				p {
+					margin-top:0;
+						a {
+						color:$green;
+						@include transition(all 0.4s ease-in-out);
+						text-decoration:none;
+						font-size:1em;
+						&:hover {
+							color:$grey;
+						}
+					}
+				}
+
+
+				}
+
+			// li:not(:first-child) {
+			// 		@include media(max-width 532px) {
+			// 				margin-top:2%;
+			// 		}
+				// }
+			}
+}
+
+.explainerHow {
+background-color:$grey;
+color:$white;
+	.container {
+		div {
+	h2 {
+
+		&:before {
+			color:$white;
+			left:47%;
+			content: "how?";
+				@include media(max-width 900px)	{
+				left:46%;
+			}
+							@include media(max-width 450px) {
+				left:45%;
+			}
+		}
+
+	}
+		}
+
+		ul {
+			width:60%;
+			margin:6% auto 0 auto;
+
+			@include media(max-width 600px) {
+				width:80%;
+			}
+
+			li {
+				width:100%;
+				@include clearfix;
+				background: $white;
+				margin-bottom:1%;
+				padding:1% 1% 1% 1%;
+				justify-content:initial;
+
+				* {
+					display:inline-block;
+				}
+
+				p:first-of-type{
+					float:left;
+					font-size:3em;
+					margin:0;
+					//margin:1% 1% 1% 1%;
+					background:$green;
+					padding:1% 3%;
+				}
+
+				p:last-of-type {
+					color:$grey;
+					display:block;
+					margin:0 auto;
+					font-size:1.2em;
+					min-width:400px;
+					max-width:500px;
+					@include media(max-width 1200px) {
+						min-width:350px;
+						max-width:400px;
+					}
+					@include media(max-width 900px){
+						font-size:1.1em;
+						min-width:300px;
+						max-width:350px;
+					}
+
+					@include media(max-width 650px){
+						font-size:1em;
+						min-width:208px;
+						max-width:250px;
+					}
+
+								@include media(max-width 533px){
+						font-size:0.9em;
+						min-width:180px;
+						max-width:220px;
+					}
+				}
+			}
+			li:last-child {
+				margin-bottom:0;
+			}
+
+
+		}
+
+	}
+
+}
+
+.features {
+background-color:$black;
+color:$white;
+	h2 {
+		&:before {
+			left:45%;
+			content: "features?";
+
+				@include media(max-width 900px)	{
+				left:43%;
+			}
+							@include media(max-width 450px) {
+				left:42%;
+			}
+		}
+	}
+
+ul {
+		margin:6% auto 0 auto;
+		padding:0;
+		width:80%;
+
+		li {
+			display:inline-block;
+			width:49%;
+				 display: inline-flex;
+  					align-items: center;
+  					justify-content: center;
+
+  					@include media(max-width 650px) {
+  						width:100%;
+  					}
+
+			* {
+				display:inline-block;
+				max-width: 50%;
+			}
+
+			i {
+				color:$grey;
+				margin:0;
+			}
+
+			p {
+				color:$white;
+				text-align:left;
+				margin:auto 0 auto 10px;
+				max-width:176px;
+
+				@include media(max-width 650px) {
+					max-width:144px;
+				}
+
+			}
+
+		}
+
+		li:nth-child(n+3) {
+			margin-top:4%;
+		}
+
+		li:nth-child(2) {
+			@include media(max-width 650px) {
+				margin-top:4%;
+			}
+		}
+
+	}
+
+}
+
+.team {
+		h2 {
+		&:before {
+			left:47.5%;
+			top:-179% !important;
+			content: "who?";
+
+				@include media(max-width 900px)	{
+				left:46%;
+			}
+								@include media(max-width 450px) {
+				left:45%;
+			}
+		}
+	}
+	img {
+			width:45px;
+			height:34px;
+		}
+
+}
+
+.finalCTA {
+background-color:$green;
+color:$white;
+
+	p {
+		@include media(max-width 600px) {
+			  max-width: 182px;
+  			margin: 6% auto !important;
+		}
+	}
+		span {
+			bottom:28%;
+
+						@include media(max-width 600px) {
+				bottom:68%;
+			}	
+
+			@include media(max-width 330px) {
+				bottom:66%;
+			}
+		}
+
+
+}

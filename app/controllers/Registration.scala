@@ -2,7 +2,7 @@ package controllers
 import play.api._
 import play.api.mvc._
 import play.api.i18n
-
+import services.Messages
 import models.{Person, NewPerson, FindLoc, FindName}
 import play.api.data._
 import play.api.data.Forms._
@@ -39,6 +39,7 @@ object Registration extends Controller {
       errors => BadRequest(views.html.registration.newReg(errors)),
       person => {
         newPerson = Person.create(ip, person.email)
+        Messages.emailNewRegistration(person.email)
       }
     )
   //send messages off to actors

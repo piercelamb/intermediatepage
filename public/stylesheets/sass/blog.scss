@@ -56,7 +56,9 @@
 							}
 
 							@include media(max-width 600px){
+								display:block;
 								padding:0 10%;
+								font-size:1.9em;
 							}
 						}
 					
@@ -110,4 +112,88 @@
 
 	}
 
+}
+
+.blog_content {
+	padding:0 10%;
+	color:$grey;
+	h1 {
+		font-size:4em;
+
+		@include media(max-width 970px) {
+		font-size:3em
+	}
+
+	 @include media(max-width 650px) {
+	 	font-size:2.5em;
+	}
+
+	@include media(max-width 533px) {
+		font-size: 2.2em;
+	}
+	@include media(max-width 415px) {
+		font-size: 2em;
+	}
+	}
+
+	h3 {
+		max-width:70%;
+		margin:0 auto;
+		background:$green;
+		color:$white;
+		padding:4% 2%;
+		@include media(max-width 533px){
+			max-width:100%;
+			padding:8% 4%;
+		}
+	}
+	h2 {
+	font-size:2.3em;
+	@include media (max-width 768px) {
+		font-size:1.8em;
+	}
+		@include media (max-width 533px) {
+		font-size:1.3em;
+	}
+
+			@include media (max-width 330px) {
+		font-size:1em;
+	}
+}
+
+	p {
+		color:$grey;
+		a {
+			font-size:1em;
+			&:hover {
+				color:$black;
+			}
+		}
+	}
+
+
+.block-img {
+	img{
+	margin:0;
+	float:none;
+	width:auto;
+	max-width:100%;
+	display:block !important;
+}
+}
+
+.block-img + p {
+		font-size:0.9em;
+		max-width:50%;
+	
+}
+}
+
+#snappydata-technical-vision {
+
+	.block-img:first-of-type{
+		
+		float:left;
+
+	}
 }

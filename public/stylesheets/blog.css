@@ -66,16 +66,16 @@ h3 {
     h3 {
       font-size: 1.2em; } }
 
-p {
+p, time {
   font-size: 1.3em; }
   @media screen and (max-width: 970px) {
-    p {
+    p, time {
       font-size: 1.2em; } }
   @media screen and (max-width: 768px) {
-    p {
+    p, time {
       font-size: 1.1em; } }
   @media screen and (max-width: 533px) {
-    p {
+    p, time {
       font-size: 0.9em; } }
 
 a {
@@ -698,7 +698,9 @@ article {
           color: #5f6764; }
         @media screen and (max-width: 600px) {
           article > div div a {
-            padding: 0 10%; } }
+            display: block;
+            padding: 0 10%;
+            font-size: 1.9em; } }
       article > div div time {
         color: #5f6764; }
       article > div div > p {
@@ -730,5 +732,62 @@ article {
           margin-bottom: 12%; } }
     .blogroll ul li:last-of-type {
       margin-bottom: 0; }
+
+.blog_content {
+  padding: 0 10%;
+  color: #5f6764; }
+  .blog_content h1 {
+    font-size: 4em; }
+    @media screen and (max-width: 970px) {
+      .blog_content h1 {
+        font-size: 3em; } }
+    @media screen and (max-width: 650px) {
+      .blog_content h1 {
+        font-size: 2.5em; } }
+    @media screen and (max-width: 533px) {
+      .blog_content h1 {
+        font-size: 2.2em; } }
+    @media screen and (max-width: 415px) {
+      .blog_content h1 {
+        font-size: 2em; } }
+  .blog_content h3 {
+    max-width: 70%;
+    margin: 0 auto;
+    background: #8bcfb5;
+    color: #FFFFFF;
+    padding: 4% 2%; }
+    @media screen and (max-width: 533px) {
+      .blog_content h3 {
+        max-width: 100%;
+        padding: 8% 4%; } }
+  .blog_content h2 {
+    font-size: 2.3em; }
+    @media screen and (max-width: 768px) {
+      .blog_content h2 {
+        font-size: 1.8em; } }
+    @media screen and (max-width: 533px) {
+      .blog_content h2 {
+        font-size: 1.3em; } }
+    @media screen and (max-width: 330px) {
+      .blog_content h2 {
+        font-size: 1em; } }
+  .blog_content p {
+    color: #5f6764; }
+    .blog_content p a {
+      font-size: 1em; }
+      .blog_content p a:hover {
+        color: #222222; }
+  .blog_content .block-img img {
+    margin: 0;
+    float: none;
+    width: auto;
+    max-width: 100%;
+    display: block !important; }
+  .blog_content .block-img + p {
+    font-size: 0.9em;
+    max-width: 50%; }
+
+#snappydata-technical-vision .block-img:first-of-type {
+  float: left; }
 
 /*# sourceMappingURL=blog.css.map */

@@ -18,11 +18,13 @@
 </div>
         </div>
     </article>
-    <article id="@document.uid.getOrElse("")">
-    @Html(document.asHtml(ctx.linkResolver))
+
+    <article class="blog_content" id="@document.uid.getOrElse("")">
+    @Html(document.getHtml("article.title", ctx.linkResolver).getOrElse(""))
+    @Html(document.getHtml("article.content", ctx.linkResolver).getOrElse(""))
 </article>
 
 
-}
-        </div>
+</div>
 </main>
+}

@@ -66,16 +66,16 @@ h3 {
     h3 {
       font-size: 1.2em; } }
 
-p {
+p, time {
   font-size: 1.3em; }
   @media screen and (max-width: 970px) {
-    p {
+    p, time {
       font-size: 1.2em; } }
   @media screen and (max-width: 768px) {
-    p {
+    p, time {
       font-size: 1.1em; } }
   @media screen and (max-width: 533px) {
-    p {
+    p, time {
       font-size: 0.9em; } }
 
 a {

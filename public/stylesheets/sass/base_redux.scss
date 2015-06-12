@@ -85,7 +85,7 @@ h3 {
 		}
 }
 
-p {
+p, time {
 	font-size:1.3em;
 		@include media(max-width 970px) {
 		font-size:1.2em;

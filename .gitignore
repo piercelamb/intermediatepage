@@ -10,6 +10,9 @@ test-result
 server.pid
 /dist/
 .cache
+.sass.cache
+public/stylesheets/sass/bourbon
+public/stylesheets/sass/neat
 
 # Ignore activator stuff
 node_modules

@@ -52,6 +52,7 @@ object PrismicHelper {
 
   // -- Build a Prismic context
   def buildContext()(implicit request: RequestHeader) = {
+
     val token = request.session.get(ACCESS_TOKEN).orElse(Play.configuration.getString("prismic.token"))
     apiHome(token) map { api =>
       val ref = {
@@ -67,7 +68,6 @@ object PrismicHelper {
   // -- Fetch the API entry document
   def apiHome(token: Option[String] = None) =
     Api.get(config("prismic.api"), accessToken = token, cache = Cache, logger = Logger)
-
   // -- Helper: Retrieve a single document by Id
   def getDocument(uid: String)(implicit ctx: PrismicHelper.Context): Future[Option[Document]] =
     ctx.api.forms("everything")

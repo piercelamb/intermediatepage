@@ -29,5 +29,4 @@ trait PrismicController {
         result <- block(PrismicHelper.Request(request, ctx))
       } yield result
     }
-
 }

@@ -162,6 +162,10 @@ color:$white;
 				width:80%;
 			}
 
+			@include media(max-width 400px) {
+				width:90%;
+			}
+
 			li {
 				width:100%;
 				@include clearfix;
@@ -273,6 +277,10 @@ ul {
 				margin:auto 0 auto 10px;
 				max-width:176px;
 
+				@include media(max-width 750px) {
+					max-width:160px;
+				}
+
 				@include media(max-width 650px) {
 					max-width:144px;
 				}
@@ -321,10 +329,12 @@ ul {
 background-color:$green;
 color:$white;
 
+div.container {
+
 	p {
 		@include media(max-width 600px) {
-			  max-width: 182px;
-  			margin: 6% auto !important;
+			  max-width: 215px;
+  			margin: 6% auto;
 		}
 	}
 		span {
@@ -339,5 +349,5 @@ color:$white;
 			}
 		}
 
-
+}
 }

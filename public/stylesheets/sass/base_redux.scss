@@ -48,11 +48,11 @@ h1 {
 		font-size: 2.7em;
 	}
 	@include media(max-width 415px) {
-		font-size: 2.5em;
+		font-size: 2.3em;
 	}
-	@include media(max-width 330px) {
-		font-size:2.3em;
-	}
+	// @include media(max-width 330px) {
+	// 	font-size:2.3em;
+	// }
 
 }
 
@@ -68,6 +68,7 @@ h2 {
 			@include media (max-width 330px) {
 		font-size:1.5em;
 	}
+
 }
 
 h3 {
@@ -184,6 +185,7 @@ form {
 		border:none;
 		height:50px;
 		text-align:center;
+		color:$grey;
 
 	}
 
@@ -315,6 +317,13 @@ position:relative;
     			top:-91%;
     			font-size:0.5em;
     			text-transform:uppercase;
+		@include media(max-width 533px) {
+			font-size:0.45em;
+		}
+		@include media(max-width 415px) {
+			top:-68%;
+		}
+	
 		}
 	}
 
@@ -469,35 +478,35 @@ footer{
 
   //flexbox
 .Aligner-inline{
-	  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @include display(inline-flex);
+  @include align-items(center);
+  @include justify-content(center);
 }
 
 .Aligner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include display(flex);
+  @include align-items(center);
+  @include justify-content(center);
 }
 
 .Aligner-item {
   max-width: 50%;
 }
 
-.Aligner-item--top {
-  align-self: flex-start;
-}
+// .Aligner-item--top {
+//   align-self: flex-start;
+// }
 
-.Aligner-item--bottom {
-  align-self: flex-end;
-}
+// .Aligner-item--bottom {
+//   align-self: flex-end;
+// }
 
-.Site {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
+// .Site {
+//   display: flex;
+//   min-height: 100vh;
+//   flex-direction: column;
+// }
 
-.Site-content {
-  flex: 1;
-}
+// .Site-content {
+//   flex: 1;
+// }

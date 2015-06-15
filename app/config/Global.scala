@@ -101,7 +101,7 @@ object Global extends GlobalSettings {   //WithFilters(AccessLoggingFilter)//
       Seq(
         Account(0, "plamb@snappydata.io", "secret", "Pierce", Administrator)
       ) foreach Account.create
-      //lol
+
     }
 
 

@@ -13,8 +13,11 @@ object Messages {
       "key" -> JsString(mandrillKey),
       "template_name" -> JsString("snappybeta"),
       "template_content" -> JsArray(Seq(
-       JsObject(Seq("name" -> JsString("firstname"), "content" -> JsString(email))),
-        JsObject(Seq("name" -> JsString("appname"), "content" -> JsString("Snappy"))))),
+      JsObject(Seq("name" -> JsString(""), "content" -> JsString("")))
+      )),
+        //JsObject(Seq())))),
+       //JsObject(Seq("name" -> JsString("firstname"), "content" -> JsString(email)))
+       // JsObject(Seq("name" -> JsString("appname"), "content" -> JsString("Snappy"))))),
       "message" -> JsObject(
         Seq("to" -> JsArray(Seq(
           JsObject(Seq("email" -> JsString(email),

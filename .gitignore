@@ -11,6 +11,8 @@ server.pid
 /dist/
 .cache
 .sass.cache
+.sass.cache/
+/.sass.cache/
 public/stylesheets/sass/bourbon
 public/stylesheets/sass/neat
 

@@ -227,6 +227,9 @@ section {
     @media screen and (max-width: 500px) {
       section div.container h1 {
         max-width: 450px; } }
+    @media screen and (max-width: 330px) {
+      section div.container h1 {
+        max-width: 290px; } }
   section div.container p {
     margin: 4% auto;
     max-width: 800px; }

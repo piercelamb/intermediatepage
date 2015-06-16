@@ -291,6 +291,9 @@ section {
 						@include media(max-width 500px) {
 						max-width:450px;
 					}
+						@include media(max-width 330px) {
+						max-width:290px;
+					}
 				margin:0 auto;
 			}
 

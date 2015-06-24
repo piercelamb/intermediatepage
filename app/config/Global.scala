@@ -92,9 +92,9 @@ object Global extends GlobalSettings {   //WithFilters(AccessLoggingFilter)//
 
   override def onStart(app: Application) {
 
-//    cassandra = new SimpleClient(app.configuration.getString("cassandra.node")
-//      .getOrElse(throw new IllegalArgumentException("No 'cassandra.node' config found.")))
-//    controller = new controllers.Analytics(new displayTimes(cassandra))
+    cassandra = new SimpleClient(app.configuration.getString("cassandra.node")
+      .getOrElse(throw new IllegalArgumentException("No 'cassandra.node' config found.")))
+    controller = new controllers.Analytics(new displayTimes(cassandra))
 
     //create some accounts for /admin
     if (Account.findAll.isEmpty) {

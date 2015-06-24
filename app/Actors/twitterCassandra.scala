@@ -49,7 +49,13 @@ class twitterCassandra(client: SimpleClient) extends Actor {
 
       val parseResult = Await.result(result, 5 seconds)
 
-      val sinceID = parseResult.get.head.id
+      var sinceID: Long = -1
+
+      if(parseResult.get.isEmpty) {
+        sinceID = -1
+      }else {
+        sinceID = parseResult.get.head.id.get
+      }
 
       val finalResult = cassandraReady(sinceID, setAsJavaSet(parseResult.get.map(tuple => tuple.tweet.getOrElse("")).toSet))
 

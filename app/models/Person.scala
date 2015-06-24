@@ -29,7 +29,7 @@ case class TwitterData(twitterID: Option[String], name: Option[String], screenNa
 case class DataBase(id: Long, city: Option[String], regionName: Option[String], country: Option[String], firstName: Option[String], lastName: Option[String], nameRaw: Option[String], email: String, screenName: Option[String], followerCount: Option[Long], checked: Boolean)
 case class editForm(city: Option[String], regionName: Option[String], country: Option[String], firstName: Option[String], lastName: Option[String], nameRaw: Option[String], email: String, screenName: Option[String],checked: Boolean)
 
-case class cassandraReady(sinceID: Option[Long], tweets: java.util.Set[String])
+case class cassandraReady(sinceID: Long, tweets: java.util.Set[String])
 
 /**
  * Helper for pagination.

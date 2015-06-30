@@ -103,7 +103,8 @@ object Global extends GlobalSettings {   //WithFilters(AccessLoggingFilter)//
       ) foreach Account.create
 
     }
-
+//DNS resolve for prismic
+    java.security.Security.setProperty("networkaddress.cache.ttl" , "60");
 
   }
 

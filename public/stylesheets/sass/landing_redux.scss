@@ -68,18 +68,7 @@ p {
 .explainerWhat {
 
 	h2 {
-		&:before {
-			left:47%;
-			content: "what?";
-
-			@include media(max-width 900px) {
-				left:46%;
-			}
-
-				@include media(max-width 450px) {
-				left:45%;
-			}
-		}
+		
 	}
 
 		ul {
@@ -139,17 +128,7 @@ color:$white;
 		div {
 	h2 {
 
-		&:before {
-			color:$white;
-			left:47%;
-			content: "how?";
-				@include media(max-width 900px)	{
-				left:46%;
-			}
-							@include media(max-width 450px) {
-				left:45%;
-			}
-		}
+		
 
 	}
 		}
@@ -201,13 +180,13 @@ color:$white;
 					@include media(max-width 900px){
 						font-size:1.1em;
 						min-width:300px;
-						max-width:350px;
+						max-width:310px;
 					}
 
 					@include media(max-width 650px){
 						font-size:1em;
 						min-width:208px;
-						max-width:250px;
+						max-width:279px;
 					}
 
 								@include media(max-width 533px){
@@ -232,17 +211,7 @@ color:$white;
 background-color:$black;
 color:$white;
 	h2 {
-		&:before {
-			left:45%;
-			content: "features?";
-
-				@include media(max-width 900px)	{
-				left:43%;
-			}
-							@include media(max-width 450px) {
-				left:42%;
-			}
-		}
+		
 	}
 
 ul {
@@ -305,18 +274,7 @@ ul {
 
 .team {
 		h2 {
-		&:before {
-			left:47.5%;
-			top:-179% !important;
-			content: "who?";
-
-				@include media(max-width 900px)	{
-				left:46%;
-			}
-								@include media(max-width 450px) {
-				left:45%;
-			}
-		}
+		
 	}
 	img {
 			width:45px;

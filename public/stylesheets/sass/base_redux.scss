@@ -269,7 +269,7 @@ section {
 	}
 
 				@include media(max-width 330px) {
-		padding:22% 2% 22% 2%;
+		padding:22% 1% 22% 1%;
 	}
 
 	div.container {
@@ -311,23 +311,7 @@ section {
 		div {
 
 			h2 {
-position:relative;
 
-		&:before {
-				position: absolute;
-    			color: $grey;
-    			font-family:Lato_a;
-    			top:-91%;
-    			font-size:0.5em;
-    			text-transform:uppercase;
-		@include media(max-width 533px) {
-			font-size:0.45em;
-		}
-		@include media(max-width 415px) {
-			top:-68%;
-		}
-	
-		}
 	}
 
 
@@ -347,11 +331,11 @@ position:relative;
 					}
 
 						@include media(max-width 415px) {
-						max-width:259px;
+						max-width:330px;
 					}
 
 							@include media(max-width 330px) {
-						max-width:235px;
+						max-width:281px;
 					}
 
 				a{

@@ -215,7 +215,7 @@ section {
       padding: 16% 2% 16% 2%; } }
   @media screen and (max-width: 330px) {
     section {
-      padding: 22% 2% 22% 2%; } }
+      padding: 22% 1% 22% 1%; } }
   section div.container h1, section div.container h2 {
     margin: 0; }
   section div.container h1 {
@@ -241,21 +241,6 @@ section {
       color: #5f6764; }
       section div.container p a:hover {
         color: #222222; }
-  section div.container div h2 {
-    position: relative; }
-    section div.container div h2:before {
-      position: absolute;
-      color: #5f6764;
-      font-family: Lato_a;
-      top: -91%;
-      font-size: 0.5em;
-      text-transform: uppercase; }
-      @media screen and (max-width: 533px) {
-        section div.container div h2:before {
-          font-size: 0.45em; } }
-      @media screen and (max-width: 415px) {
-        section div.container div h2:before {
-          top: -68%; } }
   section div.container div p {
     margin: 1% auto;
     max-width: 825px; }
@@ -270,10 +255,10 @@ section {
         max-width: 360px; } }
     @media screen and (max-width: 415px) {
       section div.container div p {
-        max-width: 259px; } }
+        max-width: 330px; } }
     @media screen and (max-width: 330px) {
       section div.container div p {
-        max-width: 235px; } }
+        max-width: 281px; } }
     section div.container div p a {
       color: #8bcfb5;
       font-size: 1em; }

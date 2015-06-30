@@ -736,8 +736,10 @@ article {
   .blog_content .block-img img {
     margin: 0;
     float: none;
+    max-width: 800px;
+    max-height: 248px;
     width: auto;
-    max-width: 100%;
+    height: auto;
     display: block !important; }
   .blog_content .block-img + p {
     font-size: 0.9em; }

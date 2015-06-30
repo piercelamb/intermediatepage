@@ -58,8 +58,8 @@ h2 {
       font-size: 1.5em; } }
 
 h3 {
-  font-size: 1.8em; }
-  @media screen and (max-width: 970px) {
+  font-size: 1.59em; }
+  @media screen and (max-width: 1150px) {
     h3 {
       font-size: 1.5em; } }
   @media screen and (max-width: 768px) {
@@ -288,6 +288,8 @@ footer {
           color: #5f6764; }
           footer .container nav ul li a:before, footer .container nav ul li a:after {
             background: #5f6764; }
+          footer .container nav ul li a:before {
+            top: -4px; }
       footer .container nav ul li {
         margin-right: 7px; }
       footer .container nav ul li:last-child {

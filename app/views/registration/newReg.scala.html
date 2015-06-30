@@ -18,25 +18,25 @@
     <section class="explainerWhat">
         <div class="container">
             <div>
-                <h2 class="wow fadeInDown" data-wow-duration="2s">Introducing Snappy</h2>
-                <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">Big data analytics frameworks that used to require hundreds of servers, months of development and over $100k in costs  can now be set up on 1/10th of the servers, at 1/10th of the cost and run 10x faster.</p>
+                <h2 class="wow fadeInDown" data-wow-duration="2s">Introducing SnappyData</h2>
+                <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">A new real-time analytics platform that combines probabilistic data structures, approximate query processing and in memory distributed data management to deliver powerful analytic querying and alerting capabilities on Apache Spark at a fraction of the cost of traditional big data analytics platforms. <a href="#">Learn more on our blog</a></p>
             </div>
 
             <ul>
                 <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
-                    <i class="fa fa-file-image-o fa-5x"></i>
+                    <img src="@routes.Assets.at("images/icons/in-memory-synopsis-green.svg")" alt=""/>
                     <h3>In-memory synopsis store</h3>
-                    <p>Snappy is an in-memory, distributed store that creates synopsis data to deliver faster analytics queries on less hardware. <a href="#">Learn more on our blog</a></p>
+                    <p>SnappyData is an in-memory, distributed store that creates synopsis data to deliver faster analytics queries on less hardware.</p>
                 </li>
                 <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.5s">
-                    <i class="fa fa-file-image-o fa-5x"></i>
+                    <img src="@routes.Assets.at("images/icons/sql-spark-green.svg")" alt=""/>
                     <h3>Spark & SQL interfaces</h3>
-                    <p>Snappy aims for ease of use by exposing the well known Spark programming model and SQL query execution. <a href="#">Learn more on our blog</a></p>
+                    <p>SnappyData aims for ease of use by exposing the well known Spark programming model and SQL query execution.</p>
                 </li>
                 <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="2s">
-                    <i class="fa fa-file-image-o fa-5x"></i>
-                    <h3>Streaming & Batch Architecture</h3>
-                    <p>Use low latency approximate querying techniques in both batch and streaming contexts. <a href="#">Learn more on our blog</a></p>
+                    <img src="@routes.Assets.at("images/icons/streaming-historical-green.svg")" alt=""/>
+                    <h3>Streaming+Historical Analytics</h3>
+                    <p>Use low latency approximate querying techniques in both Historical and streaming contexts.</p>
                 </li>
             </ul>
         </div>
@@ -45,17 +45,18 @@
         <div class="container">
             <div>
                 <h2 class="wow fadeInDown" data-wow-duration="2s">How does it work?</h2>
-                <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">Snappy works by computing synopsis and probabilistic data structures that it maintains in memory. A Spark programming model is exposed to easily query Snappy's infrastructure. <a href="#">Learn more on our blog</a></p>
+                <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">SnappyData creates probabilistic summary structures and stratified samples on ingested data and intelligently uses these to answer SQL queries on the complete data set. The use of Apache Spark as the underlying platform allows data scientists and application developers to take advantage of the Spark programming model and ecosystem.
+                    <a href="#">Learn more on our blog</a></p>
 
             </div>
             <ul>
                 <li class="Aligner wow fadeInRight" data-wow-duration="1s" data-wow-delay="1s">
                     <p>1</p>
-                    <p class="Aligner-item">Install Snappy on existing servers or hook into our web service</p>
+                    <p class="Aligner-item">Install SnappyData into an existing or new Spark cluster</p>
                 </li>
                 <li class="Aligner wow fadeInRight" data-wow-duration="1s" data-wow-delay="1.5s">
                     <p>2</p>
-                    <p class="Aligner-item">Snappy discovers your most common analytics queries and creates synopsis data structures</p>
+                    <p class="Aligner-item">SnappyData builds probabilistic data structures and samples based on your most common queries</p>
                 </li>
                 <li class="Aligner wow fadeInRight" data-wow-duration="1s" data-wow-delay="2s">
                     <p>3</p>
@@ -63,7 +64,7 @@
                 </li>
                 <li class="Aligner wow fadeInRight" data-wow-duration="1s" data-wow-delay="2.5s">
                     <p>4</p>
-                    <p class="Aligner-item">You write new analytics queries for Snappy</p>
+                    <p class="Aligner-item">Register continuous queries and receive alerts when query conditions are triggered on incoming data</p>
                 </li>
             </ul>
         </div>
@@ -71,31 +72,31 @@
     <section class="features">
         <div class="container">
             <div>
-                <h2>Snappy Features</h2>
+                <h2>SnappyData Features</h2>
             </div>
             <ul>
                 <li class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-                    <i class="fa fa-file-image-o fa-5x"></i>
+                    <img src="@routes.Assets.at("images/icons/open-source-grey.svg")" alt=""/>
                     <p>Committed to Open Source</p>
                 </li>
                 <li class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.8s">
-                    <i class="fa fa-file-image-o fa-5x"></i>
+                    <img src="@routes.Assets.at("images/icons/sql-spark-grey.svg")" alt=""/>
                     <p>SQL & Spark interfaces</p>
                 </li>
                 <li class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="1.1s">
-                    <i class="fa fa-file-image-o fa-5x"></i>
+                    <img src="@routes.Assets.at("images/icons/continuous-query-grey.svg")" alt=""/>
                     <p>Scalable streaming analytics/continuous query</p>
                 </li>
                 <li class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="1.4s">
-                    <i class="fa fa-file-image-o fa-5x"></i>
+                    <img src="@routes.Assets.at("images/icons/synopses-grey.svg")" alt=""/>
                     <p>Probabilistic data structures designed for speed</p>
                 </li>
                 <li class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="1.7s">
-                    <i class="fa fa-file-image-o fa-5x"></i>
+                    <img src="@routes.Assets.at("images/icons/spark-grey.svg")" alt=""/>
                     <p>Integration with Spark ecosystem</p>
                 </li>
                 <li class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="2s">
-                    <i class="fa fa-file-image-o fa-5x"></i>
+                    <img src="@routes.Assets.at("images/icons/streaming-grey.svg")" alt=""/>
                     <p>Optimized for querying streaming data</p>
                 </li>
             </ul>
@@ -111,8 +112,8 @@
                         </a>
                     </h1>
                 </div>
-                <h2 class="wow fadeInDown" data-wow-duration="2s">Snappy Team</h2>
-                <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">Snappy is brought to you by a team of engineers and evangelists with over a decade of experience working together in the in-memory computing industry.
+                <h2 class="wow fadeInDown" data-wow-duration="2s">SnappyData Team</h2>
+                <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">SnappyData is brought to you by a team of engineers and evangelists with over a decade of experience working together in the in-memory computing industry.
             </div>
         </div>
     </section>

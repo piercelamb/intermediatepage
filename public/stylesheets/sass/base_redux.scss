@@ -72,8 +72,8 @@ h2 {
 }
 
 h3 {
-	font-size:1.8em;
-		@include media(max-width 970px) {
+	font-size:1.59em;
+		@include media(max-width 1150px) {
 			font-size:1.5em;
 		}
 
@@ -377,6 +377,10 @@ footer{
 					color:$grey;
 					&:before, &:after {
 						background:$grey;
+					}
+
+					&:before {
+						top:-4px;
 					}
 				}
 			}

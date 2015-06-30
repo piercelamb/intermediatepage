@@ -117,8 +117,9 @@
 .blog_content {
 	padding:0 10%;
 	color:$grey;
+	text-align:left;
 	h1 {
-		font-size:4em;
+		font-size:3.5em;
 
 		@include media(max-width 970px) {
 		font-size:3em
@@ -148,7 +149,7 @@
 		}
 	}
 	h2 {
-	font-size:2.3em;
+	font-size:2em;
 	@include media (max-width 768px) {
 		font-size:1.8em;
 	}
@@ -182,18 +183,17 @@
 }
 }
 
-.block-img + p {
+ .block-img + p {
 		font-size:0.9em;
-		max-width:50%;
 	
-}
+ }
 }
 
 #snappydata-technical-vision {
 
-	.block-img:first-of-type{
+	// .block-img:first-of-type{
 		
-		float:left;
+	// 	float:left;
 
-	}
+	// }
 }

@@ -8,18 +8,18 @@
 
 .summary {
 	margin-top:5%;
-
+}
 
 				article {
 
 
 					@include row();
 
-					* {
-						@include media(max-width 600px) {
-							text-align: center !important;
-						}
-					}
+					// * {
+					// 	@include media(max-width 600px) {
+					// 		text-align: center !important;
+					// 	}
+					// }
 
 					img {
 						@include span-columns(2);
@@ -43,7 +43,11 @@
 
 						div {
 							display:block;
-							
+				@include media(max-width 600px){
+								padding:0 4%;
+								
+							}
+
 
 						a {
 							display:inline-block;
@@ -55,10 +59,14 @@
 							color:$grey;
 							}
 
-							@include media(max-width 600px){
-								display:block;
-								padding:0 10%;
+							@include media(max-width 600px) {
 								font-size:1.9em;
+								display:block;
+							}
+
+
+							@include media(max-width 400px) {
+								font-size:1.7em;
 							}
 						}
 					
@@ -79,12 +87,14 @@
 							@include media(max-width 600px) {
 								padding:0 10%;
 							}
+							@include media(max-width 400px) {
+								padding:0 5%;
+							}
 						}
 							
 					}
 
 			}
-		}
 
 
 .blogroll {
@@ -116,9 +126,12 @@
 }
 
 .blog_content {
-	padding:0 10%;
+	padding:0 10% 10% 10%;
 	color:$grey;
 	text-align:left;
+	@include media(max-width 600px) {
+		padding:0 4% 10% 4%;
+	}
 	h1 {
 		font-size:3.5em;
 
@@ -178,14 +191,18 @@
 	img{
 	margin:0;
 	float:none;
-width:800px;
-height:auto;
+	height:auto;
+	width:auto;
+	max-width:100%;
 	display:block !important;
 }
 }
 
  .block-img + p {
 		font-size:0.9em;
+		@include media (max-width 533px) {
+			font-size: 0.7em;
+		}
 	
  }
 }

@@ -96,6 +96,13 @@ p, time {
 		@include media(max-width 533px) {
 		font-size:0.9em;
 	}
+
+}
+
+time, time ~ p {
+		@include media(max-width 599px) {
+		font-size:0.7em;
+	}
 }
 
 a {

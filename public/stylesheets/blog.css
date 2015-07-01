@@ -81,6 +81,10 @@ p, time {
     p, time {
       font-size: 0.9em; } }
 
+@media screen and (max-width: 599px) {
+  time, time ~ p {
+    font-size: 0.7em; } }
+
 a {
   font-size: 1.4em;
   text-decoration: none;
@@ -601,71 +605,77 @@ form input:last-child {
 
 .summary {
   margin-top: 5%; }
-  .summary article {
-    display: block; }
-    .summary article::after {
-      clear: both;
-      content: "";
-      display: table; }
+
+article {
+  display: block; }
+  article::after {
+    clear: both;
+    content: "";
+    display: table; }
+  article img {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 14.70196%; }
+    article img:last-child {
+      margin-right: 0; }
     @media screen and (max-width: 600px) {
-      .summary article * {
-        text-align: center !important; } }
-    .summary article img {
-      float: left;
-      display: block;
-      margin-right: 2.35765%;
-      width: 14.70196%; }
-      .summary article img:last-child {
-        margin-right: 0; }
+      article img {
+        display: none; } }
+  article > div {
+    text-align: left;
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 82.94039%; }
+    article > div:last-child {
+      margin-right: 0; }
+    @media screen and (max-width: 600px) {
+      article > div {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 100%;
+        margin: 0 auto !important;
+        float: none; }
+        article > div:last-child {
+          margin-right: 0; } }
+    article > div div {
+      display: block; }
       @media screen and (max-width: 600px) {
-        .summary article img {
-          display: none; } }
-    .summary article > div {
-      text-align: left;
-      float: left;
-      display: block;
-      margin-right: 2.35765%;
-      width: 82.94039%; }
-      .summary article > div:last-child {
-        margin-right: 0; }
-      @media screen and (max-width: 600px) {
-        .summary article > div {
-          float: left;
-          display: block;
-          margin-right: 2.35765%;
-          width: 100%;
-          margin: 0 auto !important;
-          float: none; }
-          .summary article > div:last-child {
-            margin-right: 0; } }
-      .summary article > div div {
-        display: block; }
-        .summary article > div div a {
-          display: inline-block;
-          color: #8bcfb5;
-          -webkit-transition: all 0.4s ease-in-out;
-          -moz-transition: all 0.4s ease-in-out;
-          transition: all 0.4s ease-in-out;
-          text-decoration: none;
-          font-size: 2em; }
-          .summary article > div div a:hover {
-            color: #5f6764; }
-          @media screen and (max-width: 600px) {
-            .summary article > div div a {
-              display: block;
-              padding: 0 10%;
-              font-size: 1.9em; } }
-        .summary article > div div time {
+        article > div div {
+          padding: 0 4%; } }
+      article > div div a {
+        display: inline-block;
+        color: #8bcfb5;
+        -webkit-transition: all 0.4s ease-in-out;
+        -moz-transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out;
+        text-decoration: none;
+        font-size: 2em; }
+        article > div div a:hover {
           color: #5f6764; }
-        .summary article > div div > p {
-          display: inline-block;
-          margin: 1% 0 1% 0;
-          color: #5f6764; }
-      .summary article > div > p {
-        margin: 0; }
         @media screen and (max-width: 600px) {
-          .summary article > div > p {
-            padding: 0 10%; } }
+          article > div div a {
+            font-size: 1.9em;
+            display: block; } }
+        @media screen and (max-width: 400px) {
+          article > div div a {
+            font-size: 1.7em; } }
+      article > div div time {
+        color: #5f6764; }
+      article > div div > p {
+        display: inline-block;
+        margin: 1% 0 1% 0;
+        color: #5f6764; }
+    article > div > p {
+      margin: 0; }
+      @media screen and (max-width: 600px) {
+        article > div > p {
+          padding: 0 10%; } }
+      @media screen and (max-width: 400px) {
+        article > div > p {
+          padding: 0 5%; } }
 
 .blogroll {
   padding: 7% 2% 7% 2%; }
@@ -688,9 +698,12 @@ form input:last-child {
       margin-bottom: 0; }
 
 .blog_content {
-  padding: 0 10%;
+  padding: 0 10% 10% 10%;
   color: #5f6764;
   text-align: left; }
+  @media screen and (max-width: 600px) {
+    .blog_content {
+      padding: 0 4% 10% 4%; } }
   .blog_content h1 {
     font-size: 3.5em; }
     @media screen and (max-width: 970px) {
@@ -735,10 +748,14 @@ form input:last-child {
   .blog_content .block-img img {
     margin: 0;
     float: none;
-    width: 800px;
     height: auto;
+    width: auto;
+    max-width: 100%;
     display: block !important; }
   .blog_content .block-img + p {
     font-size: 0.9em; }
+    @media screen and (max-width: 533px) {
+      .blog_content .block-img + p {
+        font-size: 0.7em; } }
 
 /*# sourceMappingURL=blog.css.map */

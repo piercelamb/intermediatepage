@@ -81,6 +81,10 @@ p, time {
     p, time {
       font-size: 0.9em; } }
 
+@media screen and (max-width: 599px) {
+  time, time ~ p {
+    font-size: 0.7em; } }
+
 a {
   font-size: 1.4em;
   text-decoration: none;

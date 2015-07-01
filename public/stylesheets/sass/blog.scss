@@ -85,10 +85,10 @@
 						& > p {
 							margin:0;
 							@include media(max-width 600px) {
-								padding:0 10%;
+								padding:0 4%;
 							}
 							@include media(max-width 400px) {
-								padding:0 5%;
+								padding:0 4%;
 							}
 						}
 							

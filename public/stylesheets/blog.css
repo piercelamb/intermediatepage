@@ -672,10 +672,10 @@ article {
       margin: 0; }
       @media screen and (max-width: 600px) {
         article > div > p {
-          padding: 0 10%; } }
+          padding: 0 4%; } }
       @media screen and (max-width: 400px) {
         article > div > p {
-          padding: 0 5%; } }
+          padding: 0 4%; } }
 
 .blogroll {
   padding: 7% 2% 7% 2%; }

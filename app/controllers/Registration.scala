@@ -6,6 +6,7 @@ import services.Messages
 import models.{Person, NewPerson, FindLoc, FindName}
 import play.api.data._
 import play.api.data.Forms._
+import play.api.data.validation._
 import play.api.libs.concurrent.Akka
 import akka.actor.Props
 import play.api.Play.current
@@ -21,7 +22,7 @@ object Registration extends Controller {
 //Mapping for the email me form
   val newPersonForm: Form[NewPerson] = Form(
     mapping(
-      "email" -> nonEmptyText(minLength = 6) //shortest domain is k.st add @ + 1 letter and the min email length is 6
+      "email" -> email //shortest domain is k.st add @ + 1 letter and the min email length is 6
     )(NewPerson.apply)(NewPerson.unapply)
   )
 
@@ -40,13 +41,13 @@ object Registration extends Controller {
       person => {
         newPerson = Person.create(ip, person.email)
         Messages.emailNewRegistration(person.email)
+        geoLookup ! FindLoc(newPerson.id, newPerson.ip)
+        nameParse ! FindName(newPerson.id, newPerson.email)
+        Ok(views.html.registration.registrationSuccess(newPerson.email))
       }
     )
-  //send messages off to actors
-  geoLookup ! FindLoc(newPerson.id, newPerson.ip)
-  nameParse ! FindName(newPerson.id, newPerson.email)
+
     //Ok(views.html.registration.newReg(newPersonForm))
-  Ok(views.html.registration.registrationSuccess(newPerson.email))
   }
 
 }

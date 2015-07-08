@@ -698,7 +698,7 @@ article {
       margin-bottom: 0; }
 
 .blog_content {
-  padding: 0 10% 10% 10%;
+  padding: 0 10% 7% 10%;
   color: #5f6764;
   text-align: left; }
   @media screen and (max-width: 600px) {
@@ -757,5 +757,11 @@ article {
     @media screen and (max-width: 533px) {
       .blog_content .block-img + p {
         font-size: 0.7em; } }
+
+#disqus_thread {
+  padding: 0 10% 7% 10%; }
+  @media screen and (max-width: 600px) {
+    #disqus_thread {
+      padding: 0 4% 10% 4%; } }
 
 /*# sourceMappingURL=blog.css.map */

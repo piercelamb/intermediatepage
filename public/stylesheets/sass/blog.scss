@@ -126,7 +126,7 @@
 }
 
 .blog_content {
-	padding:0 10% 10% 10%;
+	padding:0 10% 7% 10%;
 	color:$grey;
 	text-align:left;
 	@include media(max-width 600px) {
@@ -187,6 +187,7 @@
 	}
 
 
+
 .block-img {
 	img{
 	margin:0;
@@ -207,11 +208,10 @@
  }
 }
 
-#snappydata-technical-vision {
-
-	// .block-img:first-of-type{
-		
-	// 	float:left;
-
-	// }
+#disqus_thread {
+	padding:0 10% 7% 10%;
+		@include media(max-width 600px) {
+		padding:0 4% 10% 4%;
+	}
 }
+

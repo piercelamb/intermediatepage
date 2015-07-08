@@ -1,29 +1,42 @@
-@(document: io.prismic.Document)(implicit ctx: PrismicHelper.Context)
+@(documents: io.prismic.Document)(implicit ctx: PrismicHelper.Context)
 
-@main(s"Document detail ${document.uid}") {
+@main(s"Document detail ${documents.uid}") {
 
 <main>
 <div class="container">
     <article class="summary">
-    <img src="@document.getImage("article.illustration", "icon").fold("/assets/images/default.png")(_.url)" />
+    <img src="@documents.getImage("article.illustration", "icon").fold("/assets/images/default.png")(_.url)" />
         <div>
 <div>
-    <a href="@routes.PrismicMain.detail(document.uid.getOrElse(""))">
-        @document.getText("article.explicittitle").getOrElse("")
+    <a href="@routes.PrismicMain.detail(documents.uid.getOrElse(""))">
+        @documents.getText("article.explicittitle").getOrElse("")
     </a>
 </div>
 <div>
-    <time>@document.getDate("article.date").fold("")(_.asText("MM-dd-yyyy"))</time>
-    <p>| @document.getText("article.author").getOrElse("Anonymous")</p>
+    <time>@documents.getDate("article.date").fold("")(_.asText("MM-dd-yyyy"))</time>
+    <p>| @documents.getText("article.author").getOrElse("Anonymous")</p>
 </div>
         </div>
     </article>
 
-    <article class="blog_content" id="@document.uid.getOrElse("")">
-    @Html(document.getHtml("article.title", ctx.linkResolver).getOrElse(""))
-    @Html(document.getHtml("article.content", ctx.linkResolver).getOrElse(""))
+    <article class="blog_content" id="@documents.uid.getOrElse("")">
+    @Html(documents.getHtml("article.title", ctx.linkResolver).getOrElse(""))
+    @Html(documents.getHtml("article.content", ctx.linkResolver).getOrElse(""))
 </article>
 
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'snappydata';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
 </div>
     <section class="finalCTA">

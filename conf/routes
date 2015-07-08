@@ -20,7 +20,7 @@ GET     /blog/preview                                    controllers.PrismicMain
 GET     /blog/not-found                                  controllers.PrismicMain.brokenLink()
 
 # Registration
-GET    /register    controllers.Registration.newReg
+#GET    /register    controllers.Registration.newReg
 POST   /register    controllers.Registration.create
 
 #deprecated analytics

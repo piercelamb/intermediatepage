@@ -91,10 +91,10 @@ object Global extends GlobalSettings {   //WithFilters(AccessLoggingFilter)//
   private var controller: controllers.Analytics = _
 
   override def onStart(app: Application) {
-
-    cassandra = new SimpleClient(app.configuration.getString("cassandra.node")
-      .getOrElse(throw new IllegalArgumentException("No 'cassandra.node' config found.")))
-    controller = new controllers.Analytics(new displayTimes(cassandra))
+//
+//    cassandra = new SimpleClient(app.configuration.getString("cassandra.node")
+//      .getOrElse(throw new IllegalArgumentException("No 'cassandra.node' config found.")))
+//    controller = new controllers.Analytics(new displayTimes(cassandra))
 
     //create some accounts for /admin
     if (Account.findAll.isEmpty) {
@@ -108,13 +108,13 @@ object Global extends GlobalSettings {   //WithFilters(AccessLoggingFilter)//
 
   }
 
-  override def getControllerInstance[A](clazz: Class[A]): A = {
-    // as simple as possible, nothing else needed for now...
-    if(clazz == classOf[controllers.Analytics])
-      controller.asInstanceOf[A]
-    else
-      throw new IllegalArgumentException(s"Controller of class $clazz not yet supported")
-  }
+//  override def getControllerInstance[A](clazz: Class[A]): A = {
+//    // as simple as possible, nothing else needed for now...
+//    if(clazz == classOf[controllers.Analytics])
+//      controller.asInstanceOf[A]
+//    else
+//      throw new IllegalArgumentException(s"Controller of class $clazz not yet supported")
+//  }
 
   override def onStop(app: Application) {
     cassandra.close

@@ -6,7 +6,20 @@
 <main>
     <section class="hero">
         <div class="container">
-            <h1>Big Data Analytics without a Big Data Investment</h1>
+            <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel" data-slide-to="1"></li>
+                    <li data-target="#carousel" data-slide-to="2"></li>
+                </ol>
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+                    <div class="active item"><h1>OLTP + OLAP inside Spark for real time analytics</h1></div>
+                    <div class="item"><h1>Stream, Transact, Analyze all in one in-memory cluster</h1></div>
+                    <div class="item"><h1>Interactive Analytics at the speed of thought</h1></div>
+                </div>
+                <!-- Carousel nav -->
+            </div>
             <p>Be the first to know when we open source our beta</p>
 
             <form action="@routes.Registration.create" method="POST" >
@@ -26,8 +39,8 @@
             <ul>
                 <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
                     <img src="@routes.Assets.at("images/icons/in-memory-synopsis-green.svg")" alt=""/>
-                    <h3>In-memory synopsis store</h3>
-                    <p>SnappyData is an in-memory, distributed store that creates synopsis data to deliver faster analytics queries on less hardware.</p>
+                    <h3>OLTP + OLAP Inside Spark</h3>
+                    <p>Instantaneous analysis on streaming data, written to a data store that support high writes, point updates, point queries as well as analytic queries.</p>
                 </li>
                 <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.5s">
                     <img src="@routes.Assets.at("images/icons/sql-spark-green.svg")" alt=""/>
@@ -36,8 +49,8 @@
                 </li>
                 <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="2s">
                     <img src="@routes.Assets.at("images/icons/streaming-historical-green.svg")" alt=""/>
-                    <h3>Streaming+Historical Analytics</h3>
-                    <p>Use low latency approximate querying techniques in both historical and streaming contexts.</p>
+                    <h3>Synopsis Data Structures</h3>
+                    <p>Data structures with very low memory footprint designed for fast approximate querying.</p>
                 </li>
             </ul>
         </div>
@@ -46,26 +59,22 @@
         <div class="container">
             <div>
                 <h2 class="wow fadeInDown" data-wow-duration="2s">How does it work?</h2>
-                <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">SnappyData leverages the Spark computational engine to process incoming streaming data and then publishes the processed data into a distributed in-memory database that is highly available, multi-tenanted, and manages large data sets in column compressed form for analytics, or row oriented form for fast-changing data. For very fast ingestion rates, data goes through stages: first managed as rows and then aged into compressed columns in distributed memory. Besides managing “exact” data, the engine is also capable of using statistical techniques to further reduce data set size so analytic queries can run in a fraction of the time with significantly less resources. SnappyData will provide true streaming analytics and interactive queries through a single platform that is far less complex than alternatives. And, The use of Apache Spark as the underlying platform allows data scientists and application developers to take advantage of the Spark programming model and ecosystem.
+                <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">SnappyData fuses the Spark computational engine with a highly available, multi-tenanted in-memory database to execute OLAP & OLTP queries on streaming data. Further, SnappyData can store data in a variety of synopsis data structures to provide extremely fast responses on less resources. Finally, Applications can either submit Spark programs or connect using JDBC/ODBC to run interactive or continuous SQL queries.
                     <a href="@routes.PrismicMain.detail("snappydata-technical-vision")">Learn more on our blog</a></p>
 
             </div>
             <ul>
                 <li class="Aligner wow fadeInRight" data-wow-duration="1s" data-wow-delay="1s">
                     <p>1</p>
-                    <p class="Aligner-item">Deploy the SnappyData Spark cluster and connect it to historical data or streams</p>
+                    <p class="Aligner-item">Deploy SnappyData and connect it to historical or streaming data</p>
                 </li>
                 <li class="Aligner wow fadeInRight" data-wow-duration="1s" data-wow-delay="1.5s">
                     <p>2</p>
-                    <p class="Aligner-item">SnappyData builds probabilistic data structures and samples based on your most common queries</p>
+                    <p class="Aligner-item">Write interactive or continuous SQL queries on connected data</p>
                 </li>
                 <li class="Aligner wow fadeInRight" data-wow-duration="1s" data-wow-delay="2s">
                     <p>3</p>
-                    <p class="Aligner-item">Register continuous queries and receive alerts when query conditions are triggered on incoming data</p>
-                </li>
-                <li class="Aligner wow fadeInRight" data-wow-duration="1s" data-wow-delay="2.5s">
-                    <p>4</p>
-                    <p class="Aligner-item">Write interactive queries with 10x less latency and 10x less resources</p>
+                    <p class="Aligner-item">Use SnappyData’s synopsis structures to speed up execution</p>
                 </li>
             </ul>
         </div>
@@ -86,11 +95,11 @@
                 </li>
                 <li class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="1.1s">
                     <img src="@routes.Assets.at("images/icons/continuous-query-grey.svg")" alt=""/>
-                    <p>Scalable streaming analytics/continuous query</p>
+                    <p>Concurrent OLAP+OLTP workloads</p>
                 </li>
                 <li class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="1.4s">
                     <img src="@routes.Assets.at("images/icons/synopses-grey.svg")" alt=""/>
-                    <p>Probabilistic data structures designed for speed</p>
+                    <p>Synopsis data structures designed for speed</p>
                 </li>
                 <li class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="1.7s">
                     <img src="@routes.Assets.at("images/icons/spark-grey.svg")" alt=""/>
@@ -98,7 +107,7 @@
                 </li>
                 <li class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="2s">
                     <img src="@routes.Assets.at("images/icons/streaming-grey.svg")" alt=""/>
-                    <p>Optimized for querying streaming data</p>
+                    <p>Always-on high availability</p>
                 </li>
             </ul>
         </div>

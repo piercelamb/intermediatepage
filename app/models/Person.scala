@@ -101,7 +101,8 @@ object Person {
 
   def create(ip: String, email: String): Person = {
     DB.withConnection { implicit c =>
-      val id: Long = SQL("INSERT INTO person(ip, email, checked) VALUES({ip}, {email}, FALSE)").on('ip -> ip, 'email -> email)
+      val id: Long = SQL("INSERT INTO person(ip, email, checked) VALUES({ip}, {email}, FALSE)")
+        .on('ip -> ip, 'email -> email)
         .executeInsert(scalar[Long] single)
 
       return Person.find(id)

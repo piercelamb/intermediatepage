@@ -1,5 +1,6 @@
 @import "bourbon/bourbon";
 @import "neat/neat";
+@import "carousel";
 
 //structure
 .container {
@@ -305,7 +306,7 @@ section {
 			}
 
 			p {
-				margin:4% auto;
+				margin:5% auto 4% auto;
 				max-width:800px;
 				a{font-size:1em;
 					color:$grey;

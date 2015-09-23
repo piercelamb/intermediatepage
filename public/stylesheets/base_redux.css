@@ -196,10 +196,7 @@ html {
     bottom: -50px; } }
 @media screen and (max-width: 850px) {
   .carousel-indicators {
-    display: none; }
-
-  section div.container p {
-    margin: 4% auto; } }
+    display: none; } }
 .container {
   max-width: 68em;
   margin-left: auto;
@@ -265,16 +262,16 @@ h3 {
     h3 {
       font-size: 1.2em; } }
 
-p, time {
+p, time, .blog_content li {
   font-size: 1.3em; }
   @media screen and (max-width: 970px) {
-    p, time {
+    p, time, .blog_content li {
       font-size: 1.2em; } }
   @media screen and (max-width: 768px) {
-    p, time {
+    p, time, .blog_content li {
       font-size: 1.1em; } }
   @media screen and (max-width: 533px) {
-    p, time {
+    p, time, .blog_content li {
       font-size: 0.9em; } }
 
 @media screen and (max-width: 599px) {

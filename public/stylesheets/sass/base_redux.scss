@@ -86,7 +86,7 @@ h3 {
 		}
 }
 
-p, time {
+p, time, .blog_content li {
 	font-size:1.3em;
 		@include media(max-width 970px) {
 		font-size:1.2em;

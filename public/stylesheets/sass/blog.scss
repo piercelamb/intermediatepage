@@ -199,11 +199,11 @@
 }
 }
 
- .block-img + p {
-		font-size:0.9em;
-		@include media (max-width 533px) {
-			font-size: 0.7em;
-		}
+ // .block-img + p {
+	// 	font-size:0.9em;
+	// 	@include media (max-width 533px) {
+	// 		font-size: 0.7em;
+	// 	}
 	
  }
 }

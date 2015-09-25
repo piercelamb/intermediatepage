@@ -26,7 +26,7 @@ class GeoLookup extends Actor {
     case FindLoc(id, ip) =>
 
       println("IP recevied by GeoLookup " + ip)
-      val url = "http://ip-api.com/json/" + "24.22.84.77"
+      val url = "http://ip-api.com/json/" + ip
       //create URL and hit the API
       val result = scala.io.Source.fromURL(url).mkString
       //Turn result into string and parse

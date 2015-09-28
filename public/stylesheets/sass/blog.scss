@@ -5,8 +5,6 @@
 	max-height:600px;
 }
 
-strong {color: $black}
-
 
 .summary {
 	margin-top:5%;
@@ -180,6 +178,7 @@ strong {color: $black}
 
 	p {
 		color:$grey;
+		strong {color: $black}
 		a {
 			font-size:1em;
 			&:hover {

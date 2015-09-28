@@ -837,9 +837,6 @@ form input:last-child {
   padding: 7% 6% 7% 6%;
   max-height: 600px; }
 
-strong {
-  color: #222222; }
-
 .summary {
   margin-top: 5%; }
 
@@ -978,6 +975,8 @@ article {
         font-size: 1em; } }
   .blog_content p {
     color: #5f6764; }
+    .blog_content p strong {
+      color: #222222; }
     .blog_content p a {
       font-size: 1em; }
       .blog_content p a:hover {

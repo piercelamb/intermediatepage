@@ -5,6 +5,9 @@
 # Home page
 GET     /    controllers.Registration.newReg
 
+# Product Page
+GET     /product            controllers.Registration.product
+
 # blog page
 GET     /blog                                           controllers.PrismicMain.index(page: Int ?= 1)
 

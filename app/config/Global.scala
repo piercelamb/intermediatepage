@@ -97,12 +97,12 @@ object Global extends GlobalSettings {   //WithFilters(AccessLoggingFilter)//
 //    controller = new controllers.Analytics(new displayTimes(cassandra))
 
     //create some accounts for /admin
-    if (Account.findAll.isEmpty) {
-      Seq(
-        Account(0, "plamb@snappydata.io", "secret", "Pierce", Administrator)
-      ) foreach Account.create
-
-    }
+//    if (Account.findAll.isEmpty) {
+//      Seq(
+//        Account(0, )
+//      ) foreach Account.create
+//
+//    }
 //DNS resolve for prismic
     java.security.Security.setProperty("networkaddress.cache.ttl" , "60");
 

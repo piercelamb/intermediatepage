@@ -31,6 +31,10 @@ object Registration extends Controller {
     Ok(views.html.registration.newReg(newPersonForm))
   }
 
+  def product = Action {
+    Ok(views.html.marketing.product())
+  }
+
   var newPerson: Person = _
 //Once the email me form is created, this code creates a new Person object in the database then sends
 //the new IP and ID to the geoLookup actor indicating there is a new IP to do a lookup on and insert in the DB

@@ -83,29 +83,51 @@ background-color:$green;
 color:$white;
 
 div.container{
+	&>p {
 
-
-
-p {
-
-		@include media(max-width 900px) {
-		max-width:650px;
-	}
+			@include media(max-width 900px) {
+			max-width:650px;
+			}
 
 			@include media(max-width 750px) {
-		max-width:500px;
-	}
+			max-width:500px;
+			}
 
 				@include media(max-width 550px) {
-		max-width:400px;
+			max-width:400px;
+			}
+
+			@include media(max-width 415px) {
+			max-width:215px;
+			margin:6% auto;
+			}
+		}
+
+	button {
+		padding:0 5%;
+		text-transform:uppercase;
+		}
+
+	&>div:last-of-type a {
+		margin-left:1%;
+		color:$grey;
+		display:inline-block;
+		height:50px;
+		vertical-align:baseline;
+
+		&>p {
+			margin:0px !important;
+			display:inline-block;
+			font-size:1em;
+			padding-top:8px;
+
+			}
+		&:hover {
+			color:$white;
+			}
+		}
 	}
 
-	@include media(max-width 415px) {
-		max-width:215px;
-		margin:6% auto;
-	}
-	}
-}
 }
 
 .explainerWhat {
@@ -333,6 +355,7 @@ color:$white;
 div.container {
 
 	p {
+		margin:2% auto;
 		@include media(max-width 600px) {
 			  max-width: 215px;
   			margin: 6% auto;
@@ -351,4 +374,61 @@ div.container {
 		}
 
 }
+
+button{text-transform:uppercase}
+}
+
+#product {
+	.hero {
+		p {
+			margin:3% auto;
+			max-width:500px;
+		}
+
+		.architecture {
+			margin:0px auto;
+			width:500px;
+			background-color:$light-grey;
+			padding:15px;
+			color:$grey;
+
+			div {
+				height:75px;
+				@include transition(all 0.4s ease-in-out);
+				line-height:3;
+				background:$white;
+
+				h3 {
+					margin:0;
+				}
+
+				&:hover {
+					cursor:pointer;					
+					box-shadow: 456.5px 0px 0px 0px $green inset;
+				}
+			}
+			*:not(:first-child){
+				margin-top:10px;
+			}
+
+			&>img {
+				width: 45px;
+				height:34px;
+				margin-bottom:15px;		
+			}
+
+			#spark{
+				
+				img {
+					width:125px;
+					height:66px;
+				}
+			}
+
+			#gemxd{
+				
+
+			}
+		}
+	}
 }

@@ -20,20 +20,18 @@
                 </div>
                 <!-- Carousel nav -->
             </div>
-            <p>Be the first to know when we open source our beta</p>
+            <p>Our beta is now live & open source!</p>
 
-            <form action="@routes.Registration.create" method="POST" >
-                <input type="text" id="email" name="email" value="" />
-                <span class="placeholder">email</span>
-                <input type="submit" value="Notify me" />
-            </form>
+<div>
+    <button>download</button><a href="@routes.Registration.product"><p>how does it work?</p><span class="chevron right"></span></a>
+</div>
         </div>
     </section>
     <section class="explainerWhat">
         <div class="container">
             <div>
                 <h2 class="wow fadeInDown" data-wow-duration="2s">Introducing SnappyData</h2>
-                <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">A new real-time analytics platform that combines probabilistic data structures, approximate query processing and in memory distributed data management to deliver powerful analytic querying and alerting capabilities on Apache Spark at a fraction of the cost of traditional big data analytics platforms. <a href="@routes.PrismicMain.detail("snappydata-technical-vision")">Learn more on our blog</a></p>
+                <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">A new real-time analytics platform that combines probabilistic data structures, approximate query processing and in memory distributed data management to deliver powerful analytic querying and alerting capabilities on Apache Spark at a fraction of the cost of traditional big data analytics platforms. <a href="@routes.Registration.product">Learn more</a></p>
             </div>
 
             <ul>
@@ -60,7 +58,7 @@
             <div>
                 <h2 class="wow fadeInDown" data-wow-duration="2s">How does it work?</h2>
                 <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">SnappyData fuses the Spark computational engine with a highly available, multi-tenanted in-memory database to execute OLAP & OLTP queries on streaming data. Further, SnappyData can store data in a variety of synopsis data structures to provide extremely fast responses on less resources. Finally, applications can either submit Spark programs or connect using JDBC/ODBC to run interactive or continuous SQL queries.
-                    <a href="@routes.PrismicMain.detail("snappydata-technical-vision")">Learn more on our blog</a></p>
+                    <a href="@routes.Registration.product">Learn more</a></p>
 
             </div>
             <ul>
@@ -123,21 +121,17 @@
                     </h1>
                 </div>
                 <h2 class="wow fadeInDown" data-wow-duration="2s">SnappyData Team</h2>
-                <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">SnappyData is brought to you by a team of engineers and evangelists with over a decade of experience working together in the in-memory computing industry.
+                <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">SnappyData is brought to you by a team of engineers and evangelists with over a decade of experience working together in the in-memory computing industry. <a href="#")">Learn more</a></p>
             </div>
         </div>
     </section>
     <section class="finalCTA">
         <div class="container">
 
-                <h2>Stay Informed</h2>
-                <p>Be the first to know when we open source our beta</p>
+                <h2>Download our open source beta</h2>
+                <p>We would love to hear from you. <a href="#">Contact Us</a></p>
+                <button>download</button>
 
-            <form action="/register" method="POST" >
-                <input type="text" id="email" name="email" value="" />
-                <span class="placeholder">email</span>
-                <input type="submit" value="Notify me" />
-            </form>
         </div>
     </section>
 </main>

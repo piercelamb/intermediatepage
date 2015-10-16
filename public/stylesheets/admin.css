@@ -288,12 +288,27 @@ a {
   a:hover {
     cursor: pointer; }
 
-nav a, form input, form span {
+nav a, form input, form span, nav button {
   font-size: 1em;
   text-transform: uppercase; }
-  @media screen and (max-width: 770px) {
-    nav a, form input, form span {
+  @media screen and (max-width: 970px) {
+    nav a, form input, form span, nav button {
+      font-size: 0.9em; } }
+  @media screen and (max-width: 845px) {
+    nav a, form input, form span, nav button {
       font-size: 0.8em; } }
+
+button {
+  background-color: #222222;
+  color: #FFFFFF;
+  border: none;
+  height: 50px;
+  padding: 0px 9%;
+  -webkit-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out; }
+  button:hover {
+    box-shadow: 0px 50px 0px 0px #5f6764 inset; }
 
 ul {
   padding: 0;
@@ -303,45 +318,74 @@ ul {
 input:focus {
   outline: none; }
 
-nav {
+.chevron::before {
+  border-style: solid;
+  border-width: 0.16em 0.16em 0 0;
+  content: '';
+  display: inline-block;
+  height: 0.5em;
+  left: 0.15em;
+  position: relative;
+  top: -0.1em;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  vertical-align: middle;
+  width: 0.5em; }
+
+.chevron.right:before {
+  left: 1%;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg); }
+
+nav a {
+  color: #5f6764;
+  font-family: Lato_b;
+  letter-spacing: 1px;
+  color: #FFFFFF;
+  position: relative; }
+  nav a:before, nav a:after {
+    position: absolute;
+    left: -3px;
+    width: 106%;
+    height: 1px;
+    background: #FFFFFF;
+    content: "";
+    opacity: 0;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s; }
+  nav a:before {
+    top: -4px;
+    -webkit-transform: translateY(15px);
+    -moz-transform: translateY(15px);
+    -ms-transform: translateY(15px);
+    -o-transform: translateY(15px);
+    transform: translateY(15px); }
+  nav a:after {
+    bottom: -2px;
+    -webkit-transform: translateY(-15px);
+    -moz-transform: translateY(-15px);
+    -ms-transform: translateY(-15px);
+    -o-transform: translateY(-15px);
+    transform: translateY(-15px); }
+  nav a:hover:before, nav a:hover:after {
+    opacity: 1;
+    -webkit-transform: translateY(2px);
+    -moz-transform: translateY(2px);
+    -ms-transform: translateY(2px);
+    -o-transform: translateY(2px);
+    transform: translateY(2px); }
+nav button {
+  height: 42px;
   display: inline-block; }
-  nav a {
-    color: #5f6764;
-    font-family: Lato_b;
-    letter-spacing: 1px;
-    color: #FFFFFF; }
-    nav a:before, nav a:after {
-      position: absolute;
-      left: 0px;
-      width: 100%;
-      height: 2px;
-      background: #FFFFFF;
-      content: "";
-      opacity: 0;
-      -webkit-transition: all 0.3s;
-      -o-transition: all 0.3s;
-      transition: all 0.3s; }
-    nav a:before {
-      top: 0px;
-      -webkit-transform: translateY(15px);
-      -moz-transform: translateY(15px);
-      -ms-transform: translateY(15px);
-      -o-transform: translateY(15px);
-      transform: translateY(15px); }
-    nav a:after {
-      bottom: 0px;
-      -webkit-transform: translateY(-15px);
-      -moz-transform: translateY(-15px);
-      -ms-transform: translateY(-15px);
-      -o-transform: translateY(-15px);
-      transform: translateY(-15px); }
-    nav a:hover:before, nav a:hover:after {
-      opacity: 1;
-      -webkit-transform: translateY(2px);
-      -moz-transform: translateY(2px);
-      -ms-transform: translateY(2px);
-      -o-transform: translateY(2px);
-      transform: translateY(2px); }
+  nav button:hover {
+    box-shadow: 0px 42px 0px 0px #5f6764 inset; }
 
 form {
   width: 70%;
@@ -374,20 +418,52 @@ header {
   width: 100%;
   background-color: #8bcfb5;
   color: #FFFFFF;
-  position: relative;
   padding: 3%; }
-  header img {
-    width: 70px;
-    height: 53px; }
-  header nav {
-    position: absolute;
-    top: 35%;
-    right: 5%;
-    height: 30px; }
-    header nav ul {
-      margin: 5px 0px 0px 0px; }
-      header nav ul a {
-        margin: 0px 10px; }
+  header .container {
+    max-width: 61em; }
+    header .container::after {
+      clear: both;
+      content: "";
+      display: table; }
+    @media screen and (max-width: 1200px) {
+      header .container {
+        max-width: 56em; } }
+    @media screen and (max-width: 970px) {
+      header .container {
+        max-width: 46em; } }
+    @media screen and (max-width: 845px) {
+      header .container {
+        max-width: 43em; } }
+    header .container .logo {
+      float: left; }
+      header .container .logo a {
+        clear: both;
+        content: "";
+        display: table; }
+    header .container img {
+      width: 70px;
+      height: 53px; }
+    header .container nav {
+      margin-top: 6px;
+      float: right; }
+      header .container nav ul {
+        margin: 9px 0px 0px 0px;
+        float: left;
+        width: 345px; }
+        header .container nav ul li {
+          display: inline-block; }
+        header .container nav ul li:not(:first-of-type) {
+          margin-left: 20px; }
+      header .container nav button {
+        float: right;
+        /*width:26%;*/
+        vertical-align: middle;
+        /*padding:0 4%; */
+        margin-left: 20px;
+        padding: 0 25px; }
+        @media screen and (max-width: 845px) {
+          header .container nav button {
+            margin-left: 0; } }
 
 .logo {
   display: inline-block; }
@@ -431,7 +507,7 @@ section {
       section div.container h1 {
         max-width: 319px; } }
   section div.container p {
-    margin: 5% auto 4% auto;
+    margin: 8% auto 4% auto;
     max-width: 800px; }
     section div.container p a {
       font-size: 1em;
@@ -658,18 +734,34 @@ form input:last-child {
   background-color: #8bcfb5;
   color: #FFFFFF; }
   @media screen and (max-width: 900px) {
-    .hero div.container p {
+    .hero div.container > p {
       max-width: 650px; } }
   @media screen and (max-width: 750px) {
-    .hero div.container p {
+    .hero div.container > p {
       max-width: 500px; } }
   @media screen and (max-width: 550px) {
-    .hero div.container p {
+    .hero div.container > p {
       max-width: 400px; } }
   @media screen and (max-width: 415px) {
-    .hero div.container p {
+    .hero div.container > p {
       max-width: 215px;
       margin: 6% auto; } }
+  .hero div.container button {
+    padding: 0 5%;
+    text-transform: uppercase; }
+  .hero div.container > div:last-of-type a {
+    margin-left: 1%;
+    color: #5f6764;
+    display: inline-block;
+    height: 50px;
+    vertical-align: baseline; }
+    .hero div.container > div:last-of-type a > p {
+      margin: 0px !important;
+      display: inline-block;
+      font-size: 1em;
+      padding-top: 8px; }
+    .hero div.container > div:last-of-type a:hover {
+      color: #FFFFFF; }
 
 .explainerWhat ul {
   margin: 8% 0 0 0; }
@@ -820,10 +912,12 @@ form input:last-child {
 .finalCTA {
   background-color: #8bcfb5;
   color: #FFFFFF; }
-  @media screen and (max-width: 600px) {
-    .finalCTA div.container p {
-      max-width: 215px;
-      margin: 6% auto; } }
+  .finalCTA div.container p {
+    margin: 2% auto; }
+    @media screen and (max-width: 600px) {
+      .finalCTA div.container p {
+        max-width: 215px;
+        margin: 6% auto; } }
   .finalCTA div.container span {
     bottom: 28%; }
     @media screen and (max-width: 600px) {
@@ -832,6 +926,39 @@ form input:last-child {
     @media screen and (max-width: 330px) {
       .finalCTA div.container span {
         bottom: 66%; } }
+  .finalCTA button {
+    text-transform: uppercase; }
+
+#product .hero p {
+  margin: 3% auto;
+  max-width: 500px; }
+#product .hero .architecture {
+  margin: 0px auto;
+  width: 500px;
+  background-color: #EEEEEE;
+  padding: 15px;
+  color: #5f6764; }
+  #product .hero .architecture div {
+    height: 75px;
+    -webkit-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+    line-height: 3;
+    background: #FFFFFF; }
+    #product .hero .architecture div h3 {
+      margin: 0; }
+    #product .hero .architecture div:hover {
+      cursor: pointer;
+      box-shadow: 456.5px 0px 0px 0px #8bcfb5 inset; }
+  #product .hero .architecture *:not(:first-child) {
+    margin-top: 10px; }
+  #product .hero .architecture > img {
+    width: 45px;
+    height: 34px;
+    margin-bottom: 15px; }
+  #product .hero .architecture #spark img {
+    width: 125px;
+    height: 66px; }
 
 .hero {
   max-height: none; }

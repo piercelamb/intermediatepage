@@ -386,6 +386,8 @@ nav button {
   display: inline-block; }
   nav button:hover {
     box-shadow: 0px 42px 0px 0px #5f6764 inset; }
+  nav button a:hover:before, nav button a:hover:after {
+    opacity: 0; }
 
 form {
   width: 70%;

@@ -5,13 +5,140 @@
             <h1>Stream, Transact, Analyze all in one in-memory cluster</h1>
             <p>SnappyData fuses <a target="_blank" href="http://spark.apache.org/">Apache Spark</a> with a highly available, multi-tenanted in-memory database to execute OLAP & OLTP queries on streaming data</p>
             <div class="architecture">
-                <img src="@routes.Assets.at("images/SNP-Icon-Green.png")" alt="SnappyData" />
-                <div id="clustermanager"><h3>Cluster Manager</h3></div>
-                <div id="spark"><img src="@routes.Assets.at("images/spark-logo.png")"></div>
-                <div id="gemxd"><h3>GemXD</h3></div>
+
+                <div><img src="@routes.Assets.at("images/SNP-Icon-Green.png")" alt="SnappyData" /></div>
+                <div id="yourapps" class="archbox">
+                    <h3>SQL, Spark API, Scala/Java</h3>
+                    <span class="tooltip">Access via SQL, Spark API or Scala/Java</span>
+                </div>
+
+                <div id="olapbox">
+                    <div id="olap" class="archbox">
+                        <h3>OLAP Queries</h3>
+                        <span class="tooltip">Analytics class queries</span>
+                    </div>
+                    <div id="spark" class="archbox">
+                        <img src="@routes.Assets.at("images/spark-logo.png")">
+                        <span class="tooltip">Apache Spark processing engine</span>
+                    </div>
+                </div>
+                <div id="oltp" class="archbox">
+                    <h3>OLTP Queries</h3>
+                    <span class="tooltip">Transaction class queries</span>
+                </div>
+               <!-- <div id="clustermanager"><h3>Snappy-ClusterManager</h3></div>-->
+                <div id="gemxd" class="archbox">
+                    <h3>Snappy-Store</h3>
+                    <span class="tooltip">SnappyData in-memory database</span>
+                </div>
             </div>
         </div>
     </section>
-    <section class=""></section>
+    <section class="explainerWhat">
+        <div class="container">
+            <div>
+                <h2 class="wow fadeInDown" data-wow-duration="2s">The SnappyData Platform</h2>
+                <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">
+                    The SnappyData platform is the first to bring you lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem
+                    ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+            </div>
+        </div>
+    </section>
+    <section class="explainerHow" id="appscontent">
+        <div class="container">
+            <div>
+                <h2 class="wow fadeInDown" data-wow-duration="2s">APIs</h2>
+                <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">
+                SnappyData exposes APIs for SQL, Spark-API & Scala/Java APIs lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem
+                ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="features" id="querycontent">
+        <div class="container">
+            <div>
+            <h2>Queries</h2>
+            <p>
+                SnappyData executes both OLAP and OLTP class queries. lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem
+                ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+            </p>
+            </div>
+        </div>
+    </section>
+    <section class="explainerWhat" id="sparkcontent">
+        <div class="container">
+            <div>
+            <h2>Apache Spark</h2>
+            <p>
+                Apache Spark is an open source, distributed, in-memory computation engine. lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem
+                ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+            </p>
+            </div>
+        </div>
+    </section>
+    <section class="explainerHow" id="storecontent">
+        <div class="container">
+            <div>
+            <h2>The SnappyData Store</h2>
+            <p>
+                The SnappyData Store is a distributed in-memory database capable of storing data in both row format and column format
+                lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+            </p>
+            </div>
+        </div>
+    </section>
+    <section class="finalCTA">
+        <div class="container">
+
+            <h2>Download our open source beta</h2>
+            <p>We would love to hear from you. <a href="@routes.Registration.about#contactus">Contact Us</a></p>
+            <button>download</button>
+
+        </div>
+    </section>
 </main>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.tooltip').hide();
+    $('.archbox').hover(
+    function(){
+        $tooltip = $(this).children('.tooltip');
+        $tooltip.css('z-index', 2);
+        $tooltip.delay(200).slideDown("fast");
+        },
+        function() {
+            $(this).children('.tooltip').slideUp("fast");
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#yourapps').on('click', function(){
+            $('html, body').animate({
+            scrollTop: $('#appscontent').offset().top
+           }, 1000);
+        });
+        $('#olap').on('click', function(){
+            $('html, body').animate({
+            scrollTop: $('#querycontent').offset().top
+           }, 1000);
+        });
+        $('#oltp').on('click', function(){
+            $('html, body').animate({
+            scrollTop: $('#querycontent').offset().top
+           }, 1000);
+        });
+        $('#spark').on('click', function(){
+            $('html, body').animate({
+            scrollTop: $('#sparkcontent').offset().top
+           }, 1000);
+        });
+        $('#gemxd').on('click', function(){
+            $('html, body').animate({
+            scrollTop: $('#storecontent').offset().top
+           }, 1000);
+        });
+    });
+</script>
 }

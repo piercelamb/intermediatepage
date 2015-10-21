@@ -11,6 +11,15 @@ GET     /product            controllers.Registration.product
 # blog page
 GET     /blog                                           controllers.PrismicMain.index(page: Int ?= 1)
 
+# About page
+GET /about              controllers.Registration.about
+
+# Support page
+GET /support            controllers.Registration.support
+
+#download page
+GET /download           controllers.Registration.download
+
 # Document detail
 GET     /blog/:uid   controllers.PrismicMain.detail(uid)
 

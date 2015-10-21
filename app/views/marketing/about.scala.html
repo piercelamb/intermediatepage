@@ -1,18 +1,111 @@
-@(title: String)
 
-@main(title) {
 
-<div class="container">
-    <div class="row">
-        <h1>LoL</h1>
-        <p>LoL <a href="http://github.com/michaelhawkins/playful-prelaunch"
-                                             target="_blank">
-            LoL</a> LoL
-           LoL. LoL
-            on
-            <a href="http://playful-prelaunch.herokuapp.com" target="_blank">Heroku</a>.
-        </p>
-    </div>
-</div>
+@main("Welcome to SnappyData") {
+<main id="about">
+    <section class="hero">
+        <div class="container">
+            <h1>The SnappyData Team</h1>
+            <p>The SnappyData team has spent the past decade building products in the in-memory database industry. Lorem Ipsum
+                Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum. Our mission is</p>
+        </div>
+    </section>
+    <section class="explainerWhat">
+        <div class="container">
+            <div>
+            <h2 class="wow fadeInDown" data-wow-duration="2s">Meet our founders</h2>
+            <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">The "three amigos" have been building data products together
+            for over a decade.</p>
+        </div>
+            <ul>
+                <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
+                    <img src="@routes.Assets.at("images/lamb.jpg")" width="200" height="200" alt=""/>
+                    <h3>Richard Lamb, CEO</h3>
+                    <p>Instantaneous analysis on streaming data, written to a data store that support high writes, point updates, point queries as well as analytic queries.</p>
+                </li>
+                <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.5s">
+                    <img src="@routes.Assets.at("images/jags.jpg")" width="200" height="200" alt=""/>
+                    <h3>Jags Ramnarayan, CTO</h3>
+                    <p>SnappyData delivers ease of use by exposing the Spark programming model and SQL query execution.</p>
+                </li>
+                <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="2s">
+                    <img src="@routes.Assets.at("images/suds.jpg")" width="200" height="200" alt=""/>
+                    <h3>Sudhir Menon, COO</h3>
+                    <p>Data structures with very low memory footprint designed for fast approximate querying.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="explainerWhat">
+        <div class="container">
+            <h2 class="wow fadeInDown" data-wow-duration="2s">Our Advisors</h2>
+            <ul>
+                <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
+                    <img src="@routes.Assets.at("images/barzan.jpg")" width="200" height="200" alt=""/>
+                    <h3>Barzan Mozafari, Ph.D</h3>
+                    <p>Barzan is an Assistant Professor of Computer Science and Engineering at the University of Michigan (Ann Arbor),
+                        where he is a member of the Michigan Database Group and the Software Systems Lab. He has won several awards and fellowships,
+                        including SIGMOD 2012 and EuroSys 2013′s best paper awards.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="explainerWhat">
+        <div class="container">
+            <h2 class="wow fadeInDown" data-wow-duration="2s">Our Board</h2>
+            <ul>
+                <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
+                    <img src="@routes.Assets.at("images/maritz.jpg")" width="200" height="200" alt=""/>
+                    <h3>Paul Martiz</h3>
+                    <p>Pivotal Executive Chairman of the Board Paul Maritz formed Pivotal in 2013, having previously
+                        served as Chief Strategist of EMC and CEO of VMware. During his tenure at VMware, he led
+                        transformation of the company from a technology leader in virtualization to a category leader in cloud computing.
+                        Maritz remains a member of VMware’s board of directors.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="explainerWhat">
+        <div class="container">
+            <h2 class="wow fadeInDown" data-wow-duration="2s">Our Investors</h2>
+            <ul>
+                <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
+                    <img src="@routes.Assets.at("images/pivotal.png")" width="250" height="102" alt=""/>
+                    <p>Pivotal’s cloud native platform drives software innovation for many of the world’s most admired brands.
+                        With millions of developers in communities around the world, Pivotal technology touches billions of users every day.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="finalCTA" name="contactus" id="contactus">
+        <div class="container">
+
+            <h2>Contact Us</h2>
+            <ul>
+              <li><i class="fa fa-envelope"></i><p>chomp at snappydata.io</p></li>
+                <li><i class="fa fa-github"></i><p>Join our gitter.im channel</p></li>
+                <li><i class="fa fa-slack"></i><p>Join our public slack channel</p></li>
+                <li><i class="fa fa-comment"></i><p>irc.freenode.net #snappydata</p></li>
+                <li><i class="fa fa-reddit"></i><p>Post on the <a target="_blank" href="https://www.reddit.com/r/snappydata/">subreddit</a></p></li>
+                <li><i class="fa fa-bookmark"></i>
+                    <ul>
+                    <li>
+                        <a target="_blank" href="http://www.facebook.com/snappydata">facebook</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://twitter.com/SnappyData">twitter</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://www.linkedin.com/company/snappydata">linkedin</a>
+                    </li>
+                    </ul>
+                </li>
+                <li><i class="fa fa-map-marker"></i><p>15220 NW Greenbrier Parkway
+                    Suite 150
+                    Beaverton, OR 97006 </p></li>
+            </ul>
+
+        </div>
+    </section>
+</main>
 
 }

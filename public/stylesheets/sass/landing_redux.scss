@@ -392,11 +392,13 @@ button{text-transform:uppercase}
 			padding:15px;
 			color:$grey;
 
-			div {
+			#olap, #oltp, #clustermanager, #gemxd, #spark, #yourapps {
 				height:75px;
 				@include transition(all 0.4s ease-in-out);
 				line-height:3;
 				background:$white;
+				margin-top:10px;
+				position:relative;
 
 				h3 {
 					margin:0;
@@ -404,30 +406,269 @@ button{text-transform:uppercase}
 
 				&:hover {
 					cursor:pointer;					
-					box-shadow: 456.5px 0px 0px 0px $green inset;
+					box-shadow: 0px 160px 0px 0px $green inset;
 				}
-			}
-			*:not(:first-child){
-				margin-top:10px;
-			}
 
-			&>img {
+				span{
+					background:$black;
+					color:$white;
+					position:absolute;
+					left:17%;
+					opacity:0.8;
+					padding:0 10px;
+					margin-top:3px;
+					white-space:nowrap;
+					line-height:2;
+
+				}
+				span:after{
+					bottom: 100%;
+					left: 50%;
+					border: solid transparent;
+					content: " ";
+					height: 0;
+					width: 0;
+					position: absolute;
+					pointer-events: none;
+					border-color: rgba(34, 34, 34, 0);
+					border-bottom-color: #222222;
+					border-width: 5px;
+					margin-left: -5px;
+				}
+
+			}
+				#olap span {
+					left:11%;	
+				}
+
+				#spark span {
+					left:-5%;
+					margin-top:14px;
+				}
+
+				#oltp span {
+					left:7%
+				}
+
+				#gemxd span {
+					left:22%;
+				}
+
+
+			&>div:first-child {
+					margin-bottom:15px;	
+				img {
+					position:static;
 				width: 45px;
 				height:34px;
-				margin-bottom:15px;		
+					
 			}
+		}
 
 			#spark{
-				
 				img {
 					width:125px;
 					height:66px;
 				}
 			}
 
+			#oltp, #olapbox {
+				width:49%;
+				vertical-align:bottom;
+				display:inline-block;
+				height:160px;
+
+			}
+
+			#oltp {
+			margin-left:1%;
+			line-height:6.5;
+			}
+
+			#olap {
+				margin-top:0;
+			}
+
+
 			#gemxd{
 				
 
+			}
+		}
+	}
+}
+
+#about {
+		.hero {
+		p {
+			margin:3% auto;
+			max-width:500px;
+		}
+	}
+
+	section:not(:first-child) {
+		ul {
+			margin:6% 0 0 0;
+		}
+	}
+
+	.explainerWhat:nth-child(3) {
+		background-color:$grey;
+		color:$white;
+		ul {
+			li{
+				@include span-columns(6);
+				@include shift(3);
+			}
+		}
+	}
+
+	.explainerWhat:nth-child(4) {
+		background-color:$black;
+		color:$white;
+		ul {
+			li{
+				@include span-columns(6);
+				@include shift(3);
+			}
+		}
+	}
+
+	.explainerWhat:nth-child(5) {
+		ul {
+			li{
+				@include span-columns(6);
+				@include shift(3);
+			}
+		}
+	}
+
+	section img {
+		@include border-top-radius(50%);
+@include border-right-radius(50%);
+@include border-bottom-radius(50%);
+@include border-left-radius(50%);
+	}
+
+.finalCTA {
+	div.container {
+		&>ul {
+			margin:4% 0 0 0;
+@include span-columns(4);
+@include shift(4);
+			&>li{
+				text-align:left;
+				@include outer-container;
+				&>p, &>ul{
+					@include span-columns(11);
+					@include omega();
+				}
+				&>i{
+					@include span-columns(1);
+					vertical-align:bottom;
+					margin-top:8px;
+				}
+				&>p{
+					margin:0;
+					a {
+						font-size:inherit;
+					}
+					
+				}
+
+				a {
+					color:$grey;
+					font-size:1.3em;
+					&:hover {
+						color:$white;
+					}
+				}
+
+				ul {
+					margin:0;
+					display:inline-block;
+					li{
+						display:inline-block;	
+					}
+					li:not(:first-child){
+						margin-left:3px;
+					}
+				}
+			}
+
+			&>li:not(:first-child) {
+				margin-top:6px;
+			}
+		}
+	}
+}
+
+}
+
+#support {
+	.explainerWhat:nth-child(3) {
+		background-color:$grey;
+		color:white;
+		ul {
+			margin:2% 0 0 0;
+			li {
+				width:30.9%;
+				margin-top:2%;
+				h3 {
+					margin-top:1%;
+				}
+				i {
+					color:white;
+				}
+				a {
+					font-size:inherit;
+					&:hover {
+						color:$black;
+					}
+				}
+			}
+		}
+	}
+}
+
+#download {
+	.hero {
+
+		div.container {
+		p {
+			margin:4% auto;
+
+		}
+
+		&>div:last-of-type {
+			margin-top:2%;
+
+			a, p{
+				text-decoration:underline;
+			}
+		}
+
+	}
+}
+
+.explainerWhat {
+		ul {
+			margin:2% 0 0 0;
+			li {
+				width:30.9%;
+				margin-top:2%;
+				h3 {
+					margin-top:1%;
+				}
+				i {
+					color:$black;
+				}
+				a {
+					font-size:inherit;
+					&:hover {
+						color:$black;
+					}
+				}
 			}
 		}
 	}

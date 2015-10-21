@@ -39,6 +39,7 @@
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/animate.css")">
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/landing_redux.css")">
     <script src="@routes.Assets.at("javascripts/vendor/modernizr-2.8.3.min.js")"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </head>
 
 <body>
@@ -57,11 +58,11 @@
         <nav>
             <ul>
                 <li><a href="@routes.Registration.product">product</a></li>
-                <li><a href="#">about</a></li>
-                <li><a href="#">support</a></li>
+                <li><a href="@routes.Registration.about">about</a></li>
+                <li><a href="@routes.Registration.support">support</a></li>
                 <li><a href="@routes.PrismicMain.index()">blog</a></li>
             </ul>
-            <button>download</button>
+            <button><a href="@routes.Registration.download">download</a></button>
         </nav>
     </div>
 </header>
@@ -71,7 +72,7 @@
         <nav class="Aligner-item">
             <ul>
                 <li><a href="@routes.Registration.product">product</a></li>
-                <li><a href="#">about</a></li>
+                <li><a href="@routes.Registration.about">about</a></li>
                 <li><a href="#">support</a></li>
                 <li><a href="@routes.PrismicMain.index()">blog</a></li>
             </ul>
@@ -98,7 +99,6 @@
         </div>
     </div>
 </footer>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="@routes.Assets.at("javascripts/bootstrap.min.js")"></script>
     <script type='text/javascript'>
     $(document).ready(function(){$('.carousel').carousel();});

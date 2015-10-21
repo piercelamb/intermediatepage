@@ -386,6 +386,8 @@ nav button {
   display: inline-block; }
   nav button:hover {
     box-shadow: 0px 42px 0px 0px #5f6764 inset; }
+  nav button a:hover:before, nav button a:hover:after {
+    opacity: 0; }
 
 form {
   width: 70%;
@@ -938,26 +940,205 @@ form input:last-child {
   background-color: #EEEEEE;
   padding: 15px;
   color: #5f6764; }
-  #product .hero .architecture div {
+  #product .hero .architecture #olap, #product .hero .architecture #oltp, #product .hero .architecture #clustermanager, #product .hero .architecture #gemxd, #product .hero .architecture #spark, #product .hero .architecture #yourapps {
     height: 75px;
     -webkit-transition: all 0.4s ease-in-out;
     -o-transition: all 0.4s ease-in-out;
     transition: all 0.4s ease-in-out;
     line-height: 3;
-    background: #FFFFFF; }
-    #product .hero .architecture div h3 {
+    background: #FFFFFF;
+    margin-top: 10px;
+    position: relative; }
+    #product .hero .architecture #olap h3, #product .hero .architecture #oltp h3, #product .hero .architecture #clustermanager h3, #product .hero .architecture #gemxd h3, #product .hero .architecture #spark h3, #product .hero .architecture #yourapps h3 {
       margin: 0; }
-    #product .hero .architecture div:hover {
+    #product .hero .architecture #olap:hover, #product .hero .architecture #oltp:hover, #product .hero .architecture #clustermanager:hover, #product .hero .architecture #gemxd:hover, #product .hero .architecture #spark:hover, #product .hero .architecture #yourapps:hover {
       cursor: pointer;
-      box-shadow: 456.5px 0px 0px 0px #8bcfb5 inset; }
-  #product .hero .architecture *:not(:first-child) {
-    margin-top: 10px; }
-  #product .hero .architecture > img {
-    width: 45px;
-    height: 34px;
+      box-shadow: 0px 160px 0px 0px #8bcfb5 inset; }
+    #product .hero .architecture #olap span, #product .hero .architecture #oltp span, #product .hero .architecture #clustermanager span, #product .hero .architecture #gemxd span, #product .hero .architecture #spark span, #product .hero .architecture #yourapps span {
+      background: #222222;
+      color: #FFFFFF;
+      position: absolute;
+      left: 17%;
+      opacity: 0.8;
+      padding: 0 10px;
+      margin-top: 3px;
+      white-space: nowrap;
+      line-height: 2; }
+    #product .hero .architecture #olap span:after, #product .hero .architecture #oltp span:after, #product .hero .architecture #clustermanager span:after, #product .hero .architecture #gemxd span:after, #product .hero .architecture #spark span:after, #product .hero .architecture #yourapps span:after {
+      bottom: 100%;
+      left: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-color: rgba(34, 34, 34, 0);
+      border-bottom-color: #222222;
+      border-width: 5px;
+      margin-left: -5px; }
+  #product .hero .architecture #olap span {
+    left: 11%; }
+  #product .hero .architecture #spark span {
+    left: -5%;
+    margin-top: 14px; }
+  #product .hero .architecture #oltp span {
+    left: 7%; }
+  #product .hero .architecture #gemxd span {
+    left: 22%; }
+  #product .hero .architecture > div:first-child {
     margin-bottom: 15px; }
+    #product .hero .architecture > div:first-child img {
+      position: static;
+      width: 45px;
+      height: 34px; }
   #product .hero .architecture #spark img {
     width: 125px;
     height: 66px; }
+  #product .hero .architecture #oltp, #product .hero .architecture #olapbox {
+    width: 49%;
+    vertical-align: bottom;
+    display: inline-block;
+    height: 160px; }
+  #product .hero .architecture #oltp {
+    margin-left: 1%;
+    line-height: 6.5; }
+  #product .hero .architecture #olap {
+    margin-top: 0; }
+
+#about .hero p {
+  margin: 3% auto;
+  max-width: 500px; }
+#about section:not(:first-child) ul {
+  margin: 6% 0 0 0; }
+#about .explainerWhat:nth-child(3) {
+  background-color: #5f6764;
+  color: #FFFFFF; }
+  #about .explainerWhat:nth-child(3) ul li {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 48.82117%;
+    margin-left: 25.58941%; }
+    #about .explainerWhat:nth-child(3) ul li:last-child {
+      margin-right: 0; }
+#about .explainerWhat:nth-child(4) {
+  background-color: #222222;
+  color: #FFFFFF; }
+  #about .explainerWhat:nth-child(4) ul li {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 48.82117%;
+    margin-left: 25.58941%; }
+    #about .explainerWhat:nth-child(4) ul li:last-child {
+      margin-right: 0; }
+#about .explainerWhat:nth-child(5) ul li {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%;
+  margin-left: 25.58941%; }
+  #about .explainerWhat:nth-child(5) ul li:last-child {
+    margin-right: 0; }
+#about section img {
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-top-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+  border-top-left-radius: 50%; }
+#about .finalCTA div.container > ul {
+  margin: 4% 0 0 0;
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 31.76157%;
+  margin-left: 34.11922%; }
+  #about .finalCTA div.container > ul:last-child {
+    margin-right: 0; }
+  #about .finalCTA div.container > ul > li {
+    text-align: left;
+    max-width: 68em;
+    margin-left: auto;
+    margin-right: auto; }
+    #about .finalCTA div.container > ul > li::after {
+      clear: both;
+      content: "";
+      display: table; }
+    #about .finalCTA div.container > ul > li > p, #about .finalCTA div.container > ul > li > ul {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 91.4702%;
+      margin-right: 0; }
+      #about .finalCTA div.container > ul > li > p:last-child, #about .finalCTA div.container > ul > li > ul:last-child {
+        margin-right: 0; }
+    #about .finalCTA div.container > ul > li > i {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 6.17215%;
+      vertical-align: bottom;
+      margin-top: 8px; }
+      #about .finalCTA div.container > ul > li > i:last-child {
+        margin-right: 0; }
+    #about .finalCTA div.container > ul > li > p {
+      margin: 0; }
+      #about .finalCTA div.container > ul > li > p a {
+        font-size: inherit; }
+    #about .finalCTA div.container > ul > li a {
+      color: #5f6764;
+      font-size: 1.3em; }
+      #about .finalCTA div.container > ul > li a:hover {
+        color: #FFFFFF; }
+    #about .finalCTA div.container > ul > li ul {
+      margin: 0;
+      display: inline-block; }
+      #about .finalCTA div.container > ul > li ul li {
+        display: inline-block; }
+      #about .finalCTA div.container > ul > li ul li:not(:first-child) {
+        margin-left: 3px; }
+  #about .finalCTA div.container > ul > li:not(:first-child) {
+    margin-top: 6px; }
+
+#support .explainerWhat:nth-child(3) {
+  background-color: #5f6764;
+  color: white; }
+  #support .explainerWhat:nth-child(3) ul {
+    margin: 2% 0 0 0; }
+    #support .explainerWhat:nth-child(3) ul li {
+      width: 30.9%;
+      margin-top: 2%; }
+      #support .explainerWhat:nth-child(3) ul li h3 {
+        margin-top: 1%; }
+      #support .explainerWhat:nth-child(3) ul li i {
+        color: white; }
+      #support .explainerWhat:nth-child(3) ul li a {
+        font-size: inherit; }
+        #support .explainerWhat:nth-child(3) ul li a:hover {
+          color: #222222; }
+
+#download .hero div.container p {
+  margin: 4% auto; }
+#download .hero div.container > div:last-of-type {
+  margin-top: 2%; }
+  #download .hero div.container > div:last-of-type a, #download .hero div.container > div:last-of-type p {
+    text-decoration: underline; }
+#download .explainerWhat ul {
+  margin: 2% 0 0 0; }
+  #download .explainerWhat ul li {
+    width: 30.9%;
+    margin-top: 2%; }
+    #download .explainerWhat ul li h3 {
+      margin-top: 1%; }
+    #download .explainerWhat ul li i {
+      color: #222222; }
+    #download .explainerWhat ul li a {
+      font-size: inherit; }
+      #download .explainerWhat ul li a:hover {
+        color: #222222; }
 
 /*# sourceMappingURL=landing_redux.css.map */

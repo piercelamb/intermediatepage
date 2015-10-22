@@ -303,12 +303,21 @@ button {
   color: #FFFFFF;
   border: none;
   height: 50px;
-  padding: 0px 9%;
+  padding: 0;
   -webkit-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out; }
   button:hover {
     box-shadow: 0px 50px 0px 0px #5f6764 inset; }
+  button a {
+    font-size: inherit;
+    color: inherit;
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 2.5;
+    padding: 0 20px;
+    letter-spacing: 1px; }
 
 ul {
   padding: 0;
@@ -461,8 +470,7 @@ header {
         /*width:26%;*/
         vertical-align: middle;
         /*padding:0 4%; */
-        margin-left: 20px;
-        padding: 0 25px; }
+        margin-left: 20px; }
         @media screen and (max-width: 845px) {
           header .container nav button {
             margin-left: 0; } }
@@ -491,6 +499,11 @@ section {
   @media screen and (max-width: 330px) {
     section {
       padding: 22% 1% 22% 1%; } }
+  section div.container button {
+    text-transform: uppercase; }
+    section div.container button a {
+      line-height: 3;
+      padding: 0 45px; }
   section div.container h1, section div.container h2 {
     margin: 0; }
   section div.container h1 {
@@ -748,21 +761,19 @@ form input:last-child {
     .hero div.container > p {
       max-width: 215px;
       margin: 6% auto; } }
-  .hero div.container button {
-    padding: 0 5%;
-    text-transform: uppercase; }
-  .hero div.container > div:last-of-type a {
+  .hero div.container > div:last-of-type > a {
     margin-left: 1%;
     color: #5f6764;
     display: inline-block;
     height: 50px;
     vertical-align: baseline; }
-    .hero div.container > div:last-of-type a > p {
+    .hero div.container > div:last-of-type > a > p {
       margin: 0px !important;
       display: inline-block;
       font-size: 1em;
-      padding-top: 8px; }
-    .hero div.container > div:last-of-type a:hover {
+      padding-top: 8px;
+      letter-spacing: 1px; }
+    .hero div.container > div:last-of-type > a:hover {
       color: #FFFFFF; }
 
 .explainerWhat ul {

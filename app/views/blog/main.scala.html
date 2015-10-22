@@ -42,7 +42,9 @@
         <script src="//static.cdn.prismic.io/prismic.min.js"></script>
 </head>
 <body>
-
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
 <header>
     <div class="container">
         <div class="logo">
@@ -54,19 +56,24 @@
         </div>
         <nav>
             <ul>
+                <li><a href="@routes.Registration.product">product</a></li>
+                <li><a href="@routes.Registration.about">about</a></li>
+                <li><a href="@routes.Registration.support">support</a></li>
                 <li><a href="@routes.PrismicMain.index()">blog</a></li>
             </ul>
+            <button><a href="@routes.Registration.download">download</a></button>
         </nav>
     </div>
 </header>
-
 @content
 <footer>
     <div class="container Aligner">
         <nav class="Aligner-item">
             <ul>
+                <li><a href="@routes.Registration.product">product</a></li>
+                <li><a href="@routes.Registration.about">about</a></li>
+                <li><a href="#">support</a></li>
                 <li><a href="@routes.PrismicMain.index()">blog</a></li>
-                <li><a href="@routes.Registration.newReg">home</a></li>
             </ul>
         </nav>
         <div class="logo Aligner-item">

@@ -103,12 +103,8 @@ div.container{
 			}
 		}
 
-	button {
-		padding:0 5%;
-		text-transform:uppercase;
-		}
 
-	&>div:last-of-type a {
+	&>div:last-of-type > a {
 		margin-left:1%;
 		color:$grey;
 		display:inline-block;
@@ -120,6 +116,7 @@ div.container{
 			display:inline-block;
 			font-size:1em;
 			padding-top:8px;
+			letter-spacing:1px;
 
 			}
 		&:hover {

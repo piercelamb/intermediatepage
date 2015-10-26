@@ -39,29 +39,62 @@
             <div>
                 <h2 class="wow fadeInDown" data-wow-duration="2s">The SnappyData Platform</h2>
                 <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">
-                    The SnappyData platform is the first to bring you lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem
-                    ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+                    The SnappyData Platform is a Spark based, in-memory unified cluster
+                    that provides streaming analytics, OLTP and OLAP data management
+                    (interactive queries and point updates) leading to reduction in complexity for both
+                    developers and ops. Additionally, SnappyData can dramatically reduce resource requirements
+                    (CPU, memory, network) through the use of probabilistic data: statistical techniques to maintain a
+                    small fraction of the data and respond to analytic questions at Google-like speeds. Using SnappyData
+                    is as simple as adding the SnappyContext to a tradition Spark program.
+                </p>
             </div>
         </div>
     </section>
-    <section class="explainerHow" id="appscontent">
+    <section class="explainerWhat" id="appscontent">
         <div class="container">
             <div>
                 <h2 class="wow fadeInDown" data-wow-duration="2s">APIs</h2>
                 <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">
-                SnappyData exposes APIs for SQL, Spark-API & Scala/Java APIs lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem
-                ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+                    Developers can start working with SnappyData by installing and simply adding the SnappyContext
+                    in a Spark program. SnappyData exposes APIs for both streaming and reference data.
+                    Like Spark, no code changes are required between contexts. In both cases, client applications can submit
+                    Spark programs or connect using JDBC/ODBC and execute SQL queries.
                 </p>
             </div>
+                <ul>
+                    <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
+                        <img src="@routes.Assets.at("images/icons/in-memory-synopsis-green.svg")" alt=""/>
+                        <h3>SQL Queries & DML</h3>
+                        <p>Spark-SQL forms the basis for queries on SnappyData.
+                            We extend Spark-SQL to support Update/Insert/Delete statements
+                            for transactional workloads.</p>
+                    </li>
+                    <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.5s">
+                        <img src="@routes.Assets.at("images/icons/sql-spark-green.svg")" alt=""/>
+                        <h3>Spark Applications</h3>
+                        <p>Any Spark application can access SnappyData by simply adding the SnappyContext.
+                            This means MLib, PySpark, R and more can all be used with SnappyData.</p>
+                    </li>
+                    <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="2s">
+                        <img src="@routes.Assets.at("images/icons/streaming-historical-green.svg")" alt=""/>
+                        <h3>Scala/Java</h3>
+                        <p>Native Scala and Java applications can also access SnappyData</p>
+                    </li>
+                </ul>
+
         </div>
     </section>
     <section class="features" id="querycontent">
         <div class="container">
             <div>
-            <h2>Queries</h2>
-            <p>
-                SnappyData executes both OLAP and OLTP class queries. lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem
-                ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+                <h2 class="wow fadeInDown" data-wow-duration="2s">Queries</h2>
+                <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">
+                    SnappyData bridges the OLTP/OLAP gap in data management by offering support
+                    for both analytical workloads and transactional workloads.
+                    OLAP queries (select …) are processed by the Catalyst engine and executed inside Apache Spark.
+                    OLTP queries (insert/update/delete) are executed inside the SnappyData
+                    in-memory database which is discussed below. A single application running on SnappyData
+                    can call both types of queries in streaming or batch contexts.
             </p>
             </div>
         </div>
@@ -69,23 +102,59 @@
     <section class="explainerWhat" id="sparkcontent">
         <div class="container">
             <div>
-            <h2>Apache Spark</h2>
-            <p>
-                Apache Spark is an open source, distributed, in-memory computation engine. lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem
-                ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-            </p>
+                <h2 class="wow fadeInDown" data-wow-duration="2s">Apache Spark</h2>
+                <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">
+                    Apache Spark is a fast general engine for large-scale data processing.
+                    Spark has been a runaway success in the business intelligenece/data science world.
+                    A big reason for Spark’s success is developer productivity: Spark abstracts away most of the
+                    complexity of distributed data processing and offers advantages like
+                    executing the same code in streaming and batch contexts. By integrating with
+                    Spark, SnappyData inherits all of the conveniences of Spark.
+                </p>
             </div>
+            <ul>
+                <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
+                    <img src="@routes.Assets.at("images/icons/in-memory-synopsis-green.svg")" alt=""/>
+                    <h3>Integrates with Spark libraries</h3>
+                    <p>Utilize all of Spark’s libraries like MLlib, PySpark and more</p>
+                </li>
+                <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.5s">
+                    <img src="@routes.Assets.at("images/icons/sql-spark-green.svg")" alt=""/>
+                    <h3>Spark abstractions are a first-class citizen</h3>
+                    <p>Using SnappyData is as simple as creating and manipulating DataFrames, RDDs and other Spark abstractions.</p>
+                </li>
+            </ul>
         </div>
     </section>
-    <section class="explainerHow" id="storecontent">
+    <section class="explainerWhat" id="storecontent">
         <div class="container">
             <div>
-            <h2>The SnappyData Store</h2>
-            <p>
-                The SnappyData Store is a distributed in-memory database capable of storing data in both row format and column format
-                lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+                <h2 class="wow fadeInDown" data-wow-duration="2s">The SnappyData Store</h2>
+                <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">
+                    The Snappy-Store is a robust in-memory database. It is an extension of
+                    Pivotal’s GemFire which also goes by the open source name Apache Geode.
+                    This technology has been tested in production customer deployments for over a decade.
+                    The benefits of fusing Spark with an always-on, multi-tenanted database are manyfold.
+                    Firstly, it enables Spark to become a highly available, highly concurrent platform.
             </p>
             </div>
+            <ul>
+                <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
+                    <img src="@routes.Assets.at("images/icons/in-memory-synopsis-green.svg")" alt=""/>
+                    <h3>Always-on Spark</h3>
+                    <p>-</p>
+                </li>
+                <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.5s">
+                    <img src="@routes.Assets.at("images/icons/sql-spark-green.svg")" alt=""/>
+                    <h3>Highly Concurrent</h3>
+                    <p>-</p>
+                </li>
+                <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="2s">
+                    <img src="@routes.Assets.at("images/icons/streaming-historical-green.svg")" alt=""/>
+                    <h3>Synosis Data Structures</h3>
+                    <p>-</p>
+                </li>
+            </ul>
         </div>
     </section>
     <section class="finalCTA">
@@ -93,7 +162,7 @@
 
             <h2>Download our open source beta</h2>
             <p>We would love to hear from you. <a href="@routes.Registration.about#contactus">Contact Us</a></p>
-            <button>download</button>
+            <button><a href="@routes.Registration.download">download</a></button>
 
         </div>
     </section>

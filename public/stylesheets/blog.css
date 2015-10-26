@@ -1016,6 +1016,9 @@ form input:last-child {
     line-height: 6.5; }
   #product .hero .architecture #olap {
     margin-top: 0; }
+#product .explainerWhat:nth-child(3) {
+  background-color: #5f6764;
+  color: #FFFFFF; }
 
 #about .hero p {
   margin: 3% auto;

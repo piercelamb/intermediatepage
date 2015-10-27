@@ -6,7 +6,7 @@
             <p>SnappyData fuses <a target="_blank" href="http://spark.apache.org/">Apache Spark</a> with a highly available, multi-tenanted in-memory database to execute OLAP & OLTP queries on streaming data</p>
             <div class="architecture">
 
-                <div><img src="@routes.Assets.at("images/SNP-Icon-Green.png")" alt="SnappyData" /></div>
+                <div><img id="platform" src="@routes.Assets.at("images/SNP-Icon-Green.png")" alt="SnappyData" /></div>
                 <div id="yourapps" class="archbox">
                     <h3>SQL, Spark API, Scala/Java</h3>
                     <span class="tooltip">Access via SQL, Spark API or Scala/Java</span>
@@ -34,7 +34,7 @@
             </div>
         </div>
     </section>
-    <section class="explainerWhat">
+    <section class="explainerWhat" id="platformcontent">
         <div class="container">
             <div>
                 <h2 class="wow fadeInDown" data-wow-duration="2s">The SnappyData Platform</h2>
@@ -45,7 +45,7 @@
                     developers and ops. Additionally, SnappyData can dramatically reduce resource requirements
                     (CPU, memory, network) through the use of probabilistic data: statistical techniques to maintain a
                     small fraction of the data and respond to analytic questions at Google-like speeds. Using SnappyData
-                    is as simple as adding the SnappyContext to a tradition Spark program.
+                    is as simple as adding the SnappyContext to a traditional Spark program.
                 </p>
             </div>
         </div>
@@ -84,7 +84,7 @@
 
         </div>
     </section>
-    <section class="features" id="querycontent">
+    <section class="explainerWhat" id="querycontent">
         <div class="container">
             <div>
                 <h2 class="wow fadeInDown" data-wow-duration="2s">Queries</h2>
@@ -97,6 +97,18 @@
                     can call both types of queries in streaming or batch contexts.
             </p>
             </div>
+            <ul>
+                <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
+                    <img src="@routes.Assets.at("images/icons/in-memory-synopsis-green.svg")" alt=""/>
+                    <h3>OLAP</h3>
+                    <p>-</p>
+                </li>
+                <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.5s">
+                    <img src="@routes.Assets.at("images/icons/sql-spark-green.svg")" alt=""/>
+                    <h3>OLTP</h3>
+                    <p>-</p>
+                </li>
+            </ul>
         </div>
     </section>
     <section class="explainerWhat" id="sparkcontent">
@@ -151,7 +163,7 @@
                 </li>
                 <li class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="2s">
                     <img src="@routes.Assets.at("images/icons/streaming-historical-green.svg")" alt=""/>
-                    <h3>Synosis Data Structures</h3>
+                    <h3>Synopsis Data Structures</h3>
                     <p>-</p>
                 </li>
             </ul>
@@ -183,6 +195,12 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function(){
+
+        $('#platform').on('click', function(){
+            $('html, body').animate({
+            scrollTop: $('#platformcontent').offset().top
+           }, 1000);
+        });
         $('#yourapps').on('click', function(){
             $('html, body').animate({
             scrollTop: $('#appscontent').offset().top
